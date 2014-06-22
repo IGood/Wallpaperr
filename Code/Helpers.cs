@@ -1,25 +1,25 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.Linq;
+	using System.Windows.Forms;
 	using FileSystemInfo = System.IO.FileSystemInfo;
 
 	static class Helpers
 	{
 		#region Const / Static Fields
 
-		public static readonly string NL = Environment.NewLine;
-
 		public static readonly string AppDataPath = Application.UserAppDataPath;
 
 		// list of supported image types
-		public static readonly string[] FileTypes = {
+		public static readonly string[] FileTypes =
+		{
 			"*.bmp",
 			"*.png",
 			"*.jpg",
 			"*.jpeg",
-			"*.gif" };
+			"*.gif",
+		};
 
 		public static readonly Random RNG = new Random();
 
@@ -44,9 +44,11 @@ namespace Wallpaperr
 
 		public static void ShowBusy()
 		{
-			ShowInfo(
-				"Wallpaperr is already busy composing" + NL +
-				"a background. Try again later.");
+			var msg =
+@"Wallpaperr is already busy composing
+a background. Try again later.";
+
+			ShowInfo(msg);
 		}
 
 		#endregion
@@ -55,6 +57,7 @@ namespace Wallpaperr
 		public static bool Exists(FileSystemInfo fileSystemInfo)
 		{
 			fileSystemInfo.Refresh();
+
 			return fileSystemInfo.Exists;
 		}
 
@@ -62,14 +65,7 @@ namespace Wallpaperr
 		// to a specified folder/file.
 		public static ListViewItem FindInListView(FileSystemInfo fsi, ListView listView)
 		{
-			foreach (ListViewItem item in listView.Items.Find(fsi.Name, false))
-			{
-				if (item.ToolTipText == fsi.FullName)
-				{
-					return item;
-				}
-			}
-			return null;
+			return listView.Items.Find(fsi.Name, false).FirstOrDefault((item) => item.ToolTipText == fsi.FullName);
 		}
 	}
 }

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.Windows.Forms;
+
 	static class Program
 	{
 		/// <summary>

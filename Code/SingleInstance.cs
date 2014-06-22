@@ -1,8 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.Runtime.InteropServices;
+
 	static class SingleInstance
 	{
 		#region Internal Classes
@@ -73,17 +73,9 @@ namespace Wallpaperr
 
 		#region Member Fields / Properties
 
-		public static readonly int WM_SHOWFIRSTINSTANCE;
-		private static System.Threading.Mutex mutex_;
+		public static readonly int WM_SHOWFIRSTINSTANCE = WinAPI.RegisterWindowMessage("WM_SHOWFIRSTINSTANCE|{0}", GetGUID());
 
-		#endregion
-
-		#region Static Constructor
-
-		static SingleInstance()
-		{
-			WM_SHOWFIRSTINSTANCE = WinAPI.RegisterWindowMessage("WM_SHOWFIRSTINSTANCE|{0}", GetGUID());
-		}
+		private static System.Threading.Mutex Mutex;
 
 		#endregion
 
@@ -93,7 +85,7 @@ namespace Wallpaperr
 		{
 			string mutexName = @"Local\" + GetGUID();
 			bool onlyInstance = false;
-			mutex_ = new System.Threading.Mutex(true, mutexName, out onlyInstance);
+			Mutex = new System.Threading.Mutex(true, mutexName, out onlyInstance);
 			return onlyInstance;
 		}
 
@@ -143,15 +135,13 @@ namespace Wallpaperr
 
 		public static void Stop()
 		{
-			mutex_.ReleaseMutex();
+			Mutex.ReleaseMutex();
 		}
 
 		private static string GetGUID()
 		{
 			object[] attributes = System.Reflection.Assembly.GetEntryAssembly().GetCustomAttributes(typeof(GuidAttribute), false);
-			return (attributes.Length == 0)
-				? String.Empty
-				: ((GuidAttribute)attributes[0]).Value;
+			return (attributes.Length == 0) ? String.Empty : ((GuidAttribute)attributes[0]).Value;
 		}
 
 		#endregion

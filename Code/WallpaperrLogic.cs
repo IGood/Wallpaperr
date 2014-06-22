@@ -1,37 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+	using System.IO;
+	using System.Linq;
+	using System.Windows.Forms;
 	using StringCollection = System.Collections.Specialized.StringCollection;
 
 	internal class WallpaperrLogic
 	{
+		#region Static Fields / Properties
+
+		public static Properties.Settings AppSettings
+		{
+			get { return Properties.Settings.Default; }
+		}
+
+		#endregion
+
 		#region Member Fields / Properties
 
-		private MainForm form_;
+		private MainForm form;
 
-		private List<DirectoryInfo> folderList_;
-		private List<FileInfo> fileList_;
+		private List<DirectoryInfo> folderList;
 
-		private List<FileInfo> masterFileList_;
+		private List<FileInfo> fileList;
+
+		private List<FileInfo> masterFileList;
 		public IList<FileInfo> MasterFileList
 		{
-			get { return masterFileList_.AsReadOnly(); }
+			get { return this.masterFileList.AsReadOnly(); }
 		}
 
-		private Properties.Settings appSettings_ = Properties.Settings.Default;
-		public Properties.Settings AppSettings
-		{
-			get { return appSettings_; }
-		}
+		private List<DirectoryInfo> tempFolders;
 
-		private List<DirectoryInfo> tempFolders_;
-		private List<FileInfo> tempFiles_;
-		private ListViewItem[] tempItems_;
+		private List<FileInfo> tempFiles;
+
+		private ListViewItem[] tempItems;
 
 		#endregion
 
@@ -39,30 +45,34 @@ namespace Wallpaperr
 
 		public WallpaperrLogic(MainForm form)
 		{
-			form_ = form;
+			this.form = form;
 
 			// set WatcherSet update method
-			WatcherSet.SetUpdateMethod((s, e) => UpdateImageList());
+			WatcherSet.SetUpdateMethod((s, e) => this.UpdateImageList());
 
 			// get folder list from settings
-			if (appSettings_.FolderList == null)
+			if (AppSettings.FolderList == null)
 			{
-				appSettings_.FolderList = new StringCollection();
+				AppSettings.FolderList = new StringCollection();
 			}
-			folderList_ = new List<DirectoryInfo>(appSettings_.FolderList.Count);
-			AddFolders(appSettings_.FolderList);
+
+			this.folderList = new List<DirectoryInfo>(AppSettings.FolderList.Count);
+
+			AddFolders(AppSettings.FolderList);
 
 			// get file list from settings
-			if (appSettings_.FileList == null)
+			if (AppSettings.FileList == null)
 			{
-				appSettings_.FileList = new StringCollection();
+				AppSettings.FileList = new StringCollection();
 			}
-			fileList_ = new List<FileInfo>(appSettings_.FileList.Count);
-			AddFiles(appSettings_.FileList);
+
+			this.fileList = new List<FileInfo>(AppSettings.FileList.Count);
+
+			AddFiles(AppSettings.FileList);
 
 			// drop backup lists & set controls after initialization
-			ClearTempLists();
-			RestoreSettings();
+			this.ClearTempLists();
+			this.RestoreSettings();
 
 #if DEBUG
 			//NewWallpaper();
@@ -74,115 +84,99 @@ namespace Wallpaperr
 		public void SaveSettingsToDisk()
 		{
 			// store folder list
-			appSettings_.FolderList.Clear();
-			foreach (DirectoryInfo info in folderList_)
+			AppSettings.FolderList.Clear();
+			foreach (DirectoryInfo info in this.folderList)
 			{
-				appSettings_.FolderList.Add(info.FullName);
+				AppSettings.FolderList.Add(info.FullName);
 			}
 
 			// store file list
-			appSettings_.FileList.Clear();
-			foreach (FileInfo info in fileList_)
+			AppSettings.FileList.Clear();
+			foreach (FileInfo info in this.fileList)
 			{
-				appSettings_.FileList.Add(info.FullName);
+				AppSettings.FileList.Add(info.FullName);
 			}
 
 			// save settings
-			appSettings_.Save();
+			AppSettings.Save();
 		}
 
 		public void SaveSettings()
 		{
-			ClearTempLists();
+			this.ClearTempLists();
 
-			form_.SaveSettings(appSettings_);
+			this.form.SaveSettings(AppSettings);
 
-			UpdateImageList();
+			this.UpdateImageList();
 
-			form_.Dirty = false;
+			this.form.Dirty = false;
 		}
 
 		public void RestoreSettings()
 		{
-			RestoreFromTempLists();
+			this.RestoreFromTempLists();
 
-			form_.RestoreSettings(appSettings_);
+			this.form.RestoreSettings(AppSettings);
 
-			form_.Dirty = false;
+			this.form.Dirty = false;
 		}
 
 		private void MakeTempLists()
 		{
-			if (tempFolders_ == null)
+			if (this.tempFolders == null)
 			{
-				if (folderList_ == null)
-				{
-					tempFolders_ = new List<DirectoryInfo>();
-				}
-				else
-				{
-					tempFolders_ = new List<DirectoryInfo>(folderList_);
-				}
+				this.tempFolders = new List<DirectoryInfo>(this.folderList ?? Enumerable.Empty<DirectoryInfo>());
 			}
 
-			if (tempFiles_ == null)
+			if (this.tempFiles == null)
 			{
-				if (fileList_ == null)
-				{
-					tempFiles_ = new List<FileInfo>();
-				}
-				else
-				{
-					tempFiles_ = new List<FileInfo>(fileList_);
-				}
+				this.tempFiles = new List<FileInfo>(this.fileList ?? Enumerable.Empty<FileInfo>());
 			}
 
-			if (tempItems_ == null)
+			if (this.tempItems == null)
 			{
-				tempItems_ = new ListViewItem[form_.ListView.Items.Count];
-				form_.ListView.Items.CopyTo(tempItems_, 0);
+				this.tempItems = this.form.ListView.Items.Cast<ListViewItem>().ToArray();
 			}
 		}
 
 		private void RestoreFromTempLists()
 		{
-			if (tempFolders_ != null)
+			if (this.tempFolders != null)
 			{
-				folderList_ = tempFolders_;
+				this.folderList = this.tempFolders;
 			}
 
-			if (tempFiles_ != null)
+			if (this.tempFiles != null)
 			{
-				fileList_ = tempFiles_;
+				this.fileList = this.tempFiles;
 			}
 
-			if (tempItems_ != null)
+			if (this.tempItems != null)
 			{
-				form_.ListView.Items.Clear();
-				form_.ListView.Items.AddRange(tempItems_);
+				this.form.ListView.BeginUpdate();
+				this.form.ListView.Items.Clear();
+				this.form.ListView.Items.AddRange(this.tempItems);
+				this.form.ListView.EndUpdate();
 			}
 
-			ClearTempLists();
-			UpdateImageList();
+			this.ClearTempLists();
+			this.UpdateImageList();
 		}
 
 		public void UpdateImageList()
 		{
 			// reset master list
-			masterFileList_ = new List<FileInfo>(fileList_);
+			this.masterFileList = new List<FileInfo>(this.fileList);
 
 			// get files from folders
 			var foldersFileList = new List<FileInfo>();
-			SearchOption searchOption = appSettings_.IncludeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+			SearchOption searchOption = AppSettings.IncludeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
 			var missingFolders = new List<DirectoryInfo>();
-			folderList_.ForEach((dirInfo) =>
+			this.folderList.ForEach((dirInfo) =>
 			{
 				if (Helpers.Exists(dirInfo))
 				{
-					foreach (string pattern in Helpers.FileTypes)
-					{
-						foldersFileList.AddRange(dirInfo.GetFiles(pattern, searchOption));
-					}
+					foldersFileList.AddRange(Helpers.FileTypes.SelectMany((pattern) => dirInfo.GetFiles(pattern, searchOption)));
 				}
 				else
 				{
@@ -191,44 +185,38 @@ namespace Wallpaperr
 			});
 
 			// remove missing folders
-			missingFolders.ForEach((dirInfo) => folderList_.Remove(dirInfo));
+			missingFolders.ForEach((dirInfo) => this.folderList.Remove(dirInfo));
 
 			// handle duplicate entries
 			foldersFileList.ForEach((newInfo) =>
 			{
-				bool found = false;
-				foreach (FileInfo storedInfo in masterFileList_)
-				{
-					if (storedInfo.FullName == newInfo.FullName)
-					{
-						found = true;
-						break;
-					}
-				}
+				bool found = this.masterFileList.Any((storedInfo) => storedInfo.FullName == newInfo.FullName);
 				if (!found)
 				{
-					masterFileList_.Add(newInfo);
+					this.masterFileList.Add(newInfo);
 				}
 			});
 		}
 
 		private void ClearTempLists()
 		{
-			tempFolders_ = null;
-			tempFiles_ = null;
-			tempItems_ = null;
+			this.tempFolders = null;
+			this.tempFiles = null;
+			this.tempItems = null;
 		}
 
 		public void RemoveSelectedItems()
 		{
-			MakeTempLists();
+			this.MakeTempLists();
 
-			foreach (ListViewItem item in form_.ListView.SelectedItems)
+			this.form.ListView.BeginUpdate();
+
+			foreach (ListViewItem item in this.form.ListView.SelectedItems)
 			{
 				FileSystemInfo info = new FileInfo(item.ToolTipText);
 				IList collection = (info.Attributes == FileAttributes.Directory)
-					? folderList_
-					: (IList)fileList_;
+					? this.folderList
+					: (IList)this.fileList;
 				foreach (FileSystemInfo fsi in collection)
 				{
 					if (fsi.FullName == info.FullName)
@@ -238,100 +226,118 @@ namespace Wallpaperr
 					}
 				}
 
-				using (item.Tag as WatcherSet) { }
+				if (item.Tag is IDisposable)
+				{
+					((IDisposable)item.Tag).Dispose();
+				}
+
 				item.Remove();
 
-				form_.Dirty = true;
+				this.form.Dirty = true;
 			}
+
+			this.form.ListView.EndUpdate();
 		}
 
 		public void AddFolders(IEnumerable folders)
 		{
-			MakeTempLists();
+			this.MakeTempLists();
 
-			foreach (string folder in folders)
+			this.form.ListView.BeginUpdate();
+
+			var directoryInfos = folders
+				.Cast<string>()
+				.TakeWhile((folder) => folder != null)
+				.Select((folder) => new DirectoryInfo(folder))
+				.Where((dirInfo) => dirInfo.Exists);
+			foreach (var dirInfo in directoryInfos)
 			{
-				if (folder == null)
-				{
-					break;
-				}
-
-				DirectoryInfo dirInfo = new DirectoryInfo(folder);
-				if (!dirInfo.Exists)
-				{
-					continue;
-				}
-
-				ListViewItem item = new ListViewItem(dirInfo.Name, 0);
-				item.Name = item.Text;
-				item.ToolTipText = dirInfo.FullName;
-
 				// check already exists
-				if (Helpers.FindInListView(dirInfo, form_.ListView) != null)
+				if (Helpers.FindInListView(dirInfo, this.form.ListView) != null)
 				{
 					continue;
 				}
 
-				item.Tag = new WatcherSet(dirInfo.FullName, appSettings_.IncludeSubdirectory);
+				ListViewItem item = new ListViewItem(dirInfo.Name, 0)
+				{
+					Name = dirInfo.Name,
+					Tag = new WatcherSet(dirInfo.FullName, AppSettings.IncludeSubdirectory),
+					ToolTipText = dirInfo.FullName,
+				};
 
 				// add to lists
-				form_.ListView.Items.Add(item);
-				folderList_.Add(dirInfo);
+				this.form.ListView.Items.Add(item);
+				this.folderList.Add(dirInfo);
 
-				form_.Dirty = true;
+				this.form.Dirty = true;
 			}
 
-			form_.ListView.Sort();
+			this.form.ListView.Sort();
+			this.form.ListView.EndUpdate();
 		}
 
 		public void AddFiles(IEnumerable files)
 		{
-			MakeTempLists();
+			this.MakeTempLists();
 
-			foreach (string file in files)
+			this.form.ListView.BeginUpdate();
+
+			var fileInfos = files
+				.Cast<string>()
+				.TakeWhile((file) => file != null)
+				.Select((file) => new FileInfo(file))
+				.Where((fileInfo) => fileInfo.Exists);
+			foreach (var fileInfo in fileInfos)
 			{
-				if (file == null)
-				{
-					break;
-				}
-
-				FileInfo fileInfo = new FileInfo(file);
-				if (!fileInfo.Exists)
-				{
-					continue;
-				}
-
 				int imageIndex = 0;
 				switch (fileInfo.Extension.ToLower())
 				{
 					case ".xml":
-						AddItemsFromCollectionFile(fileInfo.FullName);
+						this.AddItemsFromCollectionFile(fileInfo.FullName);
 						continue;
-					case ".bmp": imageIndex = 1; break;
-					case ".png": imageIndex = 2; break;
+
+					case ".bmp":
+						imageIndex = 1;
+						break;
+
+					case ".png":
+						imageIndex = 2;
+						break;
+
 					case ".jpg":
-					case ".jpeg": imageIndex = 3; break;
-					case ".gif": imageIndex = 4; break;
-					default: continue; // unsupported file type
+					case ".jpeg":
+						imageIndex = 3;
+						break;
+
+					case ".gif":
+						imageIndex = 4;
+						break;
+
+					default:
+						continue; // unsupported file type
 				}
-				ListViewItem item = new ListViewItem(fileInfo.Name, imageIndex);
-				item.Name = item.Text;
-				item.ToolTipText = fileInfo.FullName;
 
 				// check already exists
-				if (Helpers.FindInListView(fileInfo, form_.ListView) != null)
+				if (Helpers.FindInListView(fileInfo, this.form.ListView) != null)
 				{
 					continue;
 				}
 
-				// add to lists
-				form_.ListView.Items.Add(item);
-				fileList_.Add(fileInfo);
+				ListViewItem item = new ListViewItem(fileInfo.Name, imageIndex)
+				{
+					Name = fileInfo.Name,
+					ToolTipText = fileInfo.FullName,
+				};
 
-				form_.Dirty = true;
+				// add to lists
+				this.form.ListView.Items.Add(item);
+				this.fileList.Add(fileInfo);
+
+				this.form.Dirty = true;
 			}
 
-			form_.ListView.Sort();
+			this.form.ListView.Sort();
+			this.form.ListView.EndUpdate();
 		}
 
 		public void AddItemsFromArray(string[] items)
@@ -355,35 +361,36 @@ namespace Wallpaperr
 				}
 			}
 
-			AddFolders(folders);
-			AddFiles(files);
+			this.AddFolders(folders);
+			this.AddFiles(files);
 		}
 
 		public void OpenCollection(string fileName)
 		{
 			// save lists
-			MakeTempLists();
+			this.MakeTempLists();
 
 			// clear collections
-			foreach (ListViewItem item in form_.ListView.Items)
+			foreach (var tag in this.form.ListView.Items.Cast<ListViewItem>().Select((item) => item.Tag).OfType<IDisposable>())
 			{
-				using (item.Tag as WatcherSet) { }
+				tag.Dispose();
 			}
-			form_.ListView.Clear();
-			masterFileList_.Clear();
-			folderList_.Clear();
-			fileList_.Clear();
+
+			this.form.ListView.Clear();
+			this.masterFileList.Clear();
+			this.folderList.Clear();
+			this.fileList.Clear();
 
 			// load collection
-			AddItemsFromCollectionFile(fileName);
+			this.AddItemsFromCollectionFile(fileName);
 
 			// update
-			UpdateImageList();
+			this.UpdateImageList();
 		}
 
 		public void AddItemsFromCollectionFile(string fileName)
 		{
-			using (FileStream fs = File.OpenRead(fileName))
+			using (var fs = File.OpenRead(fileName))
 			{
 				var s = new System.Xml.Serialization.XmlSerializer(typeof(List<String>));
 				try
@@ -404,34 +411,35 @@ namespace Wallpaperr
 		public void NewWallpaper()
 		{
 			// make sure there are images
-			if (masterFileList_.Count == 0)
+			if (this.masterFileList.Count == 0)
 			{
-				form_.ShowEmptyCollection();
+				this.form.ShowEmptyCollection();
 			}
+
 			// in case user cancels file browser
-			if (masterFileList_.Count == 0)
+			if (this.masterFileList.Count == 0)
 			{
 				return;
 			}
 
-			int randIndex = Helpers.RNG.Next(masterFileList_.Count);
-			FileInfo fileInfo = masterFileList_[randIndex];
+			int randIndex = Helpers.RNG.Next(this.masterFileList.Count);
+			FileInfo fileInfo = this.masterFileList[randIndex];
 			if (Helpers.Exists(fileInfo))
 			{
-				form_.StartWork(fileInfo.FullName);
+				this.form.StartWork(fileInfo.FullName);
 			}
 			else
 			{
-				RemoveDeadFile(fileInfo);
-				NewWallpaper();
+				this.RemoveDeadFile(fileInfo);
+				this.NewWallpaper();
 			}
 		}
 
 		public void RemoveDeadFile(FileInfo fileInfo)
 		{
-			fileList_.Remove(fileInfo);
-			masterFileList_.Remove(fileInfo);
-			ListViewItem item = Helpers.FindInListView(fileInfo, form_.ListView);
+			this.fileList.Remove(fileInfo);
+			this.masterFileList.Remove(fileInfo);
+			ListViewItem item = Helpers.FindInListView(fileInfo, this.form.ListView);
 			if (item != null)
 			{
 				item.Remove();
@@ -446,20 +454,20 @@ namespace Wallpaperr
 			retVal[0] = fileName;
 
 			// just one?
-			if (appSettings_.SingleMonitor)
+			if (AppSettings.SingleMonitor)
 			{
 				return retVal;
 			}
 
 			// Smart random?
-			if (appSettings_.SmartRandom)
+			if (AppSettings.SmartRandom)
 			{
 				FileInfo seed = new FileInfo(fileName);
 
 				// find files in master list with same directory
 				var siblings = new List<FileInfo>();
 				var deadFiles = new List<FileInfo>();
-				masterFileList_.ForEach((fileInfo) =>
+				this.masterFileList.ForEach((fileInfo) =>
 				{
 					if (fileInfo.DirectoryName == seed.DirectoryName &&
 						fileInfo.Name != seed.Name)
@@ -477,7 +485,7 @@ namespace Wallpaperr
 				});
 
 				// remove dead files
-				deadFiles.ForEach((fileInfo) => RemoveDeadFile(fileInfo));
+				deadFiles.ForEach(this.RemoveDeadFile);
 
 				// found enough siblings?
 				if (siblings.Count >= retVal.Length - 1)
@@ -499,7 +507,7 @@ namespace Wallpaperr
 			for (int i = 1; i < retVal.Length; ++i)
 			{
 				// empty list?
-				if (masterFileList_.Count == 0)
+				if (this.masterFileList.Count == 0)
 				{
 					// use seed
 					retVal[i] = fileName;
@@ -507,15 +515,15 @@ namespace Wallpaperr
 				}
 
 				// select a valid file
-				int randIndex = Helpers.RNG.Next(masterFileList_.Count);
-				FileInfo fileInfo = masterFileList_[randIndex];
+				int randIndex = Helpers.RNG.Next(this.masterFileList.Count);
+				FileInfo fileInfo = this.masterFileList[randIndex];
 				if (Helpers.Exists(fileInfo))
 				{
 					retVal[i] = fileInfo.FullName;
 				}
 				else
 				{
-					RemoveDeadFile(fileInfo);
+					this.RemoveDeadFile(fileInfo);
 					--i;
 				}
 			}

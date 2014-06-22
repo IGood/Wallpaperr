@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.Reflection;
+	using System.Windows.Forms;
+
 	partial class AboutBox : Form
 	{
+		private readonly Assembly executingAsm = Assembly.GetExecutingAssembly();
+
 		public AboutBox()
 		{
-			InitializeComponent();
-			this.Text = String.Format( "About {0}", AssemblyTitle );
+			this.InitializeComponent();
+			this.Text = "About " + AssemblyTitle;
 			this.labelProductName.Text = AssemblyProduct;
-			this.labelVersion.Text = String.Format( "Version {0}", AssemblyVersion );
+			this.labelVersion.Text = "Version " + AssemblyVersion;
 			this.labelCopyright.Text = AssemblyCopyright;
 			this.labelCompanyName.Text = AssemblyCompany;
 			this.textBoxDescription.Text = AssemblyDescription;
@@ -27,37 +25,31 @@ namespace Wallpaperr
 		{
 			get
 			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes( typeof( AssemblyTitleAttribute ), false );
-				if ( attributes.Length > 0 )
+				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+				if (attributes.Length > 0)
 				{
-					AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-					if ( titleAttribute.Title != "" )
+					var titleAttribute = (AssemblyTitleAttribute)attributes[0];
+					if (String.IsNullOrEmpty(titleAttribute.Title) == false)
 					{
 						return titleAttribute.Title;
 					}
 				}
-				return System.IO.Path.GetFileNameWithoutExtension( Assembly.GetExecutingAssembly().CodeBase );
+
+				return System.IO.Path.GetFileNameWithoutExtension(this.executingAsm.CodeBase);
 			}
 		}
 
 		public string AssemblyVersion
 		{
-			get
-			{
-				return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-			}
+			get { return this.executingAsm.GetName().Version.ToString(); }
 		}
 
 		public string AssemblyDescription
 		{
 			get
 			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes( typeof( AssemblyDescriptionAttribute ), false );
-				if ( attributes.Length == 0 )
-				{
-					return "";
-				}
-				return ( (AssemblyDescriptionAttribute)attributes[0] ).Description;
+				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+				return (attributes.Length == 0) ? String.Empty : ((AssemblyDescriptionAttribute)attributes[0]).Description;
 			}
 		}
 
@@ -65,12 +57,8 @@ namespace Wallpaperr
 		{
 			get
 			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes( typeof( AssemblyProductAttribute ), false );
-				if ( attributes.Length == 0 )
-				{
-					return "";
-				}
-				return ( (AssemblyProductAttribute)attributes[0] ).Product;
+				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+				return (attributes.Length == 0) ? String.Empty : ((AssemblyProductAttribute)attributes[0]).Product;
 			}
 		}
 
@@ -78,12 +66,8 @@ namespace Wallpaperr
 		{
 			get
 			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes( typeof( AssemblyCopyrightAttribute ), false );
-				if ( attributes.Length == 0 )
-				{
-					return "";
-				}
-				return ( (AssemblyCopyrightAttribute)attributes[0] ).Copyright;
+				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+				return (attributes.Length == 0) ? String.Empty : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
 			}
 		}
 
@@ -91,14 +75,11 @@ namespace Wallpaperr
 		{
 			get
 			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes( typeof( AssemblyCompanyAttribute ), false );
-				if ( attributes.Length == 0 )
-				{
-					return "";
-				}
-				return ( (AssemblyCompanyAttribute)attributes[0] ).Company;
+				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+				return (attributes.Length == 0) ? String.Empty : ((AssemblyCompanyAttribute)attributes[0]).Company;
 			}
 		}
+
 		#endregion
 	}
 }

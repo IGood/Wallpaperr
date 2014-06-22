@@ -22,10 +22,10 @@ namespace Wallpaperr
 
 			public ComposerData(Properties.Settings settings)
 			{
-				BorderSpace = (float)settings.Border / 100f;
-				Thickness = (int)settings.Thickness;
-				BackgroundColor = settings.BackgroundColor;
-				BackgroundBlend = (float)settings.BackgroundBlend / 100f;
+				this.BorderSpace = (float)settings.Border / 100f;
+				this.Thickness = (int)settings.Thickness;
+				this.BackgroundColor = settings.BackgroundColor;
+				this.BackgroundBlend = (float)settings.BackgroundBlend / 100f;
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace Wallpaperr
 				using (Graphics g = Graphics.FromImage(bmp))
 				{
 					g.DrawString(
-						"Corrupt Image File!" + Helpers.NL + fileName,
+						"Corrupt Image File!" + Environment.NewLine + fileName,
 						SystemFonts.DefaultFont,
 						Brushes.Red,
 						new RectangleF(5, 5, 390, 90));
@@ -147,11 +147,13 @@ namespace Wallpaperr
 										MakeForeground(compData);
 										Interlocked.Exchange(ref progress, progress + (step * 2.0 / 3.0));
 										break;
+
 									case BackgroundStyle.ZoomOut:
 										compData.HasBackground = false;
 										MakeForeground(compData);
 										Interlocked.Exchange(ref progress, progress + step);
 										break;
+
 									case BackgroundStyle.ZoomIn:
 										MakeBackground(compData);
 										Interlocked.Exchange(ref progress, progress + step);
@@ -205,12 +207,14 @@ namespace Wallpaperr
 							r.X = union.Width + rect.X;
 							g.DrawImageUnscaled(bmp, r);
 						}
+
 						if (rect.Y < 0)
 						{
 							Rectangle r = rect;
 							r.Y = union.Height + rect.Y;
 							g.DrawImageUnscaled(bmp, r);
 						}
+
 						if (rect.X < 0 && rect.Y < 0)
 						{
 							rect.X = union.Width + rect.X;
@@ -246,12 +250,13 @@ namespace Wallpaperr
 			}
 			catch (Exception ex)
 			{
-				Helpers.ShowError(String.Format(
-					"An exception was thrown while attempting to save{0}" +
-					"and set your new wallpaper.{0}" +
-					"Exception thrown: {1}{0}" +
-					"We'll try again later.",
-					Helpers.NL, ex.Message));
+				var msg =
+@"An exception was thrown while attempting to save
+and set your new wallpaper.
+Exception thrown: {0}
+We'll try again later.";
+
+				Helpers.ShowError(String.Format(msg, ex.Message));
 			}
 			#endregion
 

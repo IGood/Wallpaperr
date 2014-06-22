@@ -1,23 +1,24 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Collections.Generic;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.IO;
+	using System.Linq;
+	using System.Windows.Forms;
+	using System.Collections.Generic;
+
 	public partial class MFLForm : Form
 	{
 		#region Member Fields / Properties
 
-		private WallpaperrLogic logic_;
+		private readonly List<System.Drawing.Image> thumbs = new List<System.Drawing.Image>(0);
 
-		private IList<FileInfo> fileList_;
+		private WallpaperrLogic logic;
 
-		private List<System.Drawing.Image> thumbs_ = new List<System.Drawing.Image>(0);
+		private IList<FileInfo> fileList;
 
 		public string FileName { get; private set; }
 
-		private int lastIndex_ = -1;
+		private int lastIndex = -1;
 
 		#endregion
 
@@ -25,47 +26,47 @@ namespace Wallpaperr
 
 		internal MFLForm(WallpaperrLogic logic)
 		{
-			logic_ = logic;
+			this.logic = logic;
 
-			InitializeComponent();
+			this.InitializeComponent();
 		}
 
 		#endregion
 
 		public void PopulateBox(IList<FileInfo> fileList)
 		{
-			FileName = null;
+			this.FileName = null;
 
-			fileList_ = fileList;
+			this.fileList = fileList;
 
-			listBox1.DataSource = null;
-			listBox1.DisplayMember = "FullName";
-			listBox1.DataSource = fileList_;
+			this.listBox1.DataSource = null;
+			this.listBox1.DisplayMember = "FullName";
+			this.listBox1.DataSource = this.fileList;
 
-			if (fileList_.Count > thumbs_.Capacity)
+			if (this.fileList.Count > this.thumbs.Capacity)
 			{
-				thumbs_.Capacity = fileList_.Count;
+				this.thumbs.Capacity = this.fileList.Count;
 			}
 
-			for (int i = thumbs_.Count; i < fileList_.Count; ++i)
+			for (int i = this.thumbs.Count; i < this.fileList.Count; ++i)
 			{
-				thumbs_.Add(null);
+				this.thumbs.Add(null);
 			}
 		}
 
 		private void MFLForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			thumbs_.ForEach((img) =>
+			foreach (var img in this.thumbs.Where((img) => img != null))
 			{
-				using (img) { }
-			});
+				img.Dispose();
+			}
 		}
 
 		private void MFLForm_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if ((Keys)e.KeyChar == Keys.Escape)
 			{
-				Close();
+				this.Close();
 			}
 		}
 
@@ -73,35 +74,35 @@ namespace Wallpaperr
 		{
 			if ((Keys)e.KeyChar == Keys.Enter)
 			{
-				ActivateSelectedItem();
+				this.ActivateSelectedItem();
 			}
 		}
 
 		private void listBox1_DoubleClick(object sender, EventArgs e)
 		{
-			ActivateSelectedItem();
+			this.ActivateSelectedItem();
 		}
 
 		private void listBox1_MouseMove(object sender, MouseEventArgs e)
 		{
-			int index = listBox1.IndexFromPoint(listBox1.PointToClient(Cursor.Position));
+			int index = this.listBox1.IndexFromPoint(this.listBox1.PointToClient(Cursor.Position));
 			if (index == -1)
 			{
-				toolTip_.Active = false;
+				this.toolTip.Active = false;
 				return;
 			}
 
-			if (index == lastIndex_)
+			if (index == this.lastIndex)
 			{
 				return;
 			}
 
-			lastIndex_ = index;
+			this.lastIndex = index;
 
-			toolTip_.Active = false;
-			toolTip_.Active = true;
+			this.toolTip.Active = false;
+			this.toolTip.Active = true;
 
-			FileInfo fileInfo = (FileInfo)listBox1.Items[index];
+			FileInfo fileInfo = (FileInfo)this.listBox1.Items[index];
 			if (!Helpers.Exists(fileInfo))
 			{
 				return;
@@ -119,92 +120,84 @@ namespace Wallpaperr
 				float scale = Math.Min(maxDims / dimX, maxDims / dimY);
 				float thumbW = dimX * scale;
 				float thumbH = dimY * scale;
-				thumbs_[index] = new System.Drawing.Bitmap(img, (int)thumbW, (int)thumbH);
+				this.thumbs[index] = new System.Drawing.Bitmap(img, (int)thumbW, (int)thumbH);
 			}
 
 			long size = Math.Max(fileInfo.Length, 1024) / 1024;
 
-			string ttText = string.Format(
-				"Image Type: {1}{0}Dimensions: {2} x {3}{0}Size: {4} KB",
-				Environment.NewLine, ext, dimX, dimY, size);
+			var fmt =
+@"Image Type: {0}
+Dimensions: {1} x {2}
+Size: {3} KB";
 
-			toolTip_.SetToolTip(listBox1, ttText);
+			this.toolTip.SetToolTip(this.listBox1, string.Format(fmt, ext, dimX, dimY, size));
 		}
 
 		private void contextMenuItem_Opening(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			int index = listBox1.IndexFromPoint(listBox1.PointToClient(Cursor.Position));
+			int index = this.listBox1.IndexFromPoint(this.listBox1.PointToClient(Cursor.Position));
 			if (index == -1)
 			{
 				e.Cancel = true;
 				return;
 			}
 
-			listBox1.SetSelected(index, true);
+			this.listBox1.SetSelected(index, true);
 
-			contextMenuItem_.Items[0].ImageScaling = ToolStripItemImageScaling.None;
-			contextMenuItem_.Items[0].Image = thumbs_[index];
+			this.contextMenuItem.Items[0].ImageScaling = ToolStripItemImageScaling.None;
+			this.contextMenuItem.Items[0].Image = this.thumbs[index];
 		}
 
 		private void newWallpaper_Click(object sender, EventArgs e)
 		{
-			ActivateSelectedItem();
+			this.ActivateSelectedItem();
 		}
 
 		private void openItem_Click(object sender, EventArgs e)
 		{
-			if (listBox1.SelectedItem != null)
+			var fileInfo = this.listBox1.SelectedItem as FileInfo;
+			if (fileInfo != null && Helpers.Exists(fileInfo))
 			{
-				FileInfo fileInfo = (FileInfo)listBox1.SelectedItem;
-				if (File.Exists(fileInfo.FullName))
-				{
-					System.Diagnostics.Process.Start(fileInfo.FullName);
-				}
+				System.Diagnostics.Process.Start(fileInfo.FullName);
 			}
 		}
 
 		private void openContainingFolder_Click(object sender, EventArgs e)
 		{
-			if (listBox1.SelectedItem != null)
+			var fileInfo = this.listBox1.SelectedItem as FileInfo;
+			if (fileInfo != null && Helpers.Exists(fileInfo))
 			{
-				FileInfo fileInfo = (FileInfo)listBox1.SelectedItem;
-				if (File.Exists(fileInfo.FullName))
-				{
-					System.Diagnostics.Process.Start(
-						"explorer",
-						string.Format("/select,\"{0}\"", fileInfo.FullName));
-				}
+				System.Diagnostics.Process.Start("explorer", string.Format("/select,\"{0}\"", fileInfo.FullName));
 			}
 		}
 
 		private void ActivateSelectedItem()
 		{
-			if (listBox1.SelectedItem == null)
+			var fileInfo = this.listBox1.SelectedItem as FileInfo;
+			if (fileInfo == null)
 			{
 				return;
 			}
 
-			FileInfo fileInfo = (FileInfo)listBox1.SelectedItem;
 			if (Helpers.Exists(fileInfo))
 			{
-				FileName = fileInfo.FullName;
-				Close();
+				this.FileName = fileInfo.FullName;
+				this.Close();
 			}
 			else
 			{
-				MessageBox.Show(
+				var msg =
 @"The selected file could not be found. It might
 have been been moved or deleted. Wallpaperr will
-remove it from the master file list.",
-					"File Not Found",
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error);
+remove it from the master file list.";
 
-				logic_.RemoveDeadFile(fileInfo);
+				MessageBox.Show(msg, "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-				listBox1.DataSource = null;
-				listBox1.DisplayMember = "FullName";
-				listBox1.DataSource = fileList_;
+				this.logic.RemoveDeadFile(fileInfo);
+
+				this.listBox1.DataSource = null;
+				this.listBox1.DisplayMember = "FullName";
+				this.listBox1.DataSource = this.fileList;
 			}
 		}
 	}

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
-	using ThumbDictionary = Dictionary<ListViewItem, System.Drawing.Image>;
+	using System;
+	using System.Collections.Generic;
+	using System.ComponentModel;
+	using System.Diagnostics;
+	using System.IO;
+	using System.Windows.Forms;
+	using ThumbDictionary = System.Collections.Generic.Dictionary<System.Windows.Forms.ListViewItem, System.Drawing.Image>;
 
 	public partial class MainForm : Form
 	{
@@ -40,21 +39,23 @@ namespace Wallpaperr
 
 		#region Member Fields / Properties
 
-		private bool closeToTray_ = true;
-		private AboutBox aboutBox_;
-		private WallpaperrLogic logic_ = null;
+		private bool closeToTray = true;
 
-		private string initialFile_ = null;
+		private AboutBox aboutBox;
+
+		private WallpaperrLogic logic;
+
+		private string initialFile;
 
 		public ListView ListView
 		{
-			get { return listView_; }
+			get { return this.listView; }
 		}
 
 		public bool Dirty
 		{
-			get { return buttonApply_.Enabled; }
-			set { buttonApply_.Enabled = value; }
+			get { return this.buttonApply.Enabled; }
+			set { this.buttonApply.Enabled = value; }
 		}
 
 		private MFLForm mflFormDialog_;
@@ -70,14 +71,14 @@ namespace Wallpaperr
 
 		public MainForm(string file)
 		{
-			initialFile_ = file;
+			this.initialFile = file;
 
 			InitializeComponent();
 
 			this.Text = Properties.Resources.AppTitle;
-			((Control)this.pictureBoxStyle_).AllowDrop = true;
-			this.comboBoxTimeUnit_.DataSource = TimeUnit.Units;
-			this.listView_.ListViewItemSorter = new ImageCollectionSorter();
+			((Control)this.pictureBoxStyle).AllowDrop = true;
+			this.comboBoxTimeUnit.DataSource = TimeUnit.Units;
+			this.listView.ListViewItemSorter = new ImageCollectionSorter();
 
 			menuItemFontNormal_ = newRandomWallpaperToolStripMenuItem1.Font;
 			menuItemFontBold_ = settingsToolStripMenuItem.Font;
@@ -87,30 +88,30 @@ namespace Wallpaperr
 
 		internal void SaveSettings(Properties.Settings settings)
 		{
-			settings.Style = (int)(radioSpiffy_.Checked
+			settings.Style = (int)(radioSpiffy.Checked
 				? BackgroundStyle.Spiffy
-				: radioZoomOut_.Checked
+				: radioZoomOut.Checked
 					? BackgroundStyle.ZoomOut
 					: BackgroundStyle.ZoomIn);
 			radioStyle_Click(null, null);
 
-			settings.Thickness = numUDThick_.Value;
-			settings.Border = numUDSpace_.Value;
-			settings.BackgroundColor = pictureBoxColor_.BackColor;
+			settings.Thickness = numUDThick.Value;
+			settings.Border = numUDSpace.Value;
+			settings.BackgroundColor = pictureBoxColor.BackColor;
 
-			settings.SingleMonitor = radioSingle_.Checked;
-			settings.SmartRandom = checkBoxSmartRand_.Checked;
+			settings.SingleMonitor = radioSingle.Checked;
+			settings.SmartRandom = checkBoxSmartRand.Checked;
 
-			settings.Active = checkBoxActive_.Checked;
+			settings.Active = checkBoxActive.Checked;
 
-			settings.Interval = numUDInterval_.Value;
-			settings.TimerUnit = comboBoxTimeUnit_.SelectedIndex;
-			timer_.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
+			settings.Interval = numUDInterval.Value;
+			settings.TimerUnit = comboBoxTimeUnit.SelectedIndex;
+			timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
 
-			settings.IncludeSubdirectory = checkBoxSubdir_.Checked;
-			if (listView_.Items.Count > 0)
+			settings.IncludeSubdirectory = checkBoxSubdir.Checked;
+			if (this.listView.Items.Count > 0)
 			{
-				WatcherSet.SetIncludeSubdirectories(listView_.Items, settings.IncludeSubdirectory);
+				WatcherSet.SetIncludeSubdirectories(this.listView.Items, settings.IncludeSubdirectory);
 			}
 		}
 
@@ -121,38 +122,38 @@ namespace Wallpaperr
 
 			switch ((BackgroundStyle)settings.Style)
 			{
-				case BackgroundStyle.Spiffy: radioSpiffy_.Checked = true; break;
-				case BackgroundStyle.ZoomOut: radioZoomOut_.Checked = true; break;
-				case BackgroundStyle.ZoomIn: radioZoomIn_.Checked = true; break;
+				case BackgroundStyle.Spiffy: radioSpiffy.Checked = true; break;
+				case BackgroundStyle.ZoomOut: radioZoomOut.Checked = true; break;
+				case BackgroundStyle.ZoomIn: radioZoomIn.Checked = true; break;
 			}
 			radioStyle_Click(null, null);
 
-			numUDThick_.Value = settings.Thickness;
-			numUDSpace_.Value = settings.Border;
-			pictureBoxColor_.BackColor = settings.BackgroundColor;
+			numUDThick.Value = settings.Thickness;
+			numUDSpace.Value = settings.Border;
+			pictureBoxColor.BackColor = settings.BackgroundColor;
 
-			checkBoxActive_.Checked = settings.Active;
-			pause_Click(checkBoxActive_, null);
+			checkBoxActive.Checked = settings.Active;
+			pause_Click(checkBoxActive, null);
 
-			numUDInterval_.Value = settings.Interval;
-			comboBoxTimeUnit_.SelectedIndex = settings.TimerUnit;
-			timer_.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
+			numUDInterval.Value = settings.Interval;
+			comboBoxTimeUnit.SelectedIndex = settings.TimerUnit;
+			timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
 
-			checkBoxSubdir_.Checked = settings.IncludeSubdirectory;
-			if (listView_.Items.Count > 0)
+			checkBoxSubdir.Checked = settings.IncludeSubdirectory;
+			if (this.listView.Items.Count > 0)
 			{
-				WatcherSet.SetIncludeSubdirectories(listView_.Items, settings.IncludeSubdirectory);
+				WatcherSet.SetIncludeSubdirectories(this.listView.Items, settings.IncludeSubdirectory);
 			}
 
 			if (settings.SingleMonitor)
 			{
-				radioSingle_.Checked = true;
+				radioSingle.Checked = true;
 			}
 			else
 			{
-				radioMulti_.Checked = true;
+				radioMulti.Checked = true;
 			}
-			checkBoxSmartRand_.Checked = settings.SmartRandom;
+			checkBoxSmartRand.Checked = settings.SmartRandom;
 			radioDisplays_Click(null, null);
 		}
 
@@ -189,17 +190,17 @@ namespace Wallpaperr
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			logic_ = new WallpaperrLogic(this);
+			this.logic = new WallpaperrLogic(this);
 
-			if (!String.IsNullOrEmpty(initialFile_))
+			if (!String.IsNullOrEmpty(this.initialFile))
 			{
-				StartWork(initialFile_);
+				StartWork(this.initialFile);
 			}
 		}
 
 		private void MainForm_Shown(object sender, EventArgs e)
 		{
-			if (!logic_.AppSettings.ShowOnRun)
+			if (!WallpaperrLogic.AppSettings.ShowOnRun)
 			{
 				showOnRunToolStripMenuItem.Image = Properties.Resources.box_16x16;
 				base.Hide();
@@ -211,7 +212,7 @@ namespace Wallpaperr
 			// hiding?
 			if (!Visible)
 			{
-				logic_.RestoreSettings();
+				this.logic.RestoreSettings();
 			}
 		}
 
@@ -219,19 +220,19 @@ namespace Wallpaperr
 		{
 			if (e.CloseReason != CloseReason.UserClosing)
 			{
-				closeToTray_ = false;
+				this.closeToTray = false;
 			}
 
-			if (closeToTray_)
+			if (this.closeToTray)
 			{
 				e.Cancel = true;
 				Hide();
 			}
 			else
 			{
-				logic_.SaveSettingsToDisk();
+				this.logic.SaveSettingsToDisk();
 
-				notifyIcon_.Dispose();
+				notifyIcon.Dispose();
 			}
 
 			// dispose thumbnail images
@@ -248,7 +249,7 @@ namespace Wallpaperr
 
 		private void addFiles_Click(object sender, EventArgs e)
 		{
-			openFileDialogItem_.ShowDialog();
+			openFileDialogItem.ShowDialog();
 		}
 
 		private void addFolder_Click(object sender, EventArgs e)
@@ -257,7 +258,7 @@ namespace Wallpaperr
 			if ( folderBrowserDialog_.ShowDialog() == DialogResult.OK )
 			{
 				string[] folders = new string[] { folderBrowserDialog_.SelectedPath };
-				logic_.AddFolders( folders );
+				this.logic.AddFolders( folders );
 			}
 			/*/
 			using (var ffd = new dnGREP.FileFolderDialog())
@@ -265,7 +266,7 @@ namespace Wallpaperr
 				if (ffd.ShowDialog() == DialogResult.OK)
 				{
 					string[] folders = new string[] { ffd.SelectedPath };
-					logic_.AddFolders(folders);
+					this.logic.AddFolders(folders);
 				}
 			}
 			//*/
@@ -273,38 +274,38 @@ namespace Wallpaperr
 
 		private void newRandomWallpaper_Click(object sender, EventArgs e)
 		{
-			logic_.NewWallpaper();
+			this.logic.NewWallpaper();
 		}
 
 		private void exit_Click(object sender, EventArgs e)
 		{
-			closeToTray_ = false;
+			this.closeToTray = false;
 			Close();
 		}
 
 		private void openCollection_Click(object sender, EventArgs e)
 		{
-			openFileDialogXML_.ShowDialog();
+			openFileDialogXml.ShowDialog();
 		}
 
 		private void saveCollectionAs_Click(object sender, EventArgs e)
 		{
-			saveFileDialogXML_.ShowDialog();
+			saveFileDialogXml.ShowDialog();
 		}
 
 		private void refreshCollection_Click(object sender, EventArgs e)
 		{
-			logic_.UpdateImageList();
+			this.logic.UpdateImageList();
 		}
 
 		private void viewMasterFileList_Click(object sender, EventArgs e)
 		{
 			if (mflFormDialog_ == null)
 			{
-				mflFormDialog_ = new MFLForm(logic_);
+				mflFormDialog_ = new MFLForm(this.logic);
 			}
 
-			mflFormDialog_.PopulateBox(logic_.MasterFileList);
+			mflFormDialog_.PopulateBox(this.logic.MasterFileList);
 			mflFormDialog_.ShowDialog();
 			if (mflFormDialog_.FileName != null)
 			{
@@ -318,14 +319,14 @@ namespace Wallpaperr
 				? Properties.Resources.box_check_16x16
 				: Properties.Resources.box_16x16;
 
-			logic_.AppSettings.ShowOnRun = showOnRunToolStripMenuItem.Checked;
+			WallpaperrLogic.AppSettings.ShowOnRun = showOnRunToolStripMenuItem.Checked;
 		}
 
 		private void doubleClick_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			notifyIcon_.DoubleClick -= settings_Click;
-			notifyIcon_.DoubleClick -= newRandomWallpaper_Click;
-			notifyIcon_.DoubleClick -= pause_Click;
+			notifyIcon.DoubleClick -= settings_Click;
+			notifyIcon.DoubleClick -= newRandomWallpaper_Click;
+			notifyIcon.DoubleClick -= pause_Click;
 
 			settingsToolStripMenuItem.Font = menuItemFontNormal_;
 			newRandomWallpaperToolStripMenuItem1.Font = menuItemFontNormal_;
@@ -336,7 +337,7 @@ namespace Wallpaperr
 				#region Open Settings
 
 				case 0:
-					notifyIcon_.DoubleClick += settings_Click;
+					notifyIcon.DoubleClick += settings_Click;
 					settingsToolStripMenuItem.Font = menuItemFontBold_;
 					break;
 
@@ -345,7 +346,7 @@ namespace Wallpaperr
 				#region New Random Wallpaper
 
 				case 1:
-					notifyIcon_.DoubleClick += newRandomWallpaper_Click;
+					notifyIcon.DoubleClick += newRandomWallpaper_Click;
 					newRandomWallpaperToolStripMenuItem1.Font = menuItemFontBold_;
 					break;
 
@@ -354,7 +355,7 @@ namespace Wallpaperr
 				#region Pause
 
 				case 2:
-					notifyIcon_.DoubleClick += pause_Click;
+					notifyIcon.DoubleClick += pause_Click;
 					pauseToolStripMenuItem.Font = menuItemFontBold_;
 					break;
 
@@ -363,9 +364,9 @@ namespace Wallpaperr
 
 			// must check for null, because this method is called (indirectly)
 			// from logic constructor
-			if (logic_ != null)
+			if (this.logic != null)
 			{
-				logic_.AppSettings.DoubleClickIndex = doubleClicktoolStripComboBox.SelectedIndex;
+				WallpaperrLogic.AppSettings.DoubleClickIndex = doubleClicktoolStripComboBox.SelectedIndex;
 			}
 		}
 
@@ -376,19 +377,19 @@ namespace Wallpaperr
 
 		private void aboutWallpaperr_Click(object sender, EventArgs e)
 		{
-			if (aboutBox_ == null)
+			if (this.aboutBox == null)
 			{
-				aboutBox_ = new AboutBox();
+				this.aboutBox = new AboutBox();
 			}
 
 			// already open somewhere?
-			if (aboutBox_.Visible)
+			if (this.aboutBox.Visible)
 			{
-				aboutBox_.Activate();
+				this.aboutBox.Activate();
 			}
 			else
 			{
-				aboutBox_.ShowDialog();
+				this.aboutBox.ShowDialog();
 			}
 		}
 
@@ -401,11 +402,11 @@ namespace Wallpaperr
 
 		private void pause_Click(object sender, EventArgs e)
 		{
-			bool active = (sender == checkBoxActive_)
-				? checkBoxActive_.Checked
+			bool active = (sender == checkBoxActive)
+				? checkBoxActive.Checked
 				: pauseToolStripMenuItem.Text.Equals("Unpause");
 
-			checkBoxActive_.Checked = active;
+			checkBoxActive.Checked = active;
 
 			// menu item text & image
 			pauseToolStripMenuItem.Text = active
@@ -416,23 +417,23 @@ namespace Wallpaperr
 				: Properties.Resources.play_16x16;
 
 			// timer on/off
-			timer_.Enabled = active;
+			timer.Enabled = active;
 			if (active)
 			{
-				timer_.Start();
+				timer.Start();
 			}
 			else
 			{
-				timer_.Stop();
+				timer.Stop();
 			}
 
 			// enable/disable controls
 			label6.Enabled =
-			numUDInterval_.Enabled =
-			comboBoxTimeUnit_.Enabled = active;
+			numUDInterval.Enabled =
+			comboBoxTimeUnit.Enabled = active;
 
 			// change icon
-			notifyIcon_.Icon = active
+			notifyIcon.Icon = active
 				? Properties.Resources.small
 				: Properties.Resources.smallPaused;
 
@@ -452,7 +453,7 @@ namespace Wallpaperr
 		private void openItem_Click(object sender, EventArgs e)
 		{
 			// open each folder/file
-			foreach (ListViewItem item in listView_.SelectedItems)
+			foreach (ListViewItem item in this.listView.SelectedItems)
 			{
 				string fullName = item.ToolTipText;
 				if (Directory.Exists(fullName) || File.Exists(fullName))
@@ -465,7 +466,7 @@ namespace Wallpaperr
 		private void openContainingFolder_Click(object sender, EventArgs e)
 		{
 			// open containing folder for each folder/file
-			foreach (ListViewItem item in listView_.SelectedItems)
+			foreach (ListViewItem item in this.listView.SelectedItems)
 			{
 				string fullName = item.ToolTipText;
 				if (Directory.Exists(fullName) || File.Exists(fullName))
@@ -477,15 +478,15 @@ namespace Wallpaperr
 
 		private void removeItem_Click(object sender, EventArgs e)
 		{
-			logic_.RemoveSelectedItems();
+			this.logic.RemoveSelectedItems();
 		}
 
 		private void color_Click(object sender, EventArgs e)
 		{
-			colorDialog_.Color = pictureBoxColor_.BackColor;
-			if (colorDialog_.ShowDialog() == DialogResult.OK)
+			colorDialog.Color = pictureBoxColor.BackColor;
+			if (colorDialog.ShowDialog() == DialogResult.OK)
 			{
-				pictureBoxColor_.BackColor = colorDialog_.Color;
+				pictureBoxColor.BackColor = colorDialog.Color;
 			}
 		}
 
@@ -496,7 +497,7 @@ namespace Wallpaperr
 
 		private void ok_Click(object sender, EventArgs e)
 		{
-			logic_.SaveSettings();
+			this.logic.SaveSettings();
 			base.Hide();
 		}
 
@@ -507,8 +508,8 @@ namespace Wallpaperr
 
 		private void apply_Click(object sender, EventArgs e)
 		{
-			logic_.SaveSettings();
-			logic_.NewWallpaper();
+			this.logic.SaveSettings();
+			this.logic.NewWallpaper();
 		}
 
 		private void radioStyle_Click(object sender, EventArgs e)
@@ -516,29 +517,29 @@ namespace Wallpaperr
 			label1.Enabled =
 			label2.Enabled =
 			label7.Enabled =
-			numUDThick_.Enabled =
-			numUDColor_.Enabled = radioSpiffy_.Checked;
+			numUDThick.Enabled =
+			numUDColor.Enabled = radioSpiffy.Checked;
 
 			label3.Enabled =
 			label4.Enabled =
 			label5.Enabled =
-			pictureBoxColor_.Enabled =
-			numUDSpace_.Enabled = radioSpiffy_.Checked || radioZoomOut_.Checked;
+			pictureBoxColor.Enabled =
+			numUDSpace.Enabled = radioSpiffy.Checked || radioZoomOut.Checked;
 
-			pictureBoxColor_.BorderStyle = pictureBoxColor_.Enabled
+			pictureBoxColor.BorderStyle = pictureBoxColor.Enabled
 				? BorderStyle.Fixed3D
 				: BorderStyle.None;
 
-			pictureBoxStyle_.Image = radioSpiffy_.Checked
+			pictureBoxStyle.Image = radioSpiffy.Checked
 				? Properties.Resources.spiffy
-				: radioZoomOut_.Checked
+				: radioZoomOut.Checked
 					? Properties.Resources.zoom_out
 					: Properties.Resources.zoom_in;
 		}
 
 		private void radioDisplays_Click(object sender, EventArgs e)
 		{
-			checkBoxSmartRand_.Enabled = radioMulti_.Checked;
+			checkBoxSmartRand.Enabled = radioMulti.Checked;
 		}
 
 		#endregion
@@ -568,24 +569,24 @@ namespace Wallpaperr
 		public void StartWork(string fileName)
 		{
 			// currently working?
-			if (backgroundWorker_.IsBusy)
+			if (backgroundWorker.IsBusy)
 			{
 				Helpers.ShowBusy();
 				return;
 			}
 
-			timer_.Stop();
+			timer.Stop();
 
-			notifyIcon_.Text = "Wallpaperr [busy]";
-			notifyIcon_.Icon = Properties.Resources.smallBusy;
+			notifyIcon.Text = "Wallpaperr [busy]";
+			notifyIcon.Icon = Properties.Resources.smallBusy;
 
 			this.Text = "Wallpaperr - Automatic Wallpaper Changer [busy]";
 
-			progressBar_.Value = 0;
-			progressBar_.Show();
+			progressBar.Value = 0;
+			progressBar.Show();
 
 			// start operation
-			backgroundWorker_.RunWorkerAsync(fileName);
+			backgroundWorker.RunWorkerAsync(fileName);
 		}
 
 		#region ListView Callbacks
@@ -593,17 +594,17 @@ namespace Wallpaperr
 		private void contextMenuItem_Opening(object sender, CancelEventArgs e)
 		{
 			// nothing selected?
-			if (listView_.SelectedItems.Count == 0)
+			if (this.listView.SelectedItems.Count == 0)
 			{
 				e.Cancel = true;
 				return;
 			}
 
-			contextMenuItem_.Items[0].Image = Properties.Resources.random_16x16;
+			contextMenuItem.Items[0].Image = Properties.Resources.random_16x16;
 
-			if (listView_.SelectedItems.Count == 1)
+			if (this.listView.SelectedItems.Count == 1)
 			{
-				ListViewItem item = listView_.FocusedItem;
+				ListViewItem item = this.listView.FocusedItem;
 				FileInfo fileInfo = new FileInfo(item.ToolTipText);
 				if (fileInfo.Exists)
 				{
@@ -621,8 +622,8 @@ namespace Wallpaperr
 						}
 					}
 
-					contextMenuItem_.Items[0].ImageScaling = ToolStripItemImageScaling.None;
-					contextMenuItem_.Items[0].Image = img;
+					contextMenuItem.Items[0].ImageScaling = ToolStripItemImageScaling.None;
+					contextMenuItem.Items[0].Image = img;
 				}
 			}
 		}
@@ -646,8 +647,8 @@ namespace Wallpaperr
 			string[] dropped = e.Data.GetData(DataFormats.FileDrop) as string[];
 
 			// dropped on a folder?
-			var p = listView_.PointToClient(new System.Drawing.Point(e.X, e.Y));
-			var lvi = listView_.GetItemAt(p.X, p.Y);
+			var p = this.listView.PointToClient(new System.Drawing.Point(e.X, e.Y));
+			var lvi = this.listView.GetItemAt(p.X, p.Y);
 			if (lvi != null)
 			{
 				string path = lvi.ToolTipText;
@@ -666,17 +667,17 @@ namespace Wallpaperr
 			}
 			else
 			{
-				logic_.AddItemsFromArray(dropped);
+				this.logic.AddItemsFromArray(dropped);
 			}
 		}
 
 		private void listView_KeyDown(object sender, KeyEventArgs e)
 		{
-			e.Handled = listView_KeyDown_KeyData(e.KeyData);
+			e.Handled = this.listView_KeyDown_KeyData(e.KeyData);
 
 			if (!e.Handled)
 			{
-				e.Handled = listView_KeyDown_KeyCode(e.KeyCode);
+				e.Handled = this.listView_KeyDown_KeyCode(e.KeyCode);
 			}
 		}
 
@@ -685,7 +686,7 @@ namespace Wallpaperr
 			switch (KeyData)
 			{
 				case Keys.A | Keys.Control:
-					foreach (ListViewItem item in listView_.Items)
+					foreach (ListViewItem item in this.listView.Items)
 					{
 						item.Selected = true;
 					}
@@ -701,7 +702,7 @@ namespace Wallpaperr
 			switch (KeyCode)
 			{
 				case Keys.Delete:
-					logic_.RemoveSelectedItems();
+					this.logic.RemoveSelectedItems();
 					break;
 				default:
 					return false;
@@ -715,13 +716,13 @@ namespace Wallpaperr
 
 		private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
-			string[] files = logic_.GetMoreFiles((string)e.Argument);
-			e.Result = WallpaperComposer.MakePicture(files, logic_.AppSettings, (BackgroundWorker)sender);
+			string[] files = this.logic.GetMoreFiles((string)e.Argument);
+			e.Result = WallpaperComposer.MakePicture(files, WallpaperrLogic.AppSettings, (BackgroundWorker)sender);
 		}
 
 		private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
-			progressBar_.Value = Math.Min(e.ProgressPercentage, 100);
+			progressBar.Value = Math.Min(e.ProgressPercentage, 100);
 		}
 
 		private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -731,13 +732,13 @@ namespace Wallpaperr
 				MessageBox.Show(e.Error.Message, "BackgroundWorker Error");
 			}
 
-			progressBar_.Hide();
+			progressBar.Hide();
 
-			timer_.Start();
-			timer_.Enabled = logic_.AppSettings.Active;
+			timer.Start();
+			timer.Enabled = WallpaperrLogic.AppSettings.Active;
 
-			notifyIcon_.Text = "Wallpaperr";
-			notifyIcon_.Icon = logic_.AppSettings.Active
+			notifyIcon.Text = "Wallpaperr";
+			notifyIcon.Icon = WallpaperrLogic.AppSettings.Active
 				? Properties.Resources.small
 				: Properties.Resources.smallPaused;
 
@@ -750,26 +751,26 @@ namespace Wallpaperr
 
 		private void openFileDialogItem_FileOk(object sender, CancelEventArgs e)
 		{
-			logic_.AddFiles(openFileDialogItem_.FileNames);
+			this.logic.AddFiles(openFileDialogItem.FileNames);
 		}
 
 		private void openFileDialogXML_FileOk(object sender, CancelEventArgs e)
 		{
-			logic_.OpenCollection(openFileDialogXML_.FileName);
+			this.logic.OpenCollection(openFileDialogXml.FileName);
 		}
 
 		private void saveFileDialogXML_FileOk(object sender, CancelEventArgs e)
 		{
-			var items = new List<string>(listView_.Items.Count);
+			var items = new List<string>(this.listView.Items.Count);
 
 			// get items' full names
-			foreach (ListViewItem item in listView_.Items)
+			foreach (ListViewItem item in this.listView.Items)
 			{
 				items.Add(item.ToolTipText);
 			}
 
 			// save list to file
-			using (FileStream fs = File.Open(saveFileDialogXML_.FileName, FileMode.Create))
+			using (FileStream fs = File.Open(saveFileDialogXml.FileName, FileMode.Create))
 			{
 				var serializer = new System.Xml.Serialization.XmlSerializer(items.GetType());
 				serializer.Serialize(fs, items);
@@ -781,30 +782,29 @@ namespace Wallpaperr
 
 		public void ShowEmptyCollection()
 		{
-			timer_.Stop();
+			timer.Stop();
 
-			DialogResult result = MessageBox.Show(
-				"You do not have any images in your collection." + Helpers.NL +
-				"Would you like to add some files now?",
-				"Hold it!",
-				MessageBoxButtons.YesNo,
-				MessageBoxIcon.Question);
+			var msg =
+@"You do not have any images in your collection.
+Would you like to add some files now?";
+
+			DialogResult result = MessageBox.Show(msg, "Hold it!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 			if (result == DialogResult.Yes)
 			{
-				openFileDialogItem_.ShowDialog();
+				openFileDialogItem.ShowDialog();
 			}
 
-			timer_.Start();
-			timer_.Enabled = logic_.AppSettings.Active;
+			timer.Start();
+			timer.Enabled = WallpaperrLogic.AppSettings.Active;
 		}
 
 		private void ActivateFocusedItem()
 		{
 			/*
-			ListViewItem item = listView_.FocusedItem;
+			ListViewItem item = this.listView_.FocusedItem;
 			/*/
-			int index = Helpers.RNG.Next(listView_.SelectedItems.Count);
-			ListViewItem item = listView_.SelectedItems[index];
+			int index = Helpers.RNG.Next(this.listView.SelectedItems.Count);
+			ListViewItem item = this.listView.SelectedItems[index];
 			//*/
 
 			// selected a file?
@@ -820,7 +820,7 @@ namespace Wallpaperr
 			if (dirInfo.Exists)
 			{
 				// get contained files
-				SearchOption searchOption = logic_.AppSettings.IncludeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
+				SearchOption searchOption = WallpaperrLogic.AppSettings.IncludeSubdirectory ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly;
 				var files = new List<FileInfo>();
 				foreach (string pattern in Helpers.FileTypes)
 				{
@@ -830,9 +830,10 @@ namespace Wallpaperr
 				// no files found?
 				if (files.Count == 0)
 				{
-					Helpers.ShowInfo(
-						"No supported file types were found" + Helpers.NL +
-						"in the selected folder.");
+					var msg =
+@"No supported file types were found
+in the selected folder.";
+					Helpers.ShowInfo(msg);
 				}
 				else
 				{

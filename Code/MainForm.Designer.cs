@@ -38,13 +38,13 @@
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.openFileDialogItem_ = new System.Windows.Forms.OpenFileDialog();
-			this.openFileDialogXML_ = new System.Windows.Forms.OpenFileDialog();
-			this.saveFileDialogXML_ = new System.Windows.Forms.SaveFileDialog();
-			this.backgroundWorker_ = new System.ComponentModel.BackgroundWorker();
-			this.folderBrowserDialog_ = new System.Windows.Forms.FolderBrowserDialog();
-			this.colorDialog_ = new System.Windows.Forms.ColorDialog();
-			this.menu_ = new System.Windows.Forms.MenuStrip();
+			this.openFileDialogItem = new System.Windows.Forms.OpenFileDialog();
+			this.openFileDialogXml = new System.Windows.Forms.OpenFileDialog();
+			this.saveFileDialogXml = new System.Windows.Forms.SaveFileDialog();
+			this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+			this.colorDialog = new System.Windows.Forms.ColorDialog();
+			this.menu = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.addFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.addFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,55 +62,55 @@
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutWallpaperrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.timer_ = new System.Windows.Forms.Timer(this.components);
-			this.contextMenuTray_ = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.timer = new System.Windows.Forms.Timer(this.components);
+			this.contextMenuTray = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.newRandomWallpaperToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.contextMenuItem_ = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.contextMenuItem = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.newWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openContainingFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.imageList_ = new System.Windows.Forms.ImageList(this.components);
-			this.notifyIcon_ = new System.Windows.Forms.NotifyIcon(this.components);
+			this.imageList = new System.Windows.Forms.ImageList(this.components);
+			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label7 = new System.Windows.Forms.Label();
-			this.numUDColor_ = new System.Windows.Forms.NumericUpDown();
-			this.pictureBoxColor_ = new System.Windows.Forms.PictureBox();
-			this.numUDSpace_ = new System.Windows.Forms.NumericUpDown();
-			this.numUDThick_ = new System.Windows.Forms.NumericUpDown();
+			this.numUDColor = new System.Windows.Forms.NumericUpDown();
+			this.pictureBoxColor = new System.Windows.Forms.PictureBox();
+			this.numUDSpace = new System.Windows.Forms.NumericUpDown();
+			this.numUDThick = new System.Windows.Forms.NumericUpDown();
 			this.label5 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.pictureBoxStyle_ = new System.Windows.Forms.PictureBox();
-			this.radioZoomIn_ = new System.Windows.Forms.RadioButton();
-			this.radioZoomOut_ = new System.Windows.Forms.RadioButton();
-			this.radioSpiffy_ = new System.Windows.Forms.RadioButton();
+			this.pictureBoxStyle = new System.Windows.Forms.PictureBox();
+			this.radioZoomIn = new System.Windows.Forms.RadioButton();
+			this.radioZoomOut = new System.Windows.Forms.RadioButton();
+			this.radioSpiffy = new System.Windows.Forms.RadioButton();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.checkBoxSmartRand_ = new System.Windows.Forms.CheckBox();
-			this.radioMulti_ = new System.Windows.Forms.RadioButton();
-			this.radioSingle_ = new System.Windows.Forms.RadioButton();
+			this.checkBoxSmartRand = new System.Windows.Forms.CheckBox();
+			this.radioMulti = new System.Windows.Forms.RadioButton();
+			this.radioSingle = new System.Windows.Forms.RadioButton();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.pictureBoxClock_ = new System.Windows.Forms.PictureBox();
+			this.pictureBoxClock = new System.Windows.Forms.PictureBox();
 			this.label6 = new System.Windows.Forms.Label();
-			this.comboBoxTimeUnit_ = new System.Windows.Forms.ComboBox();
-			this.numUDInterval_ = new System.Windows.Forms.NumericUpDown();
-			this.checkBoxActive_ = new System.Windows.Forms.CheckBox();
+			this.comboBoxTimeUnit = new System.Windows.Forms.ComboBox();
+			this.numUDInterval = new System.Windows.Forms.NumericUpDown();
+			this.checkBoxActive = new System.Windows.Forms.CheckBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.checkBoxSubdir_ = new System.Windows.Forms.CheckBox();
-			this.buttonRemove_ = new System.Windows.Forms.Button();
-			this.buttonAddFolders_ = new System.Windows.Forms.Button();
-			this.buttonAddFiles_ = new System.Windows.Forms.Button();
-			this.listView_ = new System.Windows.Forms.ListView();
-			this.buttonOK_ = new System.Windows.Forms.Button();
-			this.buttonCancel_ = new System.Windows.Forms.Button();
-			this.buttonApply_ = new System.Windows.Forms.Button();
-			this.progressBar_ = new System.Windows.Forms.ProgressBar();
+			this.checkBoxSubdir = new System.Windows.Forms.CheckBox();
+			this.buttonRemove = new System.Windows.Forms.Button();
+			this.buttonAddFolders = new System.Windows.Forms.Button();
+			this.buttonAddFiles = new System.Windows.Forms.Button();
+			this.listView = new System.Windows.Forms.ListView();
+			this.buttonOK = new System.Windows.Forms.Button();
+			this.buttonCancel = new System.Windows.Forms.Button();
+			this.buttonApply = new System.Windows.Forms.Button();
+			this.progressBar = new System.Windows.Forms.ProgressBar();
 			toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -119,19 +119,19 @@
 			toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.menu_.SuspendLayout();
-			this.contextMenuTray_.SuspendLayout();
-			this.contextMenuItem_.SuspendLayout();
+			this.menu.SuspendLayout();
+			this.contextMenuTray.SuspendLayout();
+			this.contextMenuItem.SuspendLayout();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numUDColor_)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor_)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDSpace_)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDThick_)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle_)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDColor)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDSpace)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDThick)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle)).BeginInit();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock_)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDInterval_)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDInterval)).BeginInit();
 			this.groupBox4.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -175,57 +175,57 @@
 			toolStripSeparator3.Name = "toolStripSeparator3";
 			toolStripSeparator3.Size = new System.Drawing.Size(192, 6);
 			// 
-			// openFileDialogItem_
+			// openFileDialogItem
 			// 
-			this.openFileDialogItem_.AddExtension = false;
-			this.openFileDialogItem_.Filter = "Image files (*.bmp;*.png;*.jpg;*.jpeg;*.gif)|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Colle" +
-				"ction files (*.xml)|*.xml|All files| *.*";
-			this.openFileDialogItem_.Multiselect = true;
-			this.openFileDialogItem_.Title = "Select File(s)";
-			this.openFileDialogItem_.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogItem_FileOk);
+			this.openFileDialogItem.AddExtension = false;
+			this.openFileDialogItem.Filter = "Image files (*.bmp;*.png;*.jpg;*.jpeg;*.gif)|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Colle" +
+    "ction files (*.xml)|*.xml|All files| *.*";
+			this.openFileDialogItem.Multiselect = true;
+			this.openFileDialogItem.Title = "Select File(s)";
+			this.openFileDialogItem.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogItem_FileOk);
 			// 
-			// openFileDialogXML_
+			// openFileDialogXml
 			// 
-			this.openFileDialogXML_.AddExtension = false;
-			this.openFileDialogXML_.Filter = "XML files (*.xml)|*.xml";
-			this.openFileDialogXML_.Title = "Open Collection";
-			this.openFileDialogXML_.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogXML_FileOk);
+			this.openFileDialogXml.AddExtension = false;
+			this.openFileDialogXml.Filter = "XML files (*.xml)|*.xml";
+			this.openFileDialogXml.Title = "Open Collection";
+			this.openFileDialogXml.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogXML_FileOk);
 			// 
-			// saveFileDialogXML_
+			// saveFileDialogXml
 			// 
-			this.saveFileDialogXML_.Filter = "XML files (*.xml)|*.xml";
-			this.saveFileDialogXML_.Title = "Save Collection";
-			this.saveFileDialogXML_.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogXML_FileOk);
+			this.saveFileDialogXml.Filter = "XML files (*.xml)|*.xml";
+			this.saveFileDialogXml.Title = "Save Collection";
+			this.saveFileDialogXml.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogXML_FileOk);
 			// 
-			// backgroundWorker_
+			// backgroundWorker
 			// 
-			this.backgroundWorker_.WorkerReportsProgress = true;
-			this.backgroundWorker_.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-			this.backgroundWorker_.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-			this.backgroundWorker_.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+			this.backgroundWorker.WorkerReportsProgress = true;
+			this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+			this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+			this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
 			// 
-			// folderBrowserDialog_
+			// folderBrowserDialog
 			// 
-			this.folderBrowserDialog_.Description = "Select Directory";
-			this.folderBrowserDialog_.ShowNewFolderButton = false;
+			this.folderBrowserDialog.Description = "Select Directory";
+			this.folderBrowserDialog.ShowNewFolderButton = false;
 			// 
-			// colorDialog_
+			// colorDialog
 			// 
-			this.colorDialog_.AnyColor = true;
-			this.colorDialog_.FullOpen = true;
-			this.colorDialog_.ShowHelp = true;
+			this.colorDialog.AnyColor = true;
+			this.colorDialog.FullOpen = true;
+			this.colorDialog.ShowHelp = true;
 			// 
-			// menu_
+			// menu
 			// 
-			this.menu_.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.collectionToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.helpToolStripMenuItem});
-			this.menu_.Location = new System.Drawing.Point(0, 0);
-			this.menu_.Name = "menu_";
-			this.menu_.Size = new System.Drawing.Size(547, 24);
-			this.menu_.TabIndex = 0;
+			this.menu.Location = new System.Drawing.Point(0, 0);
+			this.menu.Name = "menu";
+			this.menu.Size = new System.Drawing.Size(547, 24);
+			this.menu.TabIndex = 0;
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -253,8 +253,8 @@
 			// 
 			this.addFolderToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.folder_explorer_16x16;
 			this.addFolderToolStripMenuItem.Name = "addFolderToolStripMenuItem";
-			this.addFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-						| System.Windows.Forms.Keys.F)));
+			this.addFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.F)));
 			this.addFolderToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
 			this.addFolderToolStripMenuItem.Text = "Add Folde&r...";
 			this.addFolderToolStripMenuItem.Click += new System.EventHandler(this.addFolder_Click);
@@ -389,14 +389,14 @@
 			this.aboutWallpaperrToolStripMenuItem.Text = "&About Wallpaperr";
 			this.aboutWallpaperrToolStripMenuItem.Click += new System.EventHandler(this.aboutWallpaperr_Click);
 			// 
-			// timer_
+			// timer
 			// 
-			this.timer_.Interval = 1000;
-			this.timer_.Tick += new System.EventHandler(this.newRandomWallpaper_Click);
+			this.timer.Interval = 1000;
+			this.timer.Tick += new System.EventHandler(this.newRandomWallpaper_Click);
 			// 
-			// contextMenuTray_
+			// contextMenuTray
 			// 
-			this.contextMenuTray_.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.contextMenuTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newRandomWallpaperToolStripMenuItem1,
             this.pauseToolStripMenuItem,
             toolStripSeparator5,
@@ -404,8 +404,8 @@
             toolStripSeparator6,
             this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem1});
-			this.contextMenuTray_.Name = "contextMenuTray_";
-			this.contextMenuTray_.Size = new System.Drawing.Size(203, 126);
+			this.contextMenuTray.Name = "contextMenuTray_";
+			this.contextMenuTray.Size = new System.Drawing.Size(203, 126);
 			// 
 			// newRandomWallpaperToolStripMenuItem1
 			// 
@@ -447,18 +447,18 @@
 			this.exitToolStripMenuItem1.Text = "E&xit";
 			this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exit_Click);
 			// 
-			// contextMenuItem_
+			// contextMenuItem
 			// 
-			this.contextMenuItem_.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.contextMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newWallpaperToolStripMenuItem,
             toolStripSeparator8,
             this.openToolStripMenuItem,
             this.openContainingFolderToolStripMenuItem,
             toolStripSeparator7,
             this.removeToolStripMenuItem});
-			this.contextMenuItem_.Name = "contextMenuItem_";
-			this.contextMenuItem_.Size = new System.Drawing.Size(202, 104);
-			this.contextMenuItem_.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuItem_Opening);
+			this.contextMenuItem.Name = "contextMenuItem_";
+			this.contextMenuItem.Size = new System.Drawing.Size(202, 104);
+			this.contextMenuItem.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuItem_Opening);
 			// 
 			// newWallpaperToolStripMenuItem
 			// 
@@ -494,39 +494,39 @@
 			this.removeToolStripMenuItem.Text = "&Remove";
 			this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeItem_Click);
 			// 
-			// imageList_
+			// imageList
 			// 
-			this.imageList_.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_.ImageStream")));
-			this.imageList_.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList_.Images.SetKeyName(0, "folder_pictures.ico");
-			this.imageList_.Images.SetKeyName(1, "picture_BMP.ico");
-			this.imageList_.Images.SetKeyName(2, "picture_PNG.ico");
-			this.imageList_.Images.SetKeyName(3, "picture_JPEG.ico");
-			this.imageList_.Images.SetKeyName(4, "picture_GIF.ico");
+			this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+			this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageList.Images.SetKeyName(0, "folder_pictures.ico");
+			this.imageList.Images.SetKeyName(1, "picture_BMP.ico");
+			this.imageList.Images.SetKeyName(2, "picture_PNG.ico");
+			this.imageList.Images.SetKeyName(3, "picture_JPEG.ico");
+			this.imageList.Images.SetKeyName(4, "picture_GIF.ico");
 			// 
-			// notifyIcon_
+			// notifyIcon
 			// 
-			this.notifyIcon_.ContextMenuStrip = this.contextMenuTray_;
-			this.notifyIcon_.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon_.Icon")));
-			this.notifyIcon_.Text = "Wallpaperr";
-			this.notifyIcon_.Visible = true;
+			this.notifyIcon.ContextMenuStrip = this.contextMenuTray;
+			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+			this.notifyIcon.Text = "Wallpaperr";
+			this.notifyIcon.Visible = true;
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Controls.Add(this.numUDColor_);
-			this.groupBox1.Controls.Add(this.pictureBoxColor_);
-			this.groupBox1.Controls.Add(this.numUDSpace_);
-			this.groupBox1.Controls.Add(this.numUDThick_);
+			this.groupBox1.Controls.Add(this.numUDColor);
+			this.groupBox1.Controls.Add(this.pictureBoxColor);
+			this.groupBox1.Controls.Add(this.numUDSpace);
+			this.groupBox1.Controls.Add(this.numUDThick);
 			this.groupBox1.Controls.Add(this.label5);
 			this.groupBox1.Controls.Add(this.label4);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.pictureBoxStyle_);
-			this.groupBox1.Controls.Add(this.radioZoomIn_);
-			this.groupBox1.Controls.Add(this.radioZoomOut_);
-			this.groupBox1.Controls.Add(this.radioSpiffy_);
+			this.groupBox1.Controls.Add(this.pictureBoxStyle);
+			this.groupBox1.Controls.Add(this.radioZoomIn);
+			this.groupBox1.Controls.Add(this.radioZoomOut);
+			this.groupBox1.Controls.Add(this.radioSpiffy);
 			this.groupBox1.Location = new System.Drawing.Point(12, 27);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(200, 186);
@@ -543,67 +543,67 @@
 			this.label7.TabIndex = 13;
 			this.label7.Text = "%";
 			// 
-			// numUDColor_
+			// numUDColor
 			// 
-			this.numUDColor_.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "BackgroundBlend", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDColor_.Location = new System.Drawing.Point(129, 157);
-			this.numUDColor_.Name = "numUDColor_";
-			this.numUDColor_.Size = new System.Drawing.Size(45, 20);
-			this.numUDColor_.TabIndex = 12;
-			this.numUDColor_.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDColor_.Value = global::Wallpaperr.Properties.Settings.Default.BackgroundBlend;
-			this.numUDColor_.ValueChanged += new System.EventHandler(this.control_Changed);
+			this.numUDColor.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "BackgroundBlend", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.numUDColor.Location = new System.Drawing.Point(129, 157);
+			this.numUDColor.Name = "numUDColor";
+			this.numUDColor.Size = new System.Drawing.Size(45, 20);
+			this.numUDColor.TabIndex = 12;
+			this.numUDColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.numUDColor.Value = global::Wallpaperr.Properties.Settings.Default.BackgroundBlend;
+			this.numUDColor.ValueChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// pictureBoxColor_
+			// pictureBoxColor
 			// 
-			this.pictureBoxColor_.BackColor = global::Wallpaperr.Properties.Settings.Default.BackgroundColor;
-			this.pictureBoxColor_.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBoxColor_.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBoxColor_.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::Wallpaperr.Properties.Settings.Default, "BackgroundColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.pictureBoxColor_.Location = new System.Drawing.Point(103, 157);
-			this.pictureBoxColor_.Name = "pictureBoxColor_";
-			this.pictureBoxColor_.Size = new System.Drawing.Size(20, 20);
-			this.pictureBoxColor_.TabIndex = 11;
-			this.pictureBoxColor_.TabStop = false;
-			this.pictureBoxColor_.BackColorChanged += new System.EventHandler(this.control_Changed);
-			this.pictureBoxColor_.Click += new System.EventHandler(this.color_Click);
+			this.pictureBoxColor.BackColor = global::Wallpaperr.Properties.Settings.Default.BackgroundColor;
+			this.pictureBoxColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.pictureBoxColor.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBoxColor.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::Wallpaperr.Properties.Settings.Default, "BackgroundColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.pictureBoxColor.Location = new System.Drawing.Point(103, 157);
+			this.pictureBoxColor.Name = "pictureBoxColor";
+			this.pictureBoxColor.Size = new System.Drawing.Size(20, 20);
+			this.pictureBoxColor.TabIndex = 11;
+			this.pictureBoxColor.TabStop = false;
+			this.pictureBoxColor.BackColorChanged += new System.EventHandler(this.control_Changed);
+			this.pictureBoxColor.Click += new System.EventHandler(this.color_Click);
 			// 
-			// numUDSpace_
+			// numUDSpace
 			// 
-			this.numUDSpace_.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Border", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDSpace_.Location = new System.Drawing.Point(82, 131);
-			this.numUDSpace_.Maximum = new decimal(new int[] {
+			this.numUDSpace.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Border", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.numUDSpace.Location = new System.Drawing.Point(82, 131);
+			this.numUDSpace.Maximum = new decimal(new int[] {
             90,
             0,
             0,
             0});
-			this.numUDSpace_.Name = "numUDSpace_";
-			this.numUDSpace_.Size = new System.Drawing.Size(45, 20);
-			this.numUDSpace_.TabIndex = 7;
-			this.numUDSpace_.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDSpace_.Value = global::Wallpaperr.Properties.Settings.Default.Border;
-			this.numUDSpace_.ValueChanged += new System.EventHandler(this.control_Changed);
+			this.numUDSpace.Name = "numUDSpace";
+			this.numUDSpace.Size = new System.Drawing.Size(45, 20);
+			this.numUDSpace.TabIndex = 7;
+			this.numUDSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.numUDSpace.Value = global::Wallpaperr.Properties.Settings.Default.Border;
+			this.numUDSpace.ValueChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// numUDThick_
+			// numUDThick
 			// 
-			this.numUDThick_.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Thickness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDThick_.Location = new System.Drawing.Point(79, 105);
-			this.numUDThick_.Maximum = new decimal(new int[] {
+			this.numUDThick.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Thickness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.numUDThick.Location = new System.Drawing.Point(79, 105);
+			this.numUDThick.Maximum = new decimal(new int[] {
             40,
             0,
             0,
             0});
-			this.numUDThick_.Minimum = new decimal(new int[] {
+			this.numUDThick.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-			this.numUDThick_.Name = "numUDThick_";
-			this.numUDThick_.Size = new System.Drawing.Size(45, 20);
-			this.numUDThick_.TabIndex = 4;
-			this.numUDThick_.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDThick_.Value = global::Wallpaperr.Properties.Settings.Default.Thickness;
-			this.numUDThick_.ValueChanged += new System.EventHandler(this.control_Changed);
+			this.numUDThick.Name = "numUDThick";
+			this.numUDThick.Size = new System.Drawing.Size(45, 20);
+			this.numUDThick.TabIndex = 4;
+			this.numUDThick.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.numUDThick.Value = global::Wallpaperr.Properties.Settings.Default.Thickness;
+			this.numUDThick.ValueChanged += new System.EventHandler(this.control_Changed);
 			// 
 			// label5
 			// 
@@ -650,60 +650,60 @@
 			this.label1.TabIndex = 3;
 			this.label1.Text = "Black border";
 			// 
-			// pictureBoxStyle_
+			// pictureBoxStyle
 			// 
-			this.pictureBoxStyle_.Image = global::Wallpaperr.Properties.Resources.spiffy;
-			this.pictureBoxStyle_.Location = new System.Drawing.Point(84, 19);
-			this.pictureBoxStyle_.Name = "pictureBoxStyle_";
-			this.pictureBoxStyle_.Size = new System.Drawing.Size(100, 80);
-			this.pictureBoxStyle_.TabIndex = 3;
-			this.pictureBoxStyle_.TabStop = false;
-			this.pictureBoxStyle_.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragDrop);
-			this.pictureBoxStyle_.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragEnter);
+			this.pictureBoxStyle.Image = global::Wallpaperr.Properties.Resources.spiffy;
+			this.pictureBoxStyle.Location = new System.Drawing.Point(84, 19);
+			this.pictureBoxStyle.Name = "pictureBoxStyle";
+			this.pictureBoxStyle.Size = new System.Drawing.Size(100, 80);
+			this.pictureBoxStyle.TabIndex = 3;
+			this.pictureBoxStyle.TabStop = false;
+			this.pictureBoxStyle.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragDrop);
+			this.pictureBoxStyle.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragEnter);
 			// 
-			// radioZoomIn_
+			// radioZoomIn
 			// 
-			this.radioZoomIn_.AutoSize = true;
-			this.radioZoomIn_.Location = new System.Drawing.Point(6, 65);
-			this.radioZoomIn_.Name = "radioZoomIn_";
-			this.radioZoomIn_.Size = new System.Drawing.Size(64, 17);
-			this.radioZoomIn_.TabIndex = 2;
-			this.radioZoomIn_.Text = "Zoom In";
-			this.radioZoomIn_.UseVisualStyleBackColor = true;
-			this.radioZoomIn_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioZoomIn_.Click += new System.EventHandler(this.radioStyle_Click);
+			this.radioZoomIn.AutoSize = true;
+			this.radioZoomIn.Location = new System.Drawing.Point(6, 65);
+			this.radioZoomIn.Name = "radioZoomIn";
+			this.radioZoomIn.Size = new System.Drawing.Size(64, 17);
+			this.radioZoomIn.TabIndex = 2;
+			this.radioZoomIn.Text = "Zoom In";
+			this.radioZoomIn.UseVisualStyleBackColor = true;
+			this.radioZoomIn.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.radioZoomIn.Click += new System.EventHandler(this.radioStyle_Click);
 			// 
-			// radioZoomOut_
+			// radioZoomOut
 			// 
-			this.radioZoomOut_.AutoSize = true;
-			this.radioZoomOut_.Location = new System.Drawing.Point(6, 42);
-			this.radioZoomOut_.Name = "radioZoomOut_";
-			this.radioZoomOut_.Size = new System.Drawing.Size(72, 17);
-			this.radioZoomOut_.TabIndex = 1;
-			this.radioZoomOut_.Text = "Zoom Out";
-			this.radioZoomOut_.UseVisualStyleBackColor = true;
-			this.radioZoomOut_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioZoomOut_.Click += new System.EventHandler(this.radioStyle_Click);
+			this.radioZoomOut.AutoSize = true;
+			this.radioZoomOut.Location = new System.Drawing.Point(6, 42);
+			this.radioZoomOut.Name = "radioZoomOut";
+			this.radioZoomOut.Size = new System.Drawing.Size(72, 17);
+			this.radioZoomOut.TabIndex = 1;
+			this.radioZoomOut.Text = "Zoom Out";
+			this.radioZoomOut.UseVisualStyleBackColor = true;
+			this.radioZoomOut.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.radioZoomOut.Click += new System.EventHandler(this.radioStyle_Click);
 			// 
-			// radioSpiffy_
+			// radioSpiffy
 			// 
-			this.radioSpiffy_.AutoSize = true;
-			this.radioSpiffy_.Checked = true;
-			this.radioSpiffy_.Location = new System.Drawing.Point(6, 19);
-			this.radioSpiffy_.Name = "radioSpiffy_";
-			this.radioSpiffy_.Size = new System.Drawing.Size(51, 17);
-			this.radioSpiffy_.TabIndex = 0;
-			this.radioSpiffy_.TabStop = true;
-			this.radioSpiffy_.Text = "Spiffy";
-			this.radioSpiffy_.UseVisualStyleBackColor = true;
-			this.radioSpiffy_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioSpiffy_.Click += new System.EventHandler(this.radioStyle_Click);
+			this.radioSpiffy.AutoSize = true;
+			this.radioSpiffy.Checked = true;
+			this.radioSpiffy.Location = new System.Drawing.Point(6, 19);
+			this.radioSpiffy.Name = "radioSpiffy";
+			this.radioSpiffy.Size = new System.Drawing.Size(51, 17);
+			this.radioSpiffy.TabIndex = 0;
+			this.radioSpiffy.TabStop = true;
+			this.radioSpiffy.Text = "Spiffy";
+			this.radioSpiffy.UseVisualStyleBackColor = true;
+			this.radioSpiffy.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.radioSpiffy.Click += new System.EventHandler(this.radioStyle_Click);
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.checkBoxSmartRand_);
-			this.groupBox2.Controls.Add(this.radioMulti_);
-			this.groupBox2.Controls.Add(this.radioSingle_);
+			this.groupBox2.Controls.Add(this.checkBoxSmartRand);
+			this.groupBox2.Controls.Add(this.radioMulti);
+			this.groupBox2.Controls.Add(this.radioSingle);
 			this.groupBox2.Location = new System.Drawing.Point(12, 219);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(200, 163);
@@ -711,61 +711,61 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Displays";
 			// 
-			// checkBoxSmartRand_
+			// checkBoxSmartRand
 			// 
-			this.checkBoxSmartRand_.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.checkBoxSmartRand_.Checked = global::Wallpaperr.Properties.Settings.Default.SmartRandom;
-			this.checkBoxSmartRand_.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxSmartRand_.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SmartRandom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxSmartRand_.Location = new System.Drawing.Point(6, 108);
-			this.checkBoxSmartRand_.Name = "checkBoxSmartRand_";
-			this.checkBoxSmartRand_.Size = new System.Drawing.Size(188, 49);
-			this.checkBoxSmartRand_.TabIndex = 2;
-			this.checkBoxSmartRand_.Text = "Smart Random (attempts to use files from same directory for multiple displays)";
-			this.checkBoxSmartRand_.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.checkBoxSmartRand_.UseVisualStyleBackColor = true;
-			this.checkBoxSmartRand_.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.checkBoxSmartRand.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+			this.checkBoxSmartRand.Checked = global::Wallpaperr.Properties.Settings.Default.SmartRandom;
+			this.checkBoxSmartRand.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxSmartRand.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SmartRandom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxSmartRand.Location = new System.Drawing.Point(6, 108);
+			this.checkBoxSmartRand.Name = "checkBoxSmartRand";
+			this.checkBoxSmartRand.Size = new System.Drawing.Size(188, 49);
+			this.checkBoxSmartRand.TabIndex = 2;
+			this.checkBoxSmartRand.Text = "Smart Random (attempts to use files from same directory for multiple displays)";
+			this.checkBoxSmartRand.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			this.checkBoxSmartRand.UseVisualStyleBackColor = true;
+			this.checkBoxSmartRand.CheckedChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// radioMulti_
+			// radioMulti
 			// 
-			this.radioMulti_.AutoSize = true;
-			this.radioMulti_.Image = global::Wallpaperr.Properties.Resources.computers_48x48;
-			this.radioMulti_.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioMulti_.Location = new System.Drawing.Point(112, 19);
-			this.radioMulti_.Name = "radioMulti_";
-			this.radioMulti_.Size = new System.Drawing.Size(62, 69);
-			this.radioMulti_.TabIndex = 1;
-			this.radioMulti_.Text = "\r\n\r\n\r\n\r\nMultiple";
-			this.radioMulti_.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.radioMulti_.UseVisualStyleBackColor = true;
-			this.radioMulti_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioMulti_.Click += new System.EventHandler(this.radioDisplays_Click);
+			this.radioMulti.AutoSize = true;
+			this.radioMulti.Image = global::Wallpaperr.Properties.Resources.computers_48x48;
+			this.radioMulti.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.radioMulti.Location = new System.Drawing.Point(112, 19);
+			this.radioMulti.Name = "radioMulti";
+			this.radioMulti.Size = new System.Drawing.Size(62, 69);
+			this.radioMulti.TabIndex = 1;
+			this.radioMulti.Text = "\r\n\r\n\r\n\r\nMultiple";
+			this.radioMulti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.radioMulti.UseVisualStyleBackColor = true;
+			this.radioMulti.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.radioMulti.Click += new System.EventHandler(this.radioDisplays_Click);
 			// 
-			// radioSingle_
+			// radioSingle
 			// 
-			this.radioSingle_.AutoSize = true;
-			this.radioSingle_.Checked = global::Wallpaperr.Properties.Settings.Default.SingleMonitor;
-			this.radioSingle_.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SingleMonitor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.radioSingle_.Image = global::Wallpaperr.Properties.Resources.computer_48x48;
-			this.radioSingle_.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioSingle_.Location = new System.Drawing.Point(26, 19);
-			this.radioSingle_.Name = "radioSingle_";
-			this.radioSingle_.Size = new System.Drawing.Size(62, 69);
-			this.radioSingle_.TabIndex = 0;
-			this.radioSingle_.TabStop = true;
-			this.radioSingle_.Text = "\r\n\r\n\r\n\r\nSingle";
-			this.radioSingle_.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.radioSingle_.UseVisualStyleBackColor = true;
-			this.radioSingle_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioSingle_.Click += new System.EventHandler(this.radioDisplays_Click);
+			this.radioSingle.AutoSize = true;
+			this.radioSingle.Checked = global::Wallpaperr.Properties.Settings.Default.SingleMonitor;
+			this.radioSingle.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SingleMonitor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.radioSingle.Image = global::Wallpaperr.Properties.Resources.computer_48x48;
+			this.radioSingle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.radioSingle.Location = new System.Drawing.Point(26, 19);
+			this.radioSingle.Name = "radioSingle";
+			this.radioSingle.Size = new System.Drawing.Size(62, 69);
+			this.radioSingle.TabIndex = 0;
+			this.radioSingle.TabStop = true;
+			this.radioSingle.Text = "\r\n\r\n\r\n\r\nSingle";
+			this.radioSingle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.radioSingle.UseVisualStyleBackColor = true;
+			this.radioSingle.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.radioSingle.Click += new System.EventHandler(this.radioDisplays_Click);
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.pictureBoxClock_);
+			this.groupBox3.Controls.Add(this.pictureBoxClock);
 			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Controls.Add(this.comboBoxTimeUnit_);
-			this.groupBox3.Controls.Add(this.numUDInterval_);
-			this.groupBox3.Controls.Add(this.checkBoxActive_);
+			this.groupBox3.Controls.Add(this.comboBoxTimeUnit);
+			this.groupBox3.Controls.Add(this.numUDInterval);
+			this.groupBox3.Controls.Add(this.checkBoxActive);
 			this.groupBox3.Location = new System.Drawing.Point(218, 27);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(317, 75);
@@ -773,14 +773,14 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Automatic Changes";
 			// 
-			// pictureBoxClock_
+			// pictureBoxClock
 			// 
-			this.pictureBoxClock_.Image = global::Wallpaperr.Properties.Resources.clock_48x48;
-			this.pictureBoxClock_.Location = new System.Drawing.Point(258, 17);
-			this.pictureBoxClock_.Name = "pictureBoxClock_";
-			this.pictureBoxClock_.Size = new System.Drawing.Size(48, 48);
-			this.pictureBoxClock_.TabIndex = 13;
-			this.pictureBoxClock_.TabStop = false;
+			this.pictureBoxClock.Image = global::Wallpaperr.Properties.Resources.clock_48x48;
+			this.pictureBoxClock.Location = new System.Drawing.Point(258, 17);
+			this.pictureBoxClock.Name = "pictureBoxClock";
+			this.pictureBoxClock.Size = new System.Drawing.Size(48, 48);
+			this.pictureBoxClock.TabIndex = 13;
+			this.pictureBoxClock.TabStop = false;
 			// 
 			// label6
 			// 
@@ -791,51 +791,51 @@
 			this.label6.TabIndex = 1;
 			this.label6.Text = "Change every";
 			// 
-			// comboBoxTimeUnit_
+			// comboBoxTimeUnit
 			// 
-			this.comboBoxTimeUnit_.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-			this.comboBoxTimeUnit_.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBoxTimeUnit_.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxTimeUnit_.FormattingEnabled = true;
-			this.comboBoxTimeUnit_.Location = new System.Drawing.Point(137, 42);
-			this.comboBoxTimeUnit_.Name = "comboBoxTimeUnit_";
-			this.comboBoxTimeUnit_.Size = new System.Drawing.Size(86, 21);
-			this.comboBoxTimeUnit_.TabIndex = 3;
-			this.comboBoxTimeUnit_.SelectedIndexChanged += new System.EventHandler(this.control_Changed);
+			this.comboBoxTimeUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+			this.comboBoxTimeUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.comboBoxTimeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxTimeUnit.FormattingEnabled = true;
+			this.comboBoxTimeUnit.Location = new System.Drawing.Point(137, 42);
+			this.comboBoxTimeUnit.Name = "comboBoxTimeUnit";
+			this.comboBoxTimeUnit.Size = new System.Drawing.Size(86, 21);
+			this.comboBoxTimeUnit.TabIndex = 3;
+			this.comboBoxTimeUnit.SelectedIndexChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// numUDInterval_
+			// numUDInterval
 			// 
-			this.numUDInterval_.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Interval", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDInterval_.Location = new System.Drawing.Point(85, 42);
-			this.numUDInterval_.Name = "numUDInterval_";
-			this.numUDInterval_.Size = new System.Drawing.Size(46, 20);
-			this.numUDInterval_.TabIndex = 2;
-			this.numUDInterval_.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDInterval_.Value = global::Wallpaperr.Properties.Settings.Default.Interval;
-			this.numUDInterval_.ValueChanged += new System.EventHandler(this.control_Changed);
+			this.numUDInterval.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Interval", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.numUDInterval.Location = new System.Drawing.Point(85, 42);
+			this.numUDInterval.Name = "numUDInterval";
+			this.numUDInterval.Size = new System.Drawing.Size(46, 20);
+			this.numUDInterval.TabIndex = 2;
+			this.numUDInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.numUDInterval.Value = global::Wallpaperr.Properties.Settings.Default.Interval;
+			this.numUDInterval.ValueChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// checkBoxActive_
+			// checkBoxActive
 			// 
-			this.checkBoxActive_.AutoSize = true;
-			this.checkBoxActive_.Checked = global::Wallpaperr.Properties.Settings.Default.Active;
-			this.checkBoxActive_.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxActive_.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "Active", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxActive_.Location = new System.Drawing.Point(6, 19);
-			this.checkBoxActive_.Name = "checkBoxActive_";
-			this.checkBoxActive_.Size = new System.Drawing.Size(128, 17);
-			this.checkBoxActive_.TabIndex = 0;
-			this.checkBoxActive_.Text = "Active timed changes";
-			this.checkBoxActive_.UseVisualStyleBackColor = true;
-			this.checkBoxActive_.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.checkBoxActive_.Click += new System.EventHandler(this.pause_Click);
+			this.checkBoxActive.AutoSize = true;
+			this.checkBoxActive.Checked = global::Wallpaperr.Properties.Settings.Default.Active;
+			this.checkBoxActive.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxActive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "Active", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxActive.Location = new System.Drawing.Point(6, 19);
+			this.checkBoxActive.Name = "checkBoxActive";
+			this.checkBoxActive.Size = new System.Drawing.Size(128, 17);
+			this.checkBoxActive.TabIndex = 0;
+			this.checkBoxActive.Text = "Active timed changes";
+			this.checkBoxActive.UseVisualStyleBackColor = true;
+			this.checkBoxActive.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.checkBoxActive.Click += new System.EventHandler(this.pause_Click);
 			// 
 			// groupBox4
 			// 
-			this.groupBox4.Controls.Add(this.checkBoxSubdir_);
-			this.groupBox4.Controls.Add(this.buttonRemove_);
-			this.groupBox4.Controls.Add(this.buttonAddFolders_);
-			this.groupBox4.Controls.Add(this.buttonAddFiles_);
-			this.groupBox4.Controls.Add(this.listView_);
+			this.groupBox4.Controls.Add(this.checkBoxSubdir);
+			this.groupBox4.Controls.Add(this.buttonRemove);
+			this.groupBox4.Controls.Add(this.buttonAddFolders);
+			this.groupBox4.Controls.Add(this.buttonAddFiles);
+			this.groupBox4.Controls.Add(this.listView);
 			this.groupBox4.Location = new System.Drawing.Point(218, 108);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Size = new System.Drawing.Size(317, 274);
@@ -843,136 +843,136 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "Image Collection";
 			// 
-			// checkBoxSubdir_
+			// checkBoxSubdir
 			// 
-			this.checkBoxSubdir_.AutoSize = true;
-			this.checkBoxSubdir_.Checked = global::Wallpaperr.Properties.Settings.Default.IncludeSubdirectory;
-			this.checkBoxSubdir_.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxSubdir_.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "IncludeSubdirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxSubdir_.Location = new System.Drawing.Point(6, 251);
-			this.checkBoxSubdir_.Name = "checkBoxSubdir_";
-			this.checkBoxSubdir_.Size = new System.Drawing.Size(278, 17);
-			this.checkBoxSubdir_.TabIndex = 4;
-			this.checkBoxSubdir_.Text = "Include Subdirectories (affects all folders in collection)";
-			this.checkBoxSubdir_.UseVisualStyleBackColor = true;
-			this.checkBoxSubdir_.CheckedChanged += new System.EventHandler(this.control_Changed);
+			this.checkBoxSubdir.AutoSize = true;
+			this.checkBoxSubdir.Checked = global::Wallpaperr.Properties.Settings.Default.IncludeSubdirectory;
+			this.checkBoxSubdir.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxSubdir.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "IncludeSubdirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			this.checkBoxSubdir.Location = new System.Drawing.Point(6, 251);
+			this.checkBoxSubdir.Name = "checkBoxSubdir";
+			this.checkBoxSubdir.Size = new System.Drawing.Size(278, 17);
+			this.checkBoxSubdir.TabIndex = 4;
+			this.checkBoxSubdir.Text = "Include Subdirectories (affects all folders in collection)";
+			this.checkBoxSubdir.UseVisualStyleBackColor = true;
+			this.checkBoxSubdir.CheckedChanged += new System.EventHandler(this.control_Changed);
 			// 
-			// buttonRemove_
+			// buttonRemove
 			// 
-			this.buttonRemove_.Image = global::Wallpaperr.Properties.Resources.remove_16x16;
-			this.buttonRemove_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonRemove_.Location = new System.Drawing.Point(192, 214);
-			this.buttonRemove_.Name = "buttonRemove_";
-			this.buttonRemove_.Size = new System.Drawing.Size(75, 31);
-			this.buttonRemove_.TabIndex = 3;
-			this.buttonRemove_.Text = "Remove";
-			this.buttonRemove_.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonRemove_.UseVisualStyleBackColor = true;
-			this.buttonRemove_.Click += new System.EventHandler(this.removeItem_Click);
+			this.buttonRemove.Image = global::Wallpaperr.Properties.Resources.remove_16x16;
+			this.buttonRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.buttonRemove.Location = new System.Drawing.Point(192, 214);
+			this.buttonRemove.Name = "buttonRemove";
+			this.buttonRemove.Size = new System.Drawing.Size(75, 31);
+			this.buttonRemove.TabIndex = 3;
+			this.buttonRemove.Text = "Remove";
+			this.buttonRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.buttonRemove.UseVisualStyleBackColor = true;
+			this.buttonRemove.Click += new System.EventHandler(this.removeItem_Click);
 			// 
-			// buttonAddFolders_
+			// buttonAddFolders
 			// 
-			this.buttonAddFolders_.Image = global::Wallpaperr.Properties.Resources.folder_explorer_16x16;
-			this.buttonAddFolders_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonAddFolders_.Location = new System.Drawing.Point(95, 214);
-			this.buttonAddFolders_.Name = "buttonAddFolders_";
-			this.buttonAddFolders_.Size = new System.Drawing.Size(91, 31);
-			this.buttonAddFolders_.TabIndex = 2;
-			this.buttonAddFolders_.Text = "Add folder...";
-			this.buttonAddFolders_.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonAddFolders_.UseVisualStyleBackColor = true;
-			this.buttonAddFolders_.Click += new System.EventHandler(this.addFolder_Click);
+			this.buttonAddFolders.Image = global::Wallpaperr.Properties.Resources.folder_explorer_16x16;
+			this.buttonAddFolders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.buttonAddFolders.Location = new System.Drawing.Point(95, 214);
+			this.buttonAddFolders.Name = "buttonAddFolders";
+			this.buttonAddFolders.Size = new System.Drawing.Size(91, 31);
+			this.buttonAddFolders.TabIndex = 2;
+			this.buttonAddFolders.Text = "Add folder...";
+			this.buttonAddFolders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.buttonAddFolders.UseVisualStyleBackColor = true;
+			this.buttonAddFolders.Click += new System.EventHandler(this.addFolder_Click);
 			// 
-			// buttonAddFiles_
+			// buttonAddFiles
 			// 
-			this.buttonAddFiles_.Image = global::Wallpaperr.Properties.Resources.file_explorer_16x16;
-			this.buttonAddFiles_.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonAddFiles_.Location = new System.Drawing.Point(6, 214);
-			this.buttonAddFiles_.Name = "buttonAddFiles_";
-			this.buttonAddFiles_.Size = new System.Drawing.Size(83, 31);
-			this.buttonAddFiles_.TabIndex = 1;
-			this.buttonAddFiles_.Text = "Add files...";
-			this.buttonAddFiles_.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonAddFiles_.UseVisualStyleBackColor = true;
-			this.buttonAddFiles_.Click += new System.EventHandler(this.addFiles_Click);
+			this.buttonAddFiles.Image = global::Wallpaperr.Properties.Resources.file_explorer_16x16;
+			this.buttonAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.buttonAddFiles.Location = new System.Drawing.Point(6, 214);
+			this.buttonAddFiles.Name = "buttonAddFiles";
+			this.buttonAddFiles.Size = new System.Drawing.Size(83, 31);
+			this.buttonAddFiles.TabIndex = 1;
+			this.buttonAddFiles.Text = "Add files...";
+			this.buttonAddFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.buttonAddFiles.UseVisualStyleBackColor = true;
+			this.buttonAddFiles.Click += new System.EventHandler(this.addFiles_Click);
 			// 
-			// listView_
+			// listView
 			// 
-			this.listView_.AllowDrop = true;
-			this.listView_.ContextMenuStrip = this.contextMenuItem_;
-			this.listView_.Location = new System.Drawing.Point(6, 19);
-			this.listView_.Name = "listView_";
-			this.listView_.ShowItemToolTips = true;
-			this.listView_.Size = new System.Drawing.Size(305, 189);
-			this.listView_.SmallImageList = this.imageList_;
-			this.listView_.Sorting = System.Windows.Forms.SortOrder.Ascending;
-			this.listView_.TabIndex = 0;
-			this.listView_.UseCompatibleStateImageBehavior = false;
-			this.listView_.View = System.Windows.Forms.View.List;
-			this.listView_.ItemActivate += new System.EventHandler(this.listView_ItemActivate);
-			this.listView_.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
-			this.listView_.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
-			this.listView_.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
+			this.listView.AllowDrop = true;
+			this.listView.ContextMenuStrip = this.contextMenuItem;
+			this.listView.Location = new System.Drawing.Point(6, 19);
+			this.listView.Name = "listView";
+			this.listView.ShowItemToolTips = true;
+			this.listView.Size = new System.Drawing.Size(305, 189);
+			this.listView.SmallImageList = this.imageList;
+			this.listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			this.listView.TabIndex = 0;
+			this.listView.UseCompatibleStateImageBehavior = false;
+			this.listView.View = System.Windows.Forms.View.List;
+			this.listView.ItemActivate += new System.EventHandler(this.listView_ItemActivate);
+			this.listView.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
+			this.listView.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
+			this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
 			// 
-			// buttonOK_
+			// buttonOK
 			// 
-			this.buttonOK_.Location = new System.Drawing.Point(298, 388);
-			this.buttonOK_.Name = "buttonOK_";
-			this.buttonOK_.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK_.TabIndex = 5;
-			this.buttonOK_.Text = "OK";
-			this.buttonOK_.UseVisualStyleBackColor = true;
-			this.buttonOK_.Click += new System.EventHandler(this.ok_Click);
+			this.buttonOK.Location = new System.Drawing.Point(298, 388);
+			this.buttonOK.Name = "buttonOK";
+			this.buttonOK.Size = new System.Drawing.Size(75, 23);
+			this.buttonOK.TabIndex = 5;
+			this.buttonOK.Text = "OK";
+			this.buttonOK.UseVisualStyleBackColor = true;
+			this.buttonOK.Click += new System.EventHandler(this.ok_Click);
 			// 
-			// buttonCancel_
+			// buttonCancel
 			// 
-			this.buttonCancel_.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel_.Location = new System.Drawing.Point(379, 388);
-			this.buttonCancel_.Name = "buttonCancel_";
-			this.buttonCancel_.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel_.TabIndex = 6;
-			this.buttonCancel_.Text = "Cancel";
-			this.buttonCancel_.UseVisualStyleBackColor = true;
-			this.buttonCancel_.Click += new System.EventHandler(this.cancel_Click);
+			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.buttonCancel.Location = new System.Drawing.Point(379, 388);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+			this.buttonCancel.TabIndex = 6;
+			this.buttonCancel.Text = "Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.cancel_Click);
 			// 
-			// buttonApply_
+			// buttonApply
 			// 
-			this.buttonApply_.Enabled = false;
-			this.buttonApply_.Location = new System.Drawing.Point(460, 388);
-			this.buttonApply_.Name = "buttonApply_";
-			this.buttonApply_.Size = new System.Drawing.Size(75, 23);
-			this.buttonApply_.TabIndex = 7;
-			this.buttonApply_.Text = "Apply";
-			this.buttonApply_.UseVisualStyleBackColor = true;
-			this.buttonApply_.Click += new System.EventHandler(this.apply_Click);
+			this.buttonApply.Enabled = false;
+			this.buttonApply.Location = new System.Drawing.Point(460, 388);
+			this.buttonApply.Name = "buttonApply";
+			this.buttonApply.Size = new System.Drawing.Size(75, 23);
+			this.buttonApply.TabIndex = 7;
+			this.buttonApply.Text = "Apply";
+			this.buttonApply.UseVisualStyleBackColor = true;
+			this.buttonApply.Click += new System.EventHandler(this.apply_Click);
 			// 
-			// progressBar_
+			// progressBar
 			// 
-			this.progressBar_.Location = new System.Drawing.Point(12, 388);
-			this.progressBar_.Name = "progressBar_";
-			this.progressBar_.Size = new System.Drawing.Size(280, 23);
-			this.progressBar_.Step = 1;
-			this.progressBar_.TabIndex = 8;
-			this.progressBar_.Visible = false;
+			this.progressBar.Location = new System.Drawing.Point(12, 388);
+			this.progressBar.Name = "progressBar";
+			this.progressBar.Size = new System.Drawing.Size(280, 23);
+			this.progressBar.Step = 1;
+			this.progressBar.TabIndex = 8;
+			this.progressBar.Visible = false;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.buttonCancel_;
+			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(547, 423);
-			this.Controls.Add(this.buttonCancel_);
-			this.Controls.Add(this.progressBar_);
-			this.Controls.Add(this.buttonApply_);
-			this.Controls.Add(this.buttonOK_);
+			this.Controls.Add(this.buttonCancel);
+			this.Controls.Add(this.progressBar);
+			this.Controls.Add(this.buttonApply);
+			this.Controls.Add(this.buttonOK);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox4);
-			this.Controls.Add(this.menu_);
+			this.Controls.Add(this.menu);
 			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menu_;
+			this.MainMenuStrip = this.menu;
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -981,23 +981,23 @@
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.Shown += new System.EventHandler(this.MainForm_Shown);
 			this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
-			this.menu_.ResumeLayout(false);
-			this.menu_.PerformLayout();
-			this.contextMenuTray_.ResumeLayout(false);
-			this.contextMenuItem_.ResumeLayout(false);
+			this.menu.ResumeLayout(false);
+			this.menu.PerformLayout();
+			this.contextMenuTray.ResumeLayout(false);
+			this.contextMenuItem.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numUDColor_)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor_)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDSpace_)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDThick_)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle_)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDColor)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDSpace)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDThick)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle)).EndInit();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock_)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDInterval_)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numUDInterval)).EndInit();
 			this.groupBox4.ResumeLayout(false);
 			this.groupBox4.PerformLayout();
 			this.ResumeLayout(false);
@@ -1007,18 +1007,18 @@
 
 		#endregion
 
-		private System.Windows.Forms.OpenFileDialog openFileDialogItem_;
-		private System.Windows.Forms.OpenFileDialog openFileDialogXML_;
-		private System.Windows.Forms.SaveFileDialog saveFileDialogXML_;
-		private System.ComponentModel.BackgroundWorker backgroundWorker_;
-		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog_;
-		private System.Windows.Forms.ColorDialog colorDialog_;
-		private System.Windows.Forms.MenuStrip menu_;
-		private System.Windows.Forms.Timer timer_;
-		private System.Windows.Forms.ContextMenuStrip contextMenuTray_;
-		private System.Windows.Forms.ContextMenuStrip contextMenuItem_;
-		private System.Windows.Forms.ImageList imageList_;
-		private System.Windows.Forms.NotifyIcon notifyIcon_;
+		private System.Windows.Forms.OpenFileDialog openFileDialogItem;
+		private System.Windows.Forms.OpenFileDialog openFileDialogXml;
+		private System.Windows.Forms.SaveFileDialog saveFileDialogXml;
+		private System.ComponentModel.BackgroundWorker backgroundWorker;
+		private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
+		private System.Windows.Forms.ColorDialog colorDialog;
+		private System.Windows.Forms.MenuStrip menu;
+		private System.Windows.Forms.Timer timer;
+		private System.Windows.Forms.ContextMenuStrip contextMenuTray;
+		private System.Windows.Forms.ContextMenuStrip contextMenuItem;
+		private System.Windows.Forms.ImageList imageList;
+		private System.Windows.Forms.NotifyIcon notifyIcon;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem addFilesToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem addFolderToolStripMenuItem;
@@ -1044,42 +1044,42 @@
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.Button buttonOK_;
-		private System.Windows.Forms.Button buttonCancel_;
-		private System.Windows.Forms.Button buttonApply_;
-		private System.Windows.Forms.ProgressBar progressBar_;
-		private System.Windows.Forms.RadioButton radioZoomIn_;
-		private System.Windows.Forms.RadioButton radioZoomOut_;
-		private System.Windows.Forms.RadioButton radioSpiffy_;
-		private System.Windows.Forms.PictureBox pictureBoxStyle_;
+		private System.Windows.Forms.Button buttonOK;
+		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.Button buttonApply;
+		private System.Windows.Forms.ProgressBar progressBar;
+		private System.Windows.Forms.RadioButton radioZoomIn;
+		private System.Windows.Forms.RadioButton radioZoomOut;
+		private System.Windows.Forms.RadioButton radioSpiffy;
+		private System.Windows.Forms.PictureBox pictureBoxStyle;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.PictureBox pictureBoxColor_;
-		private System.Windows.Forms.NumericUpDown numUDSpace_;
-		private System.Windows.Forms.NumericUpDown numUDThick_;
-		private System.Windows.Forms.RadioButton radioMulti_;
-		private System.Windows.Forms.RadioButton radioSingle_;
-		private System.Windows.Forms.CheckBox checkBoxSmartRand_;
+		private System.Windows.Forms.PictureBox pictureBoxColor;
+		private System.Windows.Forms.NumericUpDown numUDSpace;
+		private System.Windows.Forms.NumericUpDown numUDThick;
+		private System.Windows.Forms.RadioButton radioMulti;
+		private System.Windows.Forms.RadioButton radioSingle;
+		private System.Windows.Forms.CheckBox checkBoxSmartRand;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.ComboBox comboBoxTimeUnit_;
-		private System.Windows.Forms.NumericUpDown numUDInterval_;
-		private System.Windows.Forms.CheckBox checkBoxActive_;
-		private System.Windows.Forms.PictureBox pictureBoxClock_;
-		private System.Windows.Forms.CheckBox checkBoxSubdir_;
-		private System.Windows.Forms.Button buttonRemove_;
-		private System.Windows.Forms.Button buttonAddFolders_;
-		private System.Windows.Forms.Button buttonAddFiles_;
-		private System.Windows.Forms.ListView listView_;
+		private System.Windows.Forms.ComboBox comboBoxTimeUnit;
+		private System.Windows.Forms.NumericUpDown numUDInterval;
+		private System.Windows.Forms.CheckBox checkBoxActive;
+		private System.Windows.Forms.PictureBox pictureBoxClock;
+		private System.Windows.Forms.CheckBox checkBoxSubdir;
+		private System.Windows.Forms.Button buttonRemove;
+		private System.Windows.Forms.Button buttonAddFolders;
+		private System.Windows.Forms.Button buttonAddFiles;
+		private System.Windows.Forms.ListView listView;
 		private System.Windows.Forms.ToolStripMenuItem newWallpaperToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem showOnRunToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem doubleClickTrayIconToolStripMenuItem;
 		private System.Windows.Forms.ToolStripComboBox doubleClicktoolStripComboBox;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.NumericUpDown numUDColor_;
+		private System.Windows.Forms.NumericUpDown numUDColor;
 	}
 }
 
