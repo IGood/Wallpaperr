@@ -370,6 +370,15 @@
 			}
 		}
 
+		private void useLegacyTiling_Click(object sender, EventArgs e)
+		{
+			useLegacyTilingToolStripMenuItem.Image = useLegacyTilingToolStripMenuItem.Checked
+				? Properties.Resources.box_check_16x16
+				: Properties.Resources.box_16x16;
+
+			WallpaperrLogic.AppSettings.UseLegacyTiling = useLegacyTilingToolStripMenuItem.Checked;
+		}
+
 		private void help_Click(object sender, EventArgs e)
 		{
 			Help.ShowHelp(this, "http://www.tinyurl.com/wallpaperr");

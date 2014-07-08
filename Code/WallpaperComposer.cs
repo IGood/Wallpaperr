@@ -198,27 +198,38 @@ namespace Wallpaperr
 					{
 						// get bounds for this screen
 						Rectangle rect = Screen.AllScreens[index++].Bounds;
-						g.DrawImageUnscaled(bmp, rect);
 
-						// ensure image tiles correctly
-						if (rect.X < 0)
+						if (settings.UseLegacyTiling)
 						{
-							Rectangle r = rect;
-							r.X = union.Width + rect.X;
-							g.DrawImageUnscaled(bmp, r);
+							g.DrawImageUnscaled(bmp, rect);
+
+							// ensure image tiles correctly
+							if (rect.X < 0)
+							{
+								Rectangle r = rect;
+								r.X = union.Width + rect.X;
+								g.DrawImageUnscaled(bmp, r);
+							}
+
+							if (rect.Y < 0)
+							{
+								Rectangle r = rect;
+								r.Y = union.Height + rect.Y;
+								g.DrawImageUnscaled(bmp, r);
+							}
+
+							if (rect.X < 0 && rect.Y < 0)
+							{
+								rect.X = union.Width + rect.X;
+								rect.Y = union.Height + rect.Y;
+								g.DrawImageUnscaled(bmp, rect);
+							}
 						}
-
-						if (rect.Y < 0)
+						else
 						{
-							Rectangle r = rect;
-							r.Y = union.Height + rect.Y;
-							g.DrawImageUnscaled(bmp, r);
-						}
-
-						if (rect.X < 0 && rect.Y < 0)
-						{
-							rect.X = union.Width + rect.X;
-							rect.Y = union.Height + rect.Y;
+							// align the image onto the final canvas
+							rect.X -= union.X;
+							rect.Y -= union.Y;
 							g.DrawImageUnscaled(bmp, rect);
 						}
 

@@ -111,6 +111,7 @@
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.buttonApply = new System.Windows.Forms.Button();
 			this.progressBar = new System.Windows.Forms.ProgressBar();
+			this.useLegacyTilingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -327,7 +328,8 @@
 			this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showOnRunToolStripMenuItem,
             toolStripSeparator3,
-            this.doubleClickTrayIconToolStripMenuItem});
+            this.doubleClickTrayIconToolStripMenuItem,
+            this.useLegacyTilingToolStripMenuItem});
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
 			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
 			this.optionsToolStripMenuItem.Text = "&Options";
@@ -955,6 +957,15 @@
 			this.progressBar.TabIndex = 8;
 			this.progressBar.Visible = false;
 			// 
+			// useLegacyTilingToolStripMenuItem
+			// 
+			this.useLegacyTilingToolStripMenuItem.CheckOnClick = true;
+			this.useLegacyTilingToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.box_16x16;
+			this.useLegacyTilingToolStripMenuItem.Name = "useLegacyTilingToolStripMenuItem";
+			this.useLegacyTilingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+			this.useLegacyTilingToolStripMenuItem.Text = "&Use Legacy Tiling";
+			this.useLegacyTilingToolStripMenuItem.Click += new System.EventHandler(this.useLegacyTiling_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1080,6 +1091,7 @@
 		private System.Windows.Forms.ToolStripComboBox doubleClicktoolStripComboBox;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.NumericUpDown numUDColor;
+		private System.Windows.Forms.ToolStripMenuItem useLegacyTilingToolStripMenuItem;
 	}
 }
 
