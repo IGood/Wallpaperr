@@ -1,36 +1,17 @@
-﻿using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows.Forms;
-
-namespace Wallpaperr
+﻿namespace Wallpaperr
 {
+	using System;
+	using System.ComponentModel;
+	using System.Drawing;
+	using System.Drawing.Imaging;
+	using System.Linq;
+	using System.Runtime.InteropServices;
+	using System.Threading;
+	using System.Windows.Forms;
+
 	static class WallpaperComposer
 	{
-		private class ComposerData
-		{
-			public Size Dimensions;
-			public Bitmap SourceBitmap;
-			public Bitmap DestinationBitmap;
-			public bool HasBackground;
-			public float BorderSpace;
-			public int Thickness;
-			public Color BackgroundColor;
-			public float BackgroundBlend;
-
-			public ComposerData(Properties.Settings settings)
-			{
-				this.BorderSpace = (float)settings.Border / 100f;
-				this.Thickness = (int)settings.Thickness;
-				this.BackgroundColor = settings.BackgroundColor;
-				this.BackgroundBlend = (float)settings.BackgroundBlend / 100f;
-			}
-		}
-
-		[DllImport("user32.dll", CharSet = CharSet.Auto)]
-		static extern Int32 SystemParametersInfo(UInt32 uiAction, UInt32 uiParam, String pvParam, UInt32 fWinIni);
+		private static readonly bool WindowsVersionSupportsJpg = Environment.OSVersion.Version >= new Version(6, 0);
 
 		private static Bitmap ValidateBitmap(string fileName)
 		{
@@ -245,12 +226,33 @@ namespace Wallpaperr
 
 			worker.ReportProgress((int)(progress = 95));
 
-			#region Save File
-			string outFileName = Helpers.AppDataPath + @"\created.bmp";
+			#region Save & Set
+			string outFileName = string.Format(@"{0}\created.{1}", Helpers.AppDataPath, WindowsVersionSupportsJpg ? "jpg" : "bmp");
+
 			try
 			{
 				// save image to disk
-				finalImg.Save(outFileName, System.Drawing.Imaging.ImageFormat.Bmp);
+				if (WindowsVersionSupportsJpg)
+				{
+					var codecs = ImageCodecInfo.GetImageEncoders();
+					var imgCodecInfo = codecs.FirstOrDefault((codec) => codec.FormatID.Equals(ImageFormat.Jpeg.Guid));
+					if (imgCodecInfo == null)
+					{
+						finalImg.Save(outFileName, ImageFormat.Jpeg);
+					}
+					else
+					{
+						using (var encoderParams = new EncoderParameters())	// has 1 slot by default
+						{
+							encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
+							finalImg.Save(outFileName, imgCodecInfo, encoderParams);
+						}
+					}
+				}
+				else
+				{
+					finalImg.Save(outFileName, ImageFormat.Bmp);
+				}
 
 				worker.ReportProgress((int)(progress = 98));
 
@@ -261,13 +263,15 @@ namespace Wallpaperr
 			}
 			catch (Exception ex)
 			{
-				var msg =
+				const string Fmt =
 @"An exception was thrown while attempting to save
 and set your new wallpaper.
 Exception thrown: {0}
+File(s):
+{1}
 We'll try again later.";
 
-				Helpers.ShowError(String.Format(msg, ex.Message));
+				Helpers.ShowError(String.Format(Fmt, ex.Message, string.Join(Environment.NewLine, fileName)));
 			}
 			#endregion
 
@@ -385,11 +389,12 @@ We'll try again later.";
 		private static void SetWallpaper(string fileName)
 		{
 			// get registry entry
-			var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
-
-			// set registry entry
-			key.SetValue("WallpaperStyle", "1");
-			key.SetValue("TileWallpaper", "1");
+			using (var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true))
+			{
+				// set registry entry
+				key.SetValue("WallpaperStyle", "0");
+				key.SetValue("TileWallpaper", "1");
+			}
 
 			// system parameters values for changing the desktop background
 			const uint SPI_SETDESKWALLPAPER = 0x14;
@@ -397,7 +402,34 @@ We'll try again later.";
 			const uint SPIF_SENDWININICHANGE = 0x02;
 
 			// set wallpaper
-			SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fileName, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+			NativeMethods.SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fileName, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+		}
+
+		private static class NativeMethods
+		{
+			[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+			[return: MarshalAs(UnmanagedType.Bool)]
+			public static extern bool SystemParametersInfo(UInt32 uiAction, UInt32 uiParam, String pvParam, UInt32 fWinIni);
+		}
+
+		private class ComposerData
+		{
+			public Size Dimensions;
+			public Bitmap SourceBitmap;
+			public Bitmap DestinationBitmap;
+			public bool HasBackground;
+			public float BorderSpace;
+			public int Thickness;
+			public Color BackgroundColor;
+			public float BackgroundBlend;
+
+			public ComposerData(Properties.Settings settings)
+			{
+				this.BorderSpace = (float)settings.Border / 100f;
+				this.Thickness = (int)settings.Thickness;
+				this.BackgroundColor = settings.BackgroundColor;
+				this.BackgroundBlend = (float)settings.BackgroundBlend / 100f;
+			}
 		}
 	}
 }
