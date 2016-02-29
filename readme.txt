@@ -2,22 +2,10 @@
 Wallpaperr - automatic wallpaper changer
 
 Author:  Ian Good
-email:   igood@digipen.edu
-Version: 3.2.x
-Date:    September 26, 2010
+email:   Ian.M.Good@gmail.com
 
 
-I. System Requirements
-	OS: Windows XP/Vista/7
-	Disk Space: 3.24MB (exe) + 10MB (bmp)
-
-
-II. Installation
-	No installation necessary. Settings and bitmap files are stored in the
-	user's Application Data store.
-
-
-III. License
+- License
 	Wallpaperr is freeware and is provided as-is with no warranty.
 	You may use this software at your own risk. The author is not
 	responsible for any damage caused by this software.
@@ -28,7 +16,7 @@ III. License
 	By using the application you have accepted the terms of this EULA.
 
 
-IV. Use
+- Use
 	Upon starting the application, Wallpaperr runs in the system tool tray.
 	To quit the application, select Exit from the tray icon menu or
 		File->Exit from the menu strip. Wallpaperr closes to the tray by
@@ -77,75 +65,3 @@ IV. Use
 		the application to the tray.
 	The Apply button saves the current settings and composes a new
 		background using the new settings.
-		
-
-V. Notes
-	To run Wallpaperr on Startup, place a shortcut to the executable in the
-		Startup folder in your Windows Start Menu.
-	Wallpaperr does not transfer settings between versions. Upgrading to a
-		new version requires the user to manually copy their user.config
-		file to the new version's Application Data directory if they wish
-		to keep their old settings. There is no guarantee old settings
-		files are compatible but it is a safe assumption.
-
-
-VI. Version History
-	3.2.2
-	 * fixed a crash involving blur operations writing out of bounds
-	3.2.1
-	 * dragging an image onto the style preview will generate a new background
-	 * accepts file names as command line args for new backgrounds
-	3.2
-	 * added background color blend to Spiffy mode
-	 * added new folder broswer
-	3.1.0
-	 * attempting to run a second instance now shows first instance
-		even if closed to tray
-	 * added Options menu dropdown with Double-Click Tray Icon menu item
-	 * updated Collection sorting--alphabetical with folders first
-	 * added thumbnail view in context menu
-	 * rearranged UI to maximize Image Collection space
-	 * added more menu icons
-	3.0.7
-	 * tray icons show paused/busy status
-	 * fixed Pause bug (checked status not consistent with actual state)
-	3.0.6
-	 * fixed loading Collection from XML--also changed file layout
-	 * Collection files may be added to Image Collection just like images
-	 * added error handling for Collection files
-	 * Ctrl+A works in Image Collection
-	 * added error handling for corrupt images
-	3.0.5
-	 * added context menu to Image Collection items
-	 * changed tray icon menu to show "Pause"/"Unpause" with images instead
-		of a check mark
-	 * Help/F1 opens a browser with a link to the readme
-	 * added Open/Save Collection
-	 * pressing Esc closes the form
-	3.0.4
-	 * removed annoying Vista settings message
-	 * added periodic checking for single-/multi-display
-	 * fixed crash bug when trying to add file/folder that does not exist
-	 * changed tray icon double-click to show settings
-	3.0.3
-	 * added threaded blurring for Spiffy setting--major performance
-		increase on dev machine
-	 * added double-click functionality for folders in Image Collection
-	 * added notifier messages for empty folders
-	 * updated folder watchers--proper disposal
-	3.0.2
-	 * added threaded image composition--for multiple displays, each image
-		is composed on its own thread
-	 * updated internal lists to use generics (preferred method)
-	3.0.1
-	 * updated [read:fixed] multiple display composition
-	 * updated progress bar status updates
-	 * updated folder watcher reaction time
-	3.0.0
-	 * updated background composition to use Background Worker--form
-		remains responsize while working
-	 * added folder watchers
-	 * added show/hide on startup
-	 * updated multiple display composition
-	1.0.0 - 2.6.0
-	 * no records kept

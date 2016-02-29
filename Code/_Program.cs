@@ -51,7 +51,7 @@
 				for (var inner = e; inner != null; inner = inner.InnerException)
 				{
 					MessageBox.Show(
-						String.Format("{0}{1}{2}", inner.Message, Environment.NewLine, inner.StackTrace),
+						$"{inner.Message}{Environment.NewLine}{inner.StackTrace}",
 						"Wallpaperr Error",
 						MessageBoxButtons.OK,
 						MessageBoxIcon.Error);

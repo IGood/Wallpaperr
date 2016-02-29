@@ -324,42 +324,35 @@
 
 		private void doubleClick_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			notifyIcon.DoubleClick -= settings_Click;
-			notifyIcon.DoubleClick -= newRandomWallpaper_Click;
-			notifyIcon.DoubleClick -= pause_Click;
+			foreach (var handler in new EventHandler[] { settings_Click, newRandomWallpaper_Click, pause_Click })
+			{
+				notifyIcon.DoubleClick -= handler;
+			}
 
-			settingsToolStripMenuItem.Font = menuItemFontNormal_;
-			newRandomWallpaperToolStripMenuItem1.Font = menuItemFontNormal_;
-			pauseToolStripMenuItem.Font = menuItemFontNormal_;
+			foreach (var menuItem in new[] { settingsToolStripMenuItem, newRandomWallpaperToolStripMenuItem1, pauseToolStripMenuItem })
+			{
+				menuItem.Font = menuItemFontNormal_;
+			}
 
 			switch (doubleClicktoolStripComboBox.SelectedIndex)
 			{
-				#region Open Settings
-
+				// Open Settings
 				case 0:
 					notifyIcon.DoubleClick += settings_Click;
 					settingsToolStripMenuItem.Font = menuItemFontBold_;
 					break;
 
-				#endregion
-
-				#region New Random Wallpaper
-
+				// New Random Wallpaper
 				case 1:
 					notifyIcon.DoubleClick += newRandomWallpaper_Click;
 					newRandomWallpaperToolStripMenuItem1.Font = menuItemFontBold_;
 					break;
 
-				#endregion
-
-				#region Pause
-
+				// Pause
 				case 2:
 					notifyIcon.DoubleClick += pause_Click;
 					pauseToolStripMenuItem.Font = menuItemFontBold_;
 					break;
-
-				#endregion
 			}
 
 			// must check for null, because this method is called (indirectly)
@@ -381,7 +374,7 @@
 
 		private void help_Click(object sender, EventArgs e)
 		{
-			Help.ShowHelp(this, "http://www.tinyurl.com/wallpaperr");
+			Help.ShowHelp(this, "https://github.com/IGood/Wallpaperr");
 		}
 
 		private void aboutWallpaperr_Click(object sender, EventArgs e)
@@ -480,7 +473,7 @@
 				string fullName = item.ToolTipText;
 				if (Directory.Exists(fullName) || File.Exists(fullName))
 				{
-					Process.Start("explorer", String.Format("/select,\"{0}\"", fullName));
+					Process.Start("explorer", $"/select,\"{fullName}\"");
 				}
 			}
 		}

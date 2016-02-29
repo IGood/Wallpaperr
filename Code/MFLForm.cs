@@ -1,10 +1,10 @@
 ﻿namespace Wallpaperr
 {
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
 	using System.Windows.Forms;
-	using System.Collections.Generic;
 
 	public partial class MFLForm : Form
 	{
@@ -125,12 +125,12 @@
 
 			long size = Math.Max(fileInfo.Length, 1024) / 1024;
 
-			var fmt =
-@"Image Type: {0}
-Dimensions: {1} x {2}
-Size: {3} KB";
+			string caption =
+$@"Image Type: {ext}
+Dimensions: {dimX} x {dimY}
+Size: {size} KB";
 
-			this.toolTip.SetToolTip(this.listBox1, string.Format(fmt, ext, dimX, dimY, size));
+			this.toolTip.SetToolTip(this.listBox1, caption);
 		}
 
 		private void contextMenuItem_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -167,7 +167,7 @@ Size: {3} KB";
 			var fileInfo = this.listBox1.SelectedItem as FileInfo;
 			if (fileInfo != null && Helpers.Exists(fileInfo))
 			{
-				System.Diagnostics.Process.Start("explorer", string.Format("/select,\"{0}\"", fileInfo.FullName));
+				System.Diagnostics.Process.Start("explorer", $"/select,\"{fileInfo.FullName}\"");
 			}
 		}
 

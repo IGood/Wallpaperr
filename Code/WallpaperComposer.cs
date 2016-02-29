@@ -85,7 +85,7 @@
 			else
 			{
 				// calculate progress bar increment for each image
-				double step = 85.0 / (double)Screen.AllScreens.Length;	// 85% total
+				double step = 85.0 / (double)Screen.AllScreens.Length;  // 85% total
 
 				// array for holding completed images
 				Bitmap[] destImg = new Bitmap[Screen.AllScreens.Length];
@@ -172,7 +172,7 @@
 				using (Graphics g = Graphics.FromImage(finalImg))
 				{
 					// calculate progress bar increment for each composed piece
-					step = 5.0 / (double)Screen.AllScreens.Length;	// 5% total
+					step = 5.0 / (double)Screen.AllScreens.Length;  // 5% total
 
 					int index = 0;
 					foreach (Bitmap bmp in destImg)
@@ -242,7 +242,7 @@
 					}
 					else
 					{
-						using (var encoderParams = new EncoderParameters())	// has 1 slot by default
+						using (var encoderParams = new EncoderParameters()) // has 1 slot by default
 						{
 							encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
 							finalImg.Save(outFileName, imgCodecInfo, encoderParams);
@@ -339,6 +339,11 @@ We'll try again later.";
 				: (float)dimensions.Height / (float)srcImg.Height;
 			scale *= 1f - composerData.BorderSpace;
 
+			if (composerData.MaxScale.HasValue)
+			{
+				scale = Math.Min(scale, composerData.MaxScale.Value);
+			}
+
 			// calculate source rectangle for input bitmap
 			int w = (int)((float)srcImg.Width * scale);
 			int h = (int)((float)srcImg.Height * scale);
@@ -419,6 +424,7 @@ We'll try again later.";
 			public Bitmap DestinationBitmap;
 			public bool HasBackground;
 			public float BorderSpace;
+			public float? MaxScale;
 			public int Thickness;
 			public Color BackgroundColor;
 			public float BackgroundBlend;
@@ -426,6 +432,11 @@ We'll try again later.";
 			public ComposerData(Properties.Settings settings)
 			{
 				this.BorderSpace = (float)settings.Border / 100f;
+				/*
+				this.MaxScale = settings.UseMaxScale ? (float)settings.MaxScale / 100f : default(float?);
+				/*/
+				this.MaxScale = 1f;
+				//*/
 				this.Thickness = (int)settings.Thickness;
 				this.BackgroundColor = settings.BackgroundColor;
 				this.BackgroundBlend = (float)settings.BackgroundBlend / 100f;
