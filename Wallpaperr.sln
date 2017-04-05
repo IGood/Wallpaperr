@@ -1,7 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr", "Wallpaperr.csproj", "{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr2", "Wallpaperr2\Wallpaperr2.csproj", "{4ADBBC51-1F49-455B-9484-D28F38740316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goop", "..\Goop\Goop\Goop.csproj", "{85C17AD3-356F-412F-8AF2-1320F0A990FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +19,14 @@ Global
 		{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ADBBC51-1F49-455B-9484-D28F38740316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ADBBC51-1F49-455B-9484-D28F38740316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ADBBC51-1F49-455B-9484-D28F38740316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADBBC51-1F49-455B-9484-D28F38740316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85C17AD3-356F-412F-8AF2-1320F0A990FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85C17AD3-356F-412F-8AF2-1320F0A990FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85C17AD3-356F-412F-8AF2-1320F0A990FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85C17AD3-356F-412F-8AF2-1320F0A990FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

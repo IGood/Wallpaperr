@@ -1,0 +1,226 @@
+﻿<Window x:Class="Wallpaperr2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"        
+        xmlns:gc="clr-namespace:Goop.Wpf.Controls;assembly=Goop"
+        xmlns:local="clr-namespace:Wallpaperr2"
+        mc:Ignorable="d"
+        x:Name="root"
+        Icon="monitor.ico"
+        Title="Wallpaperr"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        Closing="root_OnClosing">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.AddFiles}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.AddFolder}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
+        <CommandBinding Command="{x:Static ApplicationCommands.Close}" Executed="Close_Executed"/>
+        <CommandBinding Command="{x:Static local:MainWindow.Quit}" Executed="Quit_Executed"/>
+        <CommandBinding Command="{x:Static ApplicationCommands.Help}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.About}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.TogglePaused}"/>
+        <CommandBinding Command="{x:Static ApplicationCommands.Properties}" Executed="Properties_Executed"/>
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <ContextMenu x:Key="TrayIconCtxMenu">
+            <ContextMenu.Resources>
+                <Style TargetType="{x:Type MenuItem}">
+                    <!--  <Setter Property="CommandTarget" Value="{Binding ElementName=root}"/> -->
+                </Style>
+            </ContextMenu.Resources>
+            <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}" CommandTarget="{x:Reference root}"/>
+            <MenuItem Command="{x:Static local:MainWindow.TogglePaused}" CommandTarget="{x:Reference root}"/>
+            <MenuItem Command="{x:Static ApplicationCommands.Properties}" CommandTarget="{x:Reference root}"/>
+            <MenuItem Command="{x:Static local:MainWindow.About}" CommandTarget="{x:Reference root}"/>
+            <MenuItem Command="{x:Static local:MainWindow.Quit}" CommandTarget="{x:Reference root}"/>
+        </ContextMenu>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Command="{x:Static local:MainWindow.AddFiles}"/>
+                <MenuItem Command="{x:Static local:MainWindow.AddFolder}"/>
+                <Separator/>
+                <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
+                <MenuItem Command="{x:Static ApplicationCommands.Close}" InputGestureText="Alt+F4"/>
+                <MenuItem Command="{x:Static local:MainWindow.Quit}"/>
+            </MenuItem>
+            <MenuItem Header="_Collection">
+
+            </MenuItem>
+            <MenuItem Header="_Options">
+
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Command="{x:Static ApplicationCommands.Help}"/>
+                <MenuItem Command="{x:Static local:MainWindow.About}"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <GroupBox Header="Background Style">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <RadioButton IsChecked="{Binding ElementName=root, Path=BackgroundStyle[Spiffy]}" Content="Spiffy"/>
+                                <RadioButton IsChecked="{Binding ElementName=root, Path=BackgroundStyle[ZoomOut]}" Content="Zoom Out"/>
+                                <RadioButton IsChecked="{Binding ElementName=root, Path=BackgroundStyle[ZoomIn]}" Content="Zoom In"/>
+                            </StackPanel>
+                            <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" Content="{Binding ElementName=root, Path=BackgroundStyle.Value}">
+                                <ContentPresenter.ContentTemplateSelector>
+                                    <gc:DataTemplateSelectorDictionary>
+                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.ZoomOut}">
+                                            <Image Source="Images/zoom_out.png"/>
+                                        </DataTemplate>
+                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.ZoomIn}">
+                                            <Image Source="Images/zoom_in.png"/>
+                                        </DataTemplate>
+                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.Spiffy}">
+                                            <Image Source="Images/spiffy.png"/>
+                                        </DataTemplate>
+                                    </gc:DataTemplateSelectorDictionary>
+                                </ContentPresenter.ContentTemplateSelector>
+                            </ContentPresenter>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Black border "/>
+                            <TextBox Width="70"/>
+                            <TextBlock Text="px"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Boarder space "/>
+                            <TextBox Width="70"/>
+                            <TextBlock Text="%"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Background color "/>
+                            <Button Width="15" Height="15"/>
+                            <TextBox Width="70"/>
+                            <TextBlock Text="%"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Displays">
+                    <StackPanel>
+                        <UniformGrid Columns="2">
+                            <RadioButton HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                                         IsChecked="{local:AppSettingBinding Path=SingleMonitor}">
+                                <StackPanel>
+                                    <Image Source="Images/computer_48x48.png"/>
+                                    <TextBlock Text="Single"/>
+                                </StackPanel>
+                            </RadioButton>
+                            <RadioButton HorizontalAlignment="Center" VerticalContentAlignment="Center">
+                                <StackPanel>
+                                    <Image Source="Images/computers_48x48.png"/>
+                                    <TextBlock Text="Multiple"/>
+                                </StackPanel>
+                            </RadioButton>
+                        </UniformGrid>
+                        <CheckBox>
+                            <TextBlock>
+                                Smart Random<LineBreak/>
+                                (for multiple displays, use<LineBreak/>
+                                files from the same directory)
+                            </TextBlock>
+                        </CheckBox>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+            <DockPanel Grid.Column="1">
+                <GroupBox DockPanel.Dock="Top">
+                    <GroupBox.Header>
+                        <CheckBox IsChecked="{local:AppSettingBinding Path=IsActive}" Content="Automatic Changes"/>
+                    </GroupBox.Header>
+                    <StackPanel Orientation="Horizontal" IsEnabled="{local:AppSettingBinding Path=IsActive}">
+                        <TextBlock Text="Change every "/>
+                        <TextBox Width="70"/>
+                        <gc:EnumComboBox Width="80" SelectedValue="{local:AppSettingBinding Path=IntervalUnit}"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Image Collection">
+                    <DockPanel>
+                        <CheckBox DockPanel.Dock="Bottom" Content="Include Subdirectories"/>
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Margin" Value="3"/>
+                                    <Setter Property="FontFamily" Value="Segoe UI Symbol"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button Command="{x:Static local:MainWindow.AddFiles}"
+                                    Content="&#xE1A5; Add Files..."/>
+                            <Button Command="{x:Static local:MainWindow.AddFolder}"
+                                    Content="&#xE197; Add Folder..."/>
+                            <Button Command="{x:Static ApplicationCommands.Delete}"
+                                    CommandTarget="{Binding ElementName=listView}"
+                                    Content="&#xE106; Remove"/>
+                        </StackPanel>
+                        <ListView Name="listView" Width="300">
+                            <ListView.CommandBindings>
+                                <CommandBinding Command="{x:Static ApplicationCommands.Delete}" CanExecute="DeleteItem_CanExecute" Executed="DeleteItem_Executed"/>
+                            </ListView.CommandBindings>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="ContextMenu">
+                                        <Setter.Value>
+                                            <ContextMenu>
+                                                <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
+                                                <Separator/>
+                                                <MenuItem Command="{x:Static ApplicationCommands.Open}"/>
+                                                <MenuItem Command="{x:Static local:MainWindow.ShowInExplorer}"/>
+                                                <Separator/>
+                                                <MenuItem Command="{x:Static ApplicationCommands.Delete}"/>
+                                            </ContextMenu>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+                    </DockPanel>
+                </GroupBox>
+            </DockPanel>
+        </Grid>
+
+        <DockPanel Grid.Row="2" Margin="3">
+            <DockPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="DockPanel.Dock" Value="Right"/>
+                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="Width" Value="75"/>
+                </Style>
+            </DockPanel.Resources>
+            <Button Content="_Apply" Click="Apply_Click"/>
+            <Button Content="_Cancel" IsCancel="True" Command="{x:Static ApplicationCommands.Close}"/>
+            <Button Content="_OK" IsDefault="True" Click="Ok_Click"/>
+            <ProgressBar Margin="3"/>
+        </DockPanel>
+
+        <tb:TaskbarIcon IconSource="monitor.ico"
+                        DoubleClickCommand="{Binding ElementName=root, Path=TrayIconCommand}"
+                        ContextMenu="{StaticResource TrayIconCtxMenu}">
+        </tb:TaskbarIcon>
+
+    </Grid>
+</Window>
