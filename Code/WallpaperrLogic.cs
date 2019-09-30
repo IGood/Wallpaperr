@@ -258,7 +258,7 @@
 					continue;
 				}
 
-				ListViewItem item = new ListViewItem(dirInfo.Name, 0)
+				var item = new ListViewItem(dirInfo.Name, 0)
 				{
 					Name = dirInfo.Name,
 					Tag = new WatcherSet(dirInfo.FullName, AppSettings.IncludeSubdirectory),
@@ -323,7 +323,7 @@
 					continue;
 				}
 
-				ListViewItem item = new ListViewItem(fileInfo.Name, imageIndex)
+				var item = new ListViewItem(fileInfo.Name, imageIndex)
 				{
 					Name = fileInfo.Name,
 					ToolTipText = fileInfo.FullName,
@@ -350,7 +350,7 @@
 
 			foreach (string thing in items)
 			{
-				FileInfo info = new FileInfo(thing);
+				var info = new FileInfo(thing);
 				if (info.Attributes == FileAttributes.Directory)
 				{
 					folders[folderCount++] = thing;
@@ -390,21 +390,18 @@
 
 		public void AddItemsFromCollectionFile(string fileName)
 		{
-			using (var fs = File.OpenRead(fileName))
+			using var fs = File.OpenRead(fileName);
+			var s = new System.Xml.Serialization.XmlSerializer(typeof(List<string>));
+			try
 			{
-				var s = new System.Xml.Serialization.XmlSerializer(typeof(List<String>));
-				try
+				if (s.Deserialize(fs) is List<string> list)
 				{
-					var list = s.Deserialize(fs) as List<String>;
-					if (list != null)
-					{
-						AddItemsFromArray(list.ToArray());
-					}
+					AddItemsFromArray(list.ToArray());
 				}
-				catch (InvalidOperationException)
-				{
-					Helpers.ShowError("The Collection file is invalid.");
-				}
+			}
+			catch (InvalidOperationException)
+			{
+				Helpers.ShowError("The Collection file is invalid.");
 			}
 		}
 
@@ -462,7 +459,7 @@
 			// Smart random?
 			if (AppSettings.SmartRandom)
 			{
-				FileInfo seed = new FileInfo(fileName);
+				var seed = new FileInfo(fileName);
 
 				// find files in master list with same directory
 				var siblings = new List<FileInfo>();

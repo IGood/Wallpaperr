@@ -58,7 +58,7 @@
 
 			public static int RegisterWindowMessage(string format, params object[] args)
 			{
-				string message = String.Format(format, args);
+				string message = string.Format(format, args);
 				return RegisterWindowMessage(message);
 			}
 
@@ -84,8 +84,7 @@
 		public static bool Start()
 		{
 			string mutexName = @"Local\" + GetGUID();
-			bool onlyInstance = false;
-			Mutex = new System.Threading.Mutex(true, mutexName, out onlyInstance);
+			Mutex = new System.Threading.Mutex(true, mutexName, out bool onlyInstance);
 			return onlyInstance;
 		}
 
@@ -100,7 +99,7 @@
 
 		public static void SendStringMessage(IntPtr targetHWnd, string message)
 		{
-			WinAPI.CopyDataStruct copyData = new WinAPI.CopyDataStruct();
+			var copyData = new WinAPI.CopyDataStruct();
 			try
 			{
 				copyData.cbData = (message.Length + 1) * 2;
@@ -124,7 +123,7 @@
 		{
 			try
 			{
-				WinAPI.CopyDataStruct copyData = (WinAPI.CopyDataStruct)Marshal.PtrToStructure(msg.LParam, typeof(WinAPI.CopyDataStruct));
+				var copyData = (WinAPI.CopyDataStruct)Marshal.PtrToStructure(msg.LParam, typeof(WinAPI.CopyDataStruct));
 				return Marshal.PtrToStringUni(copyData.lpData);
 			}
 			catch
@@ -141,7 +140,7 @@
 		private static string GetGUID()
 		{
 			object[] attributes = System.Reflection.Assembly.GetEntryAssembly().GetCustomAttributes(typeof(GuidAttribute), false);
-			return (attributes.Length == 0) ? String.Empty : ((GuidAttribute)attributes[0]).Value;
+			return (attributes.Length != 0) ? ((GuidAttribute)attributes[0]).Value : string.Empty;
 		}
 
 		#endregion

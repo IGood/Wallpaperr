@@ -29,7 +29,7 @@ namespace dnGREP
 			try
 			{
 				// Set initial directory (used when dialog.FileName is set from outside)
-				if (!String.IsNullOrEmpty(dialog.FileName))
+				if (!string.IsNullOrEmpty(dialog.FileName))
 				{
 					dialog.InitialDirectory = Directory.Exists(dialog.FileName)
 						? dialog.FileName
@@ -73,7 +73,7 @@ namespace dnGREP
 			}
 			set
 			{
-				if (!String.IsNullOrEmpty(value))
+				if (!string.IsNullOrEmpty(value))
 				{
 					dialog.FileName = value;
 				}
@@ -89,7 +89,7 @@ namespace dnGREP
 			{
 				if (dialog.FileNames != null && dialog.FileNames.Length > 1)
 				{
-					StringBuilder sb = new StringBuilder();
+					var sb = new StringBuilder();
 					foreach (string fileName in dialog.FileNames)
 					{
 						try

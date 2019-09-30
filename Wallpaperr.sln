@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr", "Wallpaperr.csproj", "{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr2", "Wallpaperr2\Wallpaperr2.csproj", "{4ADBBC51-1F49-455B-9484-D28F38740316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goop", "..\Goop\Goop\Goop.csproj", "{85C17AD3-356F-412F-8AF2-1320F0A990FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Goop", "..\Goop\Goop\Goop.csproj", "{85C17AD3-356F-412F-8AF2-1320F0A990FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB20AAA4-6435-4DBA-972F-770C8A0AAB92}
 	EndGlobalSection
 EndGlobal

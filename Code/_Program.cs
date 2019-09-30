@@ -1,6 +1,9 @@
-﻿namespace Wallpaperr
+﻿[assembly: System.Runtime.InteropServices.Guid("3a5e2d31-3b81-4353-949c-427d9698a88a")]
+
+namespace Wallpaperr
 {
 	using System;
+	using System.Linq;
 	using System.Windows.Forms;
 
 	static class Program
@@ -11,20 +14,17 @@
 		[STAThread]
 		static void Main(string[] args)
 		{
-			string file = null;
-			if (args != null && args.Length > 0)
-			{
-				file = args[0];
-			}
+			string file = args?.FirstOrDefault();
 
 #if DEBUG
+			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm(file));
 #else
 			if (!SingleInstance.Start())
 			{
-				if (String.IsNullOrEmpty(file))
+				if (string.IsNullOrEmpty(file))
 				{
 					SingleInstance.ShowFirstInstance();
 				}
@@ -39,6 +39,7 @@
 				return;
 			}
 
+			Application.SetHighDpiMode(HighDpiMode.SystemAware);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 

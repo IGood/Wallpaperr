@@ -15,7 +15,7 @@
 
 		private static Bitmap ValidateBitmap(string fileName)
 		{
-			Bitmap bmp = null;
+			Bitmap bmp;
 			try
 			{
 				bmp = new Bitmap(fileName);
@@ -23,14 +23,13 @@
 			catch (Exception)
 			{
 				bmp = new Bitmap(400, 100);
-				using (Graphics g = Graphics.FromImage(bmp))
-				{
-					g.DrawString(
-						"Corrupt Image File!" + Environment.NewLine + fileName,
-						SystemFonts.DefaultFont,
-						Brushes.Red,
-						new RectangleF(5, 5, 390, 90));
-				}
+
+				using var g = Graphics.FromImage(bmp);
+				g.DrawString(
+					"Corrupt Image File!" + Environment.NewLine + fileName,
+					SystemFonts.DefaultFont,
+					Brushes.Red,
+					new RectangleF(5, 5, 390, 90));
 			}
 
 			return bmp;
@@ -50,35 +49,34 @@
 			if (settings.SingleMonitor)
 			{
 				// open source image file
-				using (Bitmap srcImg = ValidateBitmap(fileName[0]))
+				using Bitmap srcImg = ValidateBitmap(fileName[0]);
+
+				// create composer data to be passed along
+				var compData = new ComposerData(settings);
+				compData.Dimensions = Screen.PrimaryScreen.Bounds.Size;
+				compData.SourceBitmap = srcImg;
+				compData.DestinationBitmap = new Bitmap(compData.Dimensions.Width, compData.Dimensions.Height);
+
+				// compose this image based on our style
+				switch ((BackgroundStyle)settings.Style)
 				{
-					// create composer data to be passed along
-					ComposerData compData = new ComposerData(settings);
-					compData.Dimensions = Screen.PrimaryScreen.Bounds.Size;
-					compData.SourceBitmap = srcImg;
-					compData.DestinationBitmap = new Bitmap(compData.Dimensions.Width, compData.Dimensions.Height);
-
-					// compose this image based on our style
-					switch ((BackgroundStyle)settings.Style)
-					{
-						case BackgroundStyle.Spiffy:
-							MakeBackground(compData);
-							worker.ReportProgress((int)(progress = 30));
-							compData.HasBackground = true;
-							MakeForeground(compData);
-							break;
-						case BackgroundStyle.ZoomOut:
-							compData.HasBackground = false;
-							MakeForeground(compData);
-							break;
-						case BackgroundStyle.ZoomIn:
-							MakeBackground(compData);
-							break;
-					}
-
-					// set final image
-					finalImg = compData.DestinationBitmap;
+					case BackgroundStyle.Spiffy:
+						MakeBackground(compData);
+						worker.ReportProgress((int)(progress = 30));
+						compData.HasBackground = true;
+						MakeForeground(compData);
+						break;
+					case BackgroundStyle.ZoomOut:
+						compData.HasBackground = false;
+						MakeForeground(compData);
+						break;
+					case BackgroundStyle.ZoomIn:
+						MakeBackground(compData);
+						break;
 				}
+
+				// set final image
+				finalImg = compData.DestinationBitmap;
 			}
 			#endregion
 			#region Multiple Displays
@@ -88,10 +86,10 @@
 				double step = 85.0 / (double)Screen.AllScreens.Length;  // 85% total
 
 				// array for holding completed images
-				Bitmap[] destImg = new Bitmap[Screen.AllScreens.Length];
+				var destImg = new Bitmap[Screen.AllScreens.Length];
 
 				// do multi-threading
-				using (AutoResetEvent are = new AutoResetEvent(false))
+				using (var are = new AutoResetEvent(false))
 				{
 					// one thread per screen
 					int workerThreads = Screen.AllScreens.Length;
@@ -112,7 +110,7 @@
 								destImg[index] = new Bitmap(dimensions.Width, dimensions.Height);
 
 								// create composer data to be passed along
-								ComposerData compData = new ComposerData(settings);
+								var compData = new ComposerData(settings);
 								compData.Dimensions = dimensions;
 								compData.SourceBitmap = srcImg;
 								compData.DestinationBitmap = destImg[index];
@@ -169,7 +167,7 @@
 				#region Compose final image
 				// create destination bitmap for final image
 				finalImg = new Bitmap(union.Width, union.Height);
-				using (Graphics g = Graphics.FromImage(finalImg))
+				using (var g = Graphics.FromImage(finalImg))
 				{
 					// calculate progress bar increment for each composed piece
 					step = 5.0 / (double)Screen.AllScreens.Length;  // 5% total
@@ -227,7 +225,8 @@
 			worker.ReportProgress((int)(progress = 95));
 
 			#region Save & Set
-			string outFileName = string.Format(@"{0}\created.{1}", Helpers.AppDataPath, WindowsVersionSupportsJpg ? "jpg" : "bmp");
+			string fileExt = (WindowsVersionSupportsJpg ? "jpg" : "bmp");
+			string outFileName = $@"{Helpers.AppDataPath}\created.{fileExt}";
 
 			try
 			{
@@ -242,11 +241,10 @@
 					}
 					else
 					{
-						using (var encoderParams = new EncoderParameters()) // has 1 slot by default
-						{
-							encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
-							finalImg.Save(outFileName, imgCodecInfo, encoderParams);
-						}
+						// has 1 slot by default
+						using var encoderParams = new EncoderParameters();
+						encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
+						finalImg.Save(outFileName, imgCodecInfo, encoderParams);
 					}
 				}
 				else
@@ -263,15 +261,14 @@
 			}
 			catch (Exception ex)
 			{
-				const string Fmt =
-@"An exception was thrown while attempting to save
+				string message =
+$@"An exception was thrown while attempting to save
 and set your new wallpaper.
-Exception thrown: {0}
+Exception thrown: {ex.Message}
 File(s):
-{1}
+{string.Join(Environment.NewLine, fileName)}
 We'll try again later.";
-
-				Helpers.ShowError(String.Format(Fmt, ex.Message, string.Join(Environment.NewLine, fileName)));
+				Helpers.ShowError(message);
 			}
 			#endregion
 
@@ -303,25 +300,22 @@ We'll try again later.";
 			Size sz = new Size(w, h);
 			Rectangle src = new Rectangle(p, sz);
 
-			using (Graphics g = Graphics.FromImage(destImage))
-			{
-				if (composerData.BackgroundBlend < 1f)
-				{
-					// draw source image onto destination image according to
-					// src & dest rectangles
-					g.DrawImage(srcImg, dest, src, GraphicsUnit.Pixel);
-				}
+			using var g = Graphics.FromImage(destImage);
 
-				if (composerData.BackgroundBlend > 0f)
-				{
-					Color blend = Color.FromArgb(
-						(int)(composerData.BackgroundBlend * 255f),
-						composerData.BackgroundColor);
-					using (Brush b = new SolidBrush(blend))
-					{
-						g.FillRectangle(b, dest);
-					}
-				}
+			if (composerData.BackgroundBlend < 1f)
+			{
+				// draw source image onto destination image according to
+				// src & dest rectangles
+				g.DrawImage(srcImg, dest, src, GraphicsUnit.Pixel);
+			}
+
+			if (composerData.BackgroundBlend > 0f)
+			{
+				Color blend = Color.FromArgb(
+					(int)(composerData.BackgroundBlend * 255f),
+					composerData.BackgroundColor);
+				using Brush b = new SolidBrush(blend);
+				g.FillRectangle(b, dest);
 			}
 		}
 
@@ -356,7 +350,7 @@ We'll try again later.";
 			Rectangle edge = dest;
 			edge.Inflate(composerData.Thickness, composerData.Thickness);
 
-			using (Graphics g = Graphics.FromImage(destImg))
+			using (var g = Graphics.FromImage(destImg))
 			{
 				if (composerData.HasBackground)
 				{
@@ -379,11 +373,13 @@ We'll try again later.";
 			if (composerData.HasBackground && composerData.BackgroundBlend < 1f)
 			{
 				// calculate rectangles for blur effect
-				Rectangle[] rects = new Rectangle[4];
-				rects[0] = new Rectangle(0, 0, dimensions.Width, edge.Top);
-				rects[1] = new Rectangle(0, edge.Top, edge.Left, edge.Height + 1);
-				rects[2] = new Rectangle(edge.Right + 1, edge.Top, edge.Left, edge.Height + 1);
-				rects[3] = new Rectangle(0, edge.Bottom + 1, dimensions.Width, edge.Top);
+				Rectangle[] rects =
+				{
+					new Rectangle(0, 0, dimensions.Width, edge.Top),
+					new Rectangle(0, edge.Top, edge.Left, edge.Height + 1),
+					new Rectangle(edge.Right + 1, edge.Top, edge.Left, edge.Height + 1),
+					new Rectangle(0, edge.Bottom + 1, dimensions.Width, edge.Top),
+				};
 
 				// do multi-threading for blur process
 				int radius = 4;
@@ -414,7 +410,7 @@ We'll try again later.";
 		{
 			[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
 			[return: MarshalAs(UnmanagedType.Bool)]
-			public static extern bool SystemParametersInfo(UInt32 uiAction, UInt32 uiParam, String pvParam, UInt32 fWinIni);
+			public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, string pvParam, uint fWinIni);
 		}
 
 		private class ComposerData

@@ -5,6 +5,7 @@
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.IO;
+	using System.Linq;
 	using System.Windows.Forms;
 	using ThumbDictionary = System.Collections.Generic.Dictionary<System.Windows.Forms.ListViewItem, System.Drawing.Image>;
 
@@ -25,11 +26,11 @@
 				if (a.ImageIndex == 0)
 				{
 					// both folders? sort by name, otherwise folders first
-					return (b.ImageIndex == 0) ? String.Compare(a.Text, b.Text) : -1;
+					return (b.ImageIndex == 0) ? string.Compare(a.Text, b.Text) : -1;
 				}
 
 				// folders first, otherwise sort by name
-				return (b.ImageIndex == 0) ? 1 : String.Compare(a.Text, b.Text);
+				return (b.ImageIndex == 0) ? 1 : string.Compare(a.Text, b.Text);
 			}
 
 			#endregion
@@ -177,7 +178,7 @@
 			else if (m.Msg == SingleInstance.WinAPI.WM_COPYDATA)
 			{
 				string file = SingleInstance.RecieveStringMessage(m);
-				if (!String.IsNullOrEmpty(file))
+				if (!string.IsNullOrEmpty(file))
 				{
 					StartWork(file);
 				}
@@ -192,7 +193,7 @@
 		{
 			this.logic = new WallpaperrLogic(this);
 
-			if (!String.IsNullOrEmpty(this.initialFile))
+			if (!string.IsNullOrEmpty(this.initialFile))
 			{
 				StartWork(this.initialFile);
 			}
@@ -238,8 +239,9 @@
 			// dispose thumbnail images
 			foreach (var img in thumbDict_.Values)
 			{
-				using (img) { }
+				img.Dispose();
 			}
+
 			thumbDict_.Clear();
 		}
 
@@ -261,13 +263,11 @@
 				this.logic.AddFolders( folders );
 			}
 			/*/
-			using (var ffd = new dnGREP.FileFolderDialog())
+			using var ffd = new dnGREP.FileFolderDialog();
+			if (ffd.ShowDialog() == DialogResult.OK)
 			{
-				if (ffd.ShowDialog() == DialogResult.OK)
-				{
-					string[] folders = new string[] { ffd.SelectedPath };
-					this.logic.AddFolders(folders);
-				}
+				string[] folders = new[] { ffd.SelectedPath };
+				this.logic.AddFolders(folders);
 			}
 			//*/
 		}
@@ -500,12 +500,12 @@
 		private void ok_Click(object sender, EventArgs e)
 		{
 			this.logic.SaveSettings();
-			base.Hide();
+			this.Hide();
 		}
 
 		private void cancel_Click(object sender, EventArgs e)
 		{
-			Hide();
+			this.Hide();
 		}
 
 		private void apply_Click(object sender, EventArgs e)
@@ -558,10 +558,9 @@
 
 		private void pictureBoxStyle_DragDrop(object sender, DragEventArgs e)
 		{
-			string[] dropped = e.Data.GetData(DataFormats.FileDrop) as string[];
-			if (dropped != null && dropped.Length > 0)
+			string filePath = (e.Data.GetData(DataFormats.FileDrop) as string[])?.FirstOrDefault();
+			if (filePath != null)
 			{
-				string filePath = dropped[0];
 				StartWork(filePath);
 			}
 		}
@@ -607,21 +606,18 @@
 			if (this.listView.SelectedItems.Count == 1)
 			{
 				ListViewItem item = this.listView.FocusedItem;
-				FileInfo fileInfo = new FileInfo(item.ToolTipText);
+				var fileInfo = new FileInfo(item.ToolTipText);
 				if (fileInfo.Exists)
 				{
-					System.Drawing.Image img = null;
-					if (!thumbDict_.TryGetValue(item, out img))
+					if (!thumbDict_.TryGetValue(item, out var img))
 					{
-						using (var temp = System.Drawing.Image.FromFile(fileInfo.FullName))
-						{
-							const float maxDims = 150;
-							float scale = Math.Min(maxDims / temp.Width, maxDims / temp.Height);
-							float thumbW = temp.Width * scale;
-							float thumbH = temp.Height * scale;
-							img = new System.Drawing.Bitmap(temp, (int)thumbW, (int)thumbH);
-							thumbDict_.Add(item, img);
-						}
+						using var temp = System.Drawing.Image.FromFile(fileInfo.FullName);
+						const float MaxDims = 150;
+						float scale = Math.Min(MaxDims / temp.Width, MaxDims / temp.Height);
+						float thumbW = temp.Width * scale;
+						float thumbH = temp.Height * scale;
+						img = new System.Drawing.Bitmap(temp, (int)thumbW, (int)thumbH);
+						thumbDict_.Add(item, img);
 					}
 
 					contextMenuItem.Items[0].ImageScaling = ToolStripItemImageScaling.None;
@@ -772,12 +768,10 @@
 			}
 
 			// save list to file
-			using (FileStream fs = File.Open(saveFileDialogXml.FileName, FileMode.Create))
-			{
-				var serializer = new System.Xml.Serialization.XmlSerializer(items.GetType());
-				serializer.Serialize(fs, items);
-				fs.Flush();
-			}
+			using FileStream fs = File.Open(this.saveFileDialogXml.FileName, FileMode.Create);
+			var serializer = new System.Xml.Serialization.XmlSerializer(items.GetType());
+			serializer.Serialize(fs, items);
+			fs.Flush();
 		}
 
 		#endregion
@@ -810,7 +804,7 @@ Would you like to add some files now?";
 			//*/
 
 			// selected a file?
-			FileInfo fileInfo = new FileInfo(item.ToolTipText);
+			var fileInfo = new FileInfo(item.ToolTipText);
 			if (fileInfo.Exists)
 			{
 				StartWork(fileInfo.FullName);
@@ -818,7 +812,7 @@ Would you like to add some files now?";
 			}
 
 			// selected a folder?
-			DirectoryInfo dirInfo = new DirectoryInfo(item.ToolTipText);
+			var dirInfo = new DirectoryInfo(item.ToolTipText);
 			if (dirInfo.Exists)
 			{
 				// get contained files
@@ -846,7 +840,7 @@ in the selected folder.";
 			}
 
 			// file/folder no longer exists, clean up & remove it
-			using (item.Tag as WatcherSet) { }
+			(item.Tag as WatcherSet)?.Dispose();
 			item.Remove();
 		}
 	}

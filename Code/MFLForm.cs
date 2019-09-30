@@ -102,7 +102,7 @@
 			this.toolTip.Active = false;
 			this.toolTip.Active = true;
 
-			FileInfo fileInfo = (FileInfo)this.listBox1.Items[index];
+			var fileInfo = (FileInfo)this.listBox1.Items[index];
 			if (!Helpers.Exists(fileInfo))
 			{
 				return;
@@ -116,8 +116,8 @@
 			{
 				dimX = img.Width;
 				dimY = img.Height;
-				const float maxDims = 200;
-				float scale = Math.Min(maxDims / dimX, maxDims / dimY);
+				const float MaxDims = 200;
+				float scale = Math.Min(MaxDims / dimX, MaxDims / dimY);
 				float thumbW = dimX * scale;
 				float thumbH = dimY * scale;
 				this.thumbs[index] = new System.Drawing.Bitmap(img, (int)thumbW, (int)thumbH);
@@ -155,8 +155,7 @@ Size: {size} KB";
 
 		private void openItem_Click(object sender, EventArgs e)
 		{
-			var fileInfo = this.listBox1.SelectedItem as FileInfo;
-			if (fileInfo != null && Helpers.Exists(fileInfo))
+			if (this.listBox1.SelectedItem is FileInfo fileInfo && Helpers.Exists(fileInfo))
 			{
 				System.Diagnostics.Process.Start(fileInfo.FullName);
 			}
@@ -164,8 +163,7 @@ Size: {size} KB";
 
 		private void openContainingFolder_Click(object sender, EventArgs e)
 		{
-			var fileInfo = this.listBox1.SelectedItem as FileInfo;
-			if (fileInfo != null && Helpers.Exists(fileInfo))
+			if (this.listBox1.SelectedItem is FileInfo fileInfo && Helpers.Exists(fileInfo))
 			{
 				System.Diagnostics.Process.Start("explorer", $"/select,\"{fileInfo.FullName}\"");
 			}

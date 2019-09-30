@@ -5,7 +5,7 @@
 	using System.Linq;
 	using System.Timers;
 
-	class WatcherSet : IDisposable
+	sealed class WatcherSet : IDisposable
 	{
 		#region Static Members
 
@@ -78,7 +78,7 @@
 
 		#region IDisposable Methods
 
-		void IDisposable.Dispose()
+		public void Dispose()
 		{
 			foreach (var watcher in this.watchers)
 			{

@@ -29,7 +29,7 @@
 				if (attributes.Length > 0)
 				{
 					var titleAttribute = (AssemblyTitleAttribute)attributes[0];
-					if (String.IsNullOrEmpty(titleAttribute.Title) == false)
+					if (string.IsNullOrEmpty(titleAttribute.Title) == false)
 					{
 						return titleAttribute.Title;
 					}
@@ -49,7 +49,7 @@
 			get
 			{
 				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-				return (attributes.Length == 0) ? String.Empty : ((AssemblyDescriptionAttribute)attributes[0]).Description;
+				return (attributes.Length == 0) ? string.Empty : ((AssemblyDescriptionAttribute)attributes[0]).Description;
 			}
 		}
 
@@ -58,7 +58,7 @@
 			get
 			{
 				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-				return (attributes.Length == 0) ? String.Empty : ((AssemblyProductAttribute)attributes[0]).Product;
+				return (attributes.Length == 0) ? string.Empty : ((AssemblyProductAttribute)attributes[0]).Product;
 			}
 		}
 
@@ -67,7 +67,7 @@
 			get
 			{
 				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-				return (attributes.Length == 0) ? String.Empty : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+				return (attributes.Length == 0) ? string.Empty : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
 			}
 		}
 
@@ -76,7 +76,7 @@
 			get
 			{
 				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-				return (attributes.Length == 0) ? String.Empty : ((AssemblyCompanyAttribute)attributes[0]).Company;
+				return (attributes.Length == 0) ? string.Empty : ((AssemblyCompanyAttribute)attributes[0]).Company;
 			}
 		}
 
