@@ -460,7 +460,11 @@
 				string fullName = item.ToolTipText;
 				if (Directory.Exists(fullName) || File.Exists(fullName))
 				{
-					Process.Start(fullName);
+					Process.Start(new ProcessStartInfo
+					{
+						FileName = fullName,
+						UseShellExecute = true,
+					});
 				}
 			}
 		}

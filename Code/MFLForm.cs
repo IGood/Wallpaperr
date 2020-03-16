@@ -157,7 +157,11 @@ Size: {size} KB";
 		{
 			if (this.listBox1.SelectedItem is FileInfo fileInfo && Helpers.Exists(fileInfo))
 			{
-				System.Diagnostics.Process.Start(fileInfo.FullName);
+				System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+				{
+					FileName = fileInfo.FullName,
+					UseShellExecute = true,
+				});
 			}
 		}
 
