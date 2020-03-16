@@ -8,6 +8,7 @@
 	using System.Runtime.InteropServices;
 	using System.Threading;
 	using System.Windows.Forms;
+	using System.Windows.Media.Imaging;
 
 	static class WallpaperComposer
 	{
@@ -42,6 +43,12 @@
 			double progress = 0;
 
 			worker.ReportProgress((int)(progress = 5));
+
+			if (TryFastPath(fileName[0], settings))
+			{
+				worker.ReportProgress((int)(progress = 100));
+				return 0;
+			}
 
 			Image finalImg = null;
 
@@ -406,9 +413,39 @@ We'll try again later.";
 			NativeMethods.SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fileName, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
 		}
 
+		/// <summary>
+		/// If we're doing a single monitor with no border and the image is the correct size,
+		/// then we can simply set the wallpaper to the source file.
+		/// </summary>
+		private static bool TryFastPath(string fileName, Properties.Settings settings)
+		{
+			if (settings.SingleMonitor)
+			{
+				var style = (BackgroundStyle)settings.Style;
+				if (style == BackgroundStyle.ZoomIn || settings.Border == 0)
+				{
+					try
+					{
+						BitmapDecoder decoder = BitmapDecoder.Create(new Uri(fileName), BitmapCreateOptions.None, BitmapCacheOption.None);
+						BitmapFrame frame = decoder.Frames[0];
+						Size destSize = Screen.PrimaryScreen.Bounds.Size;
+						if (frame.PixelWidth == destSize.Width &&
+							frame.PixelHeight == destSize.Height)
+						{
+							SetWallpaper(fileName);
+							return true;
+						}
+					}
+					catch { }
+				}
+			}
+
+			return false;
+		}
+
 		private static class NativeMethods
 		{
-			[DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+			[DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
 			[return: MarshalAs(UnmanagedType.Bool)]
 			public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, string pvParam, uint fWinIni);
 		}
