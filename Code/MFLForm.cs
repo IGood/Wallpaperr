@@ -10,9 +10,9 @@
 	{
 		#region Member Fields / Properties
 
-		private readonly List<System.Drawing.Image> thumbs = new List<System.Drawing.Image>(0);
+		private readonly List<System.Drawing.Image> thumbs = new(0);
 
-		private WallpaperrLogic logic;
+		private readonly WallpaperrLogic logic;
 
 		private IList<FileInfo> fileList;
 
@@ -56,9 +56,9 @@
 
 		private void MFLForm_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			foreach (var img in this.thumbs.Where((img) => img != null))
+			foreach (var img in this.thumbs)
 			{
-				img.Dispose();
+				img?.Dispose();
 			}
 		}
 
@@ -108,7 +108,7 @@
 				return;
 			}
 
-			string ext = fileInfo.Extension.Substring(1).ToUpper();
+			string ext = fileInfo.Extension[1..].ToUpper();
 
 			int dimX;
 			int dimY;
@@ -175,8 +175,7 @@ Size: {size} KB";
 
 		private void ActivateSelectedItem()
 		{
-			var fileInfo = this.listBox1.SelectedItem as FileInfo;
-			if (fileInfo == null)
+			if (this.listBox1.SelectedItem is not FileInfo fileInfo)
 			{
 				return;
 			}

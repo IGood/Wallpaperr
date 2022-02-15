@@ -6,7 +6,7 @@
 	{
 		#region Static Fields / Properties
 
-		public static TimeUnit[] Units =
+		public static readonly TimeUnit[] Units =
 		{
 			new TimeUnit("seconds", TimeSpan.TicksPerSecond / TimeSpan.TicksPerMillisecond),
 			new TimeUnit("minutes", TimeSpan.TicksPerMinute/ TimeSpan.TicksPerMillisecond),
@@ -18,9 +18,9 @@
 
 		#region Member Fields / Properties
 
-		public readonly string Name;
+		public string Name { get; }
 
-		public readonly int Value;
+		public int Value { get; }
 
 		#endregion
 
@@ -34,9 +34,6 @@
 
 		#endregion
 
-		public override string ToString()
-		{
-			return this.Name;
-		}
+		public override string ToString() => this.Name;
 	}
 }

@@ -12,16 +12,13 @@
 	{
 		#region Static Fields / Properties
 
-		public static Properties.Settings AppSettings
-		{
-			get { return Properties.Settings.Default; }
-		}
+		public static Properties.Settings AppSettings => Properties.Settings.Default;
 
 		#endregion
 
 		#region Member Fields / Properties
 
-		private MainForm form;
+		private readonly MainForm form;
 
 		private List<DirectoryInfo> folderList;
 
@@ -51,24 +48,18 @@
 			WatcherSet.SetUpdateMethod((s, e) => this.UpdateImageList());
 
 			// get folder list from settings
-			if (AppSettings.FolderList == null)
-			{
-				AppSettings.FolderList = new StringCollection();
-			}
+			AppSettings.FolderList ??= new StringCollection();
 
 			this.folderList = new List<DirectoryInfo>(AppSettings.FolderList.Count);
 
-			AddFolders(AppSettings.FolderList);
+			this.AddFolders(AppSettings.FolderList);
 
 			// get file list from settings
-			if (AppSettings.FileList == null)
-			{
-				AppSettings.FileList = new StringCollection();
-			}
+			AppSettings.FileList ??= new StringCollection();
 
 			this.fileList = new List<FileInfo>(AppSettings.FileList.Count);
 
-			AddFiles(AppSettings.FileList);
+			this.AddFiles(AppSettings.FileList);
 
 			// drop backup lists & set controls after initialization
 			this.ClearTempLists();
@@ -123,20 +114,9 @@
 
 		private void MakeTempLists()
 		{
-			if (this.tempFolders == null)
-			{
-				this.tempFolders = new List<DirectoryInfo>(this.folderList ?? Enumerable.Empty<DirectoryInfo>());
-			}
-
-			if (this.tempFiles == null)
-			{
-				this.tempFiles = new List<FileInfo>(this.fileList ?? Enumerable.Empty<FileInfo>());
-			}
-
-			if (this.tempItems == null)
-			{
-				this.tempItems = this.form.ListView.Items.Cast<ListViewItem>().ToArray();
-			}
+			this.tempFolders ??= new List<DirectoryInfo>(this.folderList ?? Enumerable.Empty<DirectoryInfo>());
+			this.tempFiles ??= new List<FileInfo>(this.fileList ?? Enumerable.Empty<FileInfo>());
+			this.tempItems ??= this.form.ListView.Items.Cast<ListViewItem>().ToArray();
 		}
 
 		private void RestoreFromTempLists()
@@ -216,7 +196,7 @@
 				FileSystemInfo info = new FileInfo(item.ToolTipText);
 				IList collection = (info.Attributes == FileAttributes.Directory)
 					? this.folderList
-					: (IList)this.fileList;
+					: this.fileList;
 				foreach (FileSystemInfo fsi in collection)
 				{
 					if (fsi.FullName == info.FullName)
@@ -226,10 +206,7 @@
 					}
 				}
 
-				if (item.Tag is IDisposable)
-				{
-					((IDisposable)item.Tag).Dispose();
-				}
+				(item.Tag as IDisposable)?.Dispose();
 
 				item.Remove();
 
@@ -371,9 +348,9 @@
 			this.MakeTempLists();
 
 			// clear collections
-			foreach (var tag in this.form.ListView.Items.Cast<ListViewItem>().Select((item) => item.Tag).OfType<IDisposable>())
+			foreach (ListViewItem item in this.form.ListView.Items)
 			{
-				tag.Dispose();
+				(item.Tag as IDisposable)?.Dispose();
 			}
 
 			this.form.ListView.Clear();
@@ -396,7 +373,7 @@
 			{
 				if (s.Deserialize(fs) is List<string> list)
 				{
-					AddItemsFromArray(list.ToArray());
+					this.AddItemsFromArray(list.ToArray());
 				}
 			}
 			catch (InvalidOperationException)
