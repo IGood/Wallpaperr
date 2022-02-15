@@ -9,22 +9,13 @@
 	{
 		#region Static Members
 
-		private static Timer Timer;
-
-		#endregion
-
-		#region Static Constructor
-
-		static WatcherSet()
-		{
-			Timer = new Timer(TimeSpan.FromSeconds(30).TotalMilliseconds) { AutoReset = false, Enabled = false };
-		}
+		private static readonly Timer Timer = new(TimeSpan.FromSeconds(30).TotalMilliseconds) { AutoReset = false, Enabled = false };
 
 		#endregion
 
 		#region Member Fields / Properties
 
-		private FileSystemWatcher[] watchers;
+		private readonly FileSystemWatcher[] watchers;
 
 		#endregion
 
@@ -32,35 +23,37 @@
 
 		public WatcherSet(string path, bool include)
 		{
-			var generator = Helpers.FileTypes.Select((fileType) =>
-			{
-				var watcher = new FileSystemWatcher(path, fileType)
+			this.watchers = Helpers
+				.FileTypes
+				.Select((fileType) =>
 				{
-					EnableRaisingEvents = true,
-					IncludeSubdirectories = include,
-					NotifyFilter = NotifyFilters.DirectoryName | NotifyFilters.FileName,
-				};
+					var watcher = new FileSystemWatcher(path, fileType)
+					{
+						EnableRaisingEvents = true,
+						IncludeSubdirectories = include,
+						NotifyFilter = NotifyFilters.DirectoryName | NotifyFilters.FileName,
+					};
 
-				watcher.Created += onSomeEvent;
-				watcher.Renamed += onSomeEvent;
+					watcher.Created += onSomeEvent;
+					watcher.Renamed += onSomeEvent;
 
-				return watcher;
-			});
+					return watcher;
+				})
+				.ToArray();
 
-			this.watchers = generator.ToArray();
+			static void onSomeEvent(object sender, FileSystemEventArgs e)
+			{
+				if (Timer.Enabled)
+				{
+					Timer.Stop();
+				}
+
+				Timer.Start();
+			}
 		}
 
 		#endregion
 
-		private static void onSomeEvent(object sender, FileSystemEventArgs e)
-		{
-			if (Timer.Enabled)
-			{
-				Timer.Stop();
-			}
-
-			Timer.Start();
-		}
 
 		public static void SetIncludeSubdirectories(System.Collections.IEnumerable items, bool include)
 		{

@@ -46,12 +46,9 @@
 
 		private WallpaperrLogic logic;
 
-		private string initialFile;
+		private readonly string initialFile;
 
-		public ListView ListView
-		{
-			get { return this.listView; }
-		}
+		public ListView ListView => this.listView;
 
 		public bool Dirty
 		{
@@ -61,10 +58,10 @@
 
 		private MFLForm mflFormDialog_;
 
-		private ThumbDictionary thumbDict_ = new ThumbDictionary(0);
+		private readonly ThumbDictionary thumbDict_ = new(0);
 
-		private System.Drawing.Font menuItemFontNormal_;
-		private System.Drawing.Font menuItemFontBold_;
+		private readonly System.Drawing.Font menuItemFontNormal_;
+		private readonly System.Drawing.Font menuItemFontBold_;
 
 		#endregion
 
@@ -74,42 +71,42 @@
 		{
 			this.initialFile = file;
 
-			InitializeComponent();
+			this.InitializeComponent();
 
 			this.Text = Properties.Resources.AppTitle;
 			((Control)this.pictureBoxStyle).AllowDrop = true;
 			this.comboBoxTimeUnit.DataSource = TimeUnit.Units;
 			this.listView.ListViewItemSorter = new ImageCollectionSorter();
 
-			menuItemFontNormal_ = newRandomWallpaperToolStripMenuItem1.Font;
-			menuItemFontBold_ = settingsToolStripMenuItem.Font;
+			this.menuItemFontNormal_ = this.newRandomWallpaperToolStripMenuItem1.Font;
+			this.menuItemFontBold_ = this.settingsToolStripMenuItem.Font;
 		}
 
 		#endregion
 
 		internal void SaveSettings(Properties.Settings settings)
 		{
-			settings.Style = (int)(radioSpiffy.Checked
+			settings.Style = (int)(this.radioSpiffy.Checked
 				? BackgroundStyle.Spiffy
-				: radioZoomOut.Checked
+				: this.radioZoomOut.Checked
 					? BackgroundStyle.ZoomOut
 					: BackgroundStyle.ZoomIn);
-			radioStyle_Click(null, null);
+			this.radioStyle_Click();
 
-			settings.Thickness = numUDThick.Value;
-			settings.Border = numUDSpace.Value;
-			settings.BackgroundColor = pictureBoxColor.BackColor;
+			settings.Thickness = this.numUDThick.Value;
+			settings.Border = this.numUDSpace.Value;
+			settings.BackgroundColor = this.pictureBoxColor.BackColor;
 
-			settings.SingleMonitor = radioSingle.Checked;
-			settings.SmartRandom = checkBoxSmartRand.Checked;
+			settings.SingleMonitor = this.radioSingle.Checked;
+			settings.SmartRandom = this.checkBoxSmartRand.Checked;
 
-			settings.Active = checkBoxActive.Checked;
+			settings.Active = this.checkBoxActive.Checked;
 
-			settings.Interval = numUDInterval.Value;
-			settings.TimerUnit = comboBoxTimeUnit.SelectedIndex;
-			timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
+			settings.Interval = this.numUDInterval.Value;
+			settings.TimerUnit = this.comboBoxTimeUnit.SelectedIndex;
+			this.timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
 
-			settings.IncludeSubdirectory = checkBoxSubdir.Checked;
+			settings.IncludeSubdirectory = this.checkBoxSubdir.Checked;
 			if (this.listView.Items.Count > 0)
 			{
 				WatcherSet.SetIncludeSubdirectories(this.listView.Items, settings.IncludeSubdirectory);
@@ -118,29 +115,29 @@
 
 		internal void RestoreSettings(Properties.Settings settings)
 		{
-			showOnRunToolStripMenuItem.Checked = settings.ShowOnRun;
-			doubleClicktoolStripComboBox.SelectedIndex = settings.DoubleClickIndex;
+			this.showOnRunToolStripMenuItem.Checked = settings.ShowOnRun;
+			this.doubleClicktoolStripComboBox.SelectedIndex = settings.DoubleClickIndex;
 
 			switch ((BackgroundStyle)settings.Style)
 			{
-				case BackgroundStyle.Spiffy: radioSpiffy.Checked = true; break;
-				case BackgroundStyle.ZoomOut: radioZoomOut.Checked = true; break;
-				case BackgroundStyle.ZoomIn: radioZoomIn.Checked = true; break;
+				case BackgroundStyle.Spiffy: this.radioSpiffy.Checked = true; break;
+				case BackgroundStyle.ZoomOut: this.radioZoomOut.Checked = true; break;
+				case BackgroundStyle.ZoomIn: this.radioZoomIn.Checked = true; break;
 			}
-			radioStyle_Click(null, null);
+			this.radioStyle_Click();
 
-			numUDThick.Value = settings.Thickness;
-			numUDSpace.Value = settings.Border;
-			pictureBoxColor.BackColor = settings.BackgroundColor;
+			this.numUDThick.Value = settings.Thickness;
+			this.numUDSpace.Value = settings.Border;
+			this.pictureBoxColor.BackColor = settings.BackgroundColor;
 
-			checkBoxActive.Checked = settings.Active;
-			pause_Click(checkBoxActive, null);
+			this.checkBoxActive.Checked = settings.Active;
+			this.pause_Click(this.checkBoxActive);
 
-			numUDInterval.Value = settings.Interval;
-			comboBoxTimeUnit.SelectedIndex = settings.TimerUnit;
-			timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
+			this.numUDInterval.Value = settings.Interval;
+			this.comboBoxTimeUnit.SelectedIndex = settings.TimerUnit;
+			this.timer.Interval = (int)settings.Interval * TimeUnit.Units[settings.TimerUnit].Value;
 
-			checkBoxSubdir.Checked = settings.IncludeSubdirectory;
+			this.checkBoxSubdir.Checked = settings.IncludeSubdirectory;
 			if (this.listView.Items.Count > 0)
 			{
 				WatcherSet.SetIncludeSubdirectories(this.listView.Items, settings.IncludeSubdirectory);
@@ -148,14 +145,14 @@
 
 			if (settings.SingleMonitor)
 			{
-				radioSingle.Checked = true;
+				this.radioSingle.Checked = true;
 			}
 			else
 			{
-				radioMulti.Checked = true;
+				this.radioMulti.Checked = true;
 			}
-			checkBoxSmartRand.Checked = settings.SmartRandom;
-			radioDisplays_Click(null, null);
+			this.checkBoxSmartRand.Checked = settings.SmartRandom;
+			this.radioDisplays_Click();
 		}
 
 		#region MainForm Events
@@ -164,15 +161,15 @@
 		{
 			if (m.Msg == SingleInstance.WM_SHOWFIRSTINSTANCE)
 			{
-				if (Visible)
+				if (this.Visible)
 				{
-					SingleInstance.WinAPI.ShowToFront(Handle);
+					SingleInstance.WinAPI.ShowToFront(this.Handle);
 				}
 				else
 				{
-					Show();
-					WindowState = FormWindowState.Normal;
-					Activate();
+					this.Show();
+					this.WindowState = FormWindowState.Normal;
+					this.Activate();
 				}
 			}
 			else if (m.Msg == SingleInstance.WinAPI.WM_COPYDATA)
@@ -180,7 +177,7 @@
 				string file = SingleInstance.RecieveStringMessage(m);
 				if (!string.IsNullOrEmpty(file))
 				{
-					StartWork(file);
+					this.StartWork(file);
 				}
 			}
 			else
@@ -195,7 +192,7 @@
 
 			if (!string.IsNullOrEmpty(this.initialFile))
 			{
-				StartWork(this.initialFile);
+				this.StartWork(this.initialFile);
 			}
 		}
 
@@ -203,15 +200,15 @@
 		{
 			if (!WallpaperrLogic.AppSettings.ShowOnRun)
 			{
-				showOnRunToolStripMenuItem.Image = Properties.Resources.box_16x16;
-				base.Hide();
+				this.showOnRunToolStripMenuItem.Image = Properties.Resources.box_16x16;
+				this.Hide();
 			}
 		}
 
 		private void MainForm_VisibleChanged(object sender, EventArgs e)
 		{
 			// hiding?
-			if (!Visible)
+			if (!this.Visible)
 			{
 				this.logic.RestoreSettings();
 			}
@@ -227,22 +224,22 @@
 			if (this.closeToTray)
 			{
 				e.Cancel = true;
-				Hide();
+				this.Hide();
 			}
 			else
 			{
 				this.logic.SaveSettingsToDisk();
 
-				notifyIcon.Dispose();
+				this.notifyIcon.Dispose();
 			}
 
 			// dispose thumbnail images
-			foreach (var img in thumbDict_.Values)
+			foreach (var img in this.thumbDict_.Values)
 			{
 				img.Dispose();
 			}
 
-			thumbDict_.Clear();
+			this.thumbDict_.Clear();
 		}
 
 		#endregion
@@ -251,25 +248,16 @@
 
 		private void addFiles_Click(object sender, EventArgs e)
 		{
-			openFileDialogItem.ShowDialog();
+			this.openFileDialogItem.ShowDialog();
 		}
 
 		private void addFolder_Click(object sender, EventArgs e)
 		{
-			/*
-			if ( folderBrowserDialog_.ShowDialog() == DialogResult.OK )
-			{
-				string[] folders = new string[] { folderBrowserDialog_.SelectedPath };
-				this.logic.AddFolders( folders );
-			}
-			/*/
 			using var ffd = new dnGREP.FileFolderDialog();
 			if (ffd.ShowDialog() == DialogResult.OK)
 			{
-				string[] folders = new[] { ffd.SelectedPath };
-				this.logic.AddFolders(folders);
+				this.logic.AddFolders(new[] { ffd.SelectedPath });
 			}
-			//*/
 		}
 
 		private void newRandomWallpaper_Click(object sender, EventArgs e)
@@ -280,17 +268,17 @@
 		private void exit_Click(object sender, EventArgs e)
 		{
 			this.closeToTray = false;
-			Close();
+			this.Close();
 		}
 
 		private void openCollection_Click(object sender, EventArgs e)
 		{
-			openFileDialogXml.ShowDialog();
+			this.openFileDialogXml.ShowDialog();
 		}
 
 		private void saveCollectionAs_Click(object sender, EventArgs e)
 		{
-			saveFileDialogXml.ShowDialog();
+			this.saveFileDialogXml.ShowDialog();
 		}
 
 		private void refreshCollection_Click(object sender, EventArgs e)
@@ -300,58 +288,54 @@
 
 		private void viewMasterFileList_Click(object sender, EventArgs e)
 		{
-			if (mflFormDialog_ == null)
+			this.mflFormDialog_ ??= new MFLForm(this.logic);
+			this.mflFormDialog_.PopulateBox(this.logic.MasterFileList);
+			this.mflFormDialog_.ShowDialog();
+			if (this.mflFormDialog_.FileName != null)
 			{
-				mflFormDialog_ = new MFLForm(this.logic);
-			}
-
-			mflFormDialog_.PopulateBox(this.logic.MasterFileList);
-			mflFormDialog_.ShowDialog();
-			if (mflFormDialog_.FileName != null)
-			{
-				StartWork(mflFormDialog_.FileName);
+				this.StartWork(this.mflFormDialog_.FileName);
 			}
 		}
 
 		private void showOnRun_Click(object sender, EventArgs e)
 		{
-			showOnRunToolStripMenuItem.Image = showOnRunToolStripMenuItem.Checked
+			this.showOnRunToolStripMenuItem.Image = this.showOnRunToolStripMenuItem.Checked
 				? Properties.Resources.box_check_16x16
 				: Properties.Resources.box_16x16;
 
-			WallpaperrLogic.AppSettings.ShowOnRun = showOnRunToolStripMenuItem.Checked;
+			WallpaperrLogic.AppSettings.ShowOnRun = this.showOnRunToolStripMenuItem.Checked;
 		}
 
 		private void doubleClick_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			foreach (var handler in new EventHandler[] { settings_Click, newRandomWallpaper_Click, pause_Click })
+			foreach (var handler in new EventHandler[] { this.settings_Click, this.newRandomWallpaper_Click, this.pause_Click })
 			{
-				notifyIcon.DoubleClick -= handler;
+				this.notifyIcon.DoubleClick -= handler;
 			}
 
-			foreach (var menuItem in new[] { settingsToolStripMenuItem, newRandomWallpaperToolStripMenuItem1, pauseToolStripMenuItem })
+			foreach (var menuItem in new[] { this.settingsToolStripMenuItem, this.newRandomWallpaperToolStripMenuItem1, this.pauseToolStripMenuItem })
 			{
-				menuItem.Font = menuItemFontNormal_;
+				menuItem.Font = this.menuItemFontNormal_;
 			}
 
-			switch (doubleClicktoolStripComboBox.SelectedIndex)
+			switch (this.doubleClicktoolStripComboBox.SelectedIndex)
 			{
 				// Open Settings
 				case 0:
-					notifyIcon.DoubleClick += settings_Click;
-					settingsToolStripMenuItem.Font = menuItemFontBold_;
+					this.notifyIcon.DoubleClick += this.settings_Click;
+					this.settingsToolStripMenuItem.Font = this.menuItemFontBold_;
 					break;
 
 				// New Random Wallpaper
 				case 1:
-					notifyIcon.DoubleClick += newRandomWallpaper_Click;
-					newRandomWallpaperToolStripMenuItem1.Font = menuItemFontBold_;
+					this.notifyIcon.DoubleClick += this.newRandomWallpaper_Click;
+					this.newRandomWallpaperToolStripMenuItem1.Font = this.menuItemFontBold_;
 					break;
 
 				// Pause
 				case 2:
-					notifyIcon.DoubleClick += pause_Click;
-					pauseToolStripMenuItem.Font = menuItemFontBold_;
+					this.notifyIcon.DoubleClick += this.pause_Click;
+					this.pauseToolStripMenuItem.Font = this.menuItemFontBold_;
 					break;
 			}
 
@@ -359,17 +343,17 @@
 			// from logic constructor
 			if (this.logic != null)
 			{
-				WallpaperrLogic.AppSettings.DoubleClickIndex = doubleClicktoolStripComboBox.SelectedIndex;
+				WallpaperrLogic.AppSettings.DoubleClickIndex = this.doubleClicktoolStripComboBox.SelectedIndex;
 			}
 		}
 
 		private void useLegacyTiling_Click(object sender, EventArgs e)
 		{
-			useLegacyTilingToolStripMenuItem.Image = useLegacyTilingToolStripMenuItem.Checked
+			this.useLegacyTilingToolStripMenuItem.Image = this.useLegacyTilingToolStripMenuItem.Checked
 				? Properties.Resources.box_check_16x16
 				: Properties.Resources.box_16x16;
 
-			WallpaperrLogic.AppSettings.UseLegacyTiling = useLegacyTilingToolStripMenuItem.Checked;
+			WallpaperrLogic.AppSettings.UseLegacyTiling = this.useLegacyTilingToolStripMenuItem.Checked;
 		}
 
 		private void help_Click(object sender, EventArgs e)
@@ -379,10 +363,7 @@
 
 		private void aboutWallpaperr_Click(object sender, EventArgs e)
 		{
-			if (this.aboutBox == null)
-			{
-				this.aboutBox = new AboutBox();
-			}
+			this.aboutBox ??= new AboutBox();
 
 			// already open somewhere?
 			if (this.aboutBox.Visible)
@@ -397,45 +378,45 @@
 
 		private void settings_Click(object sender, EventArgs e)
 		{
-			Show();
-			WindowState = FormWindowState.Normal;
-			Activate();
+			this.Show();
+			this.WindowState = FormWindowState.Normal;
+			this.Activate();
 		}
 
-		private void pause_Click(object sender, EventArgs e)
+		private void pause_Click(object sender, EventArgs e = null)
 		{
-			bool active = (sender == checkBoxActive)
-				? checkBoxActive.Checked
-				: pauseToolStripMenuItem.Text.Equals("Unpause");
+			bool active = (sender == this.checkBoxActive)
+				? this.checkBoxActive.Checked
+				: this.pauseToolStripMenuItem.Text.Equals("Unpause");
 
-			checkBoxActive.Checked = active;
+			this.checkBoxActive.Checked = active;
 
 			// menu item text & image
-			pauseToolStripMenuItem.Text = active
+			this.pauseToolStripMenuItem.Text = active
 				? "Pause"
 				: "Unpause";
-			pauseToolStripMenuItem.Image = active
+			this.pauseToolStripMenuItem.Image = active
 				? Properties.Resources.pause_16x16
 				: Properties.Resources.play_16x16;
 
 			// timer on/off
-			timer.Enabled = active;
+			this.timer.Enabled = active;
 			if (active)
 			{
-				timer.Start();
+				this.timer.Start();
 			}
 			else
 			{
-				timer.Stop();
+				this.timer.Stop();
 			}
 
 			// enable/disable controls
-			label6.Enabled =
-			numUDInterval.Enabled =
-			comboBoxTimeUnit.Enabled = active;
+			this.label6.Enabled =
+			this.numUDInterval.Enabled =
+			this.comboBoxTimeUnit.Enabled = active;
 
 			// change icon
-			notifyIcon.Icon = active
+			this.notifyIcon.Icon = active
 				? Properties.Resources.small
 				: Properties.Resources.smallPaused;
 
@@ -443,13 +424,13 @@
 			if (!this.Visible)
 			{
 				// helpers.appsettings.active = active;
-				Dirty = false;
+				this.Dirty = false;
 			}
 		}
 
 		private void newWallpaper_Click(object sender, EventArgs e)
 		{
-			ActivateFocusedItem();
+			this.ActivateFocusedItem();
 		}
 
 		private void openItem_Click(object sender, EventArgs e)
@@ -489,16 +470,16 @@
 
 		private void color_Click(object sender, EventArgs e)
 		{
-			colorDialog.Color = pictureBoxColor.BackColor;
-			if (colorDialog.ShowDialog() == DialogResult.OK)
+			this.colorDialog.Color = this.pictureBoxColor.BackColor;
+			if (this.colorDialog.ShowDialog() == DialogResult.OK)
 			{
-				pictureBoxColor.BackColor = colorDialog.Color;
+				this.pictureBoxColor.BackColor = this.colorDialog.Color;
 			}
 		}
 
 		private void control_Changed(object sender, EventArgs e)
 		{
-			Dirty = true;
+			this.Dirty = true;
 		}
 
 		private void ok_Click(object sender, EventArgs e)
@@ -518,34 +499,34 @@
 			this.logic.NewWallpaper();
 		}
 
-		private void radioStyle_Click(object sender, EventArgs e)
+		private void radioStyle_Click(object sender = null, EventArgs e = null)
 		{
-			label1.Enabled =
-			label2.Enabled =
-			label7.Enabled =
-			numUDThick.Enabled =
-			numUDColor.Enabled = radioSpiffy.Checked;
+			this.label1.Enabled =
+			this.label2.Enabled =
+			this.label7.Enabled =
+			this.numUDThick.Enabled =
+			this.numUDColor.Enabled = this.radioSpiffy.Checked;
 
-			label3.Enabled =
-			label4.Enabled =
-			label5.Enabled =
-			pictureBoxColor.Enabled =
-			numUDSpace.Enabled = radioSpiffy.Checked || radioZoomOut.Checked;
+			this.label3.Enabled =
+			this.label4.Enabled =
+			this.label5.Enabled =
+			this.pictureBoxColor.Enabled =
+			this.numUDSpace.Enabled = this.radioSpiffy.Checked || this.radioZoomOut.Checked;
 
-			pictureBoxColor.BorderStyle = pictureBoxColor.Enabled
+			this.pictureBoxColor.BorderStyle = this.pictureBoxColor.Enabled
 				? BorderStyle.Fixed3D
 				: BorderStyle.None;
 
-			pictureBoxStyle.Image = radioSpiffy.Checked
+			this.pictureBoxStyle.Image = this.radioSpiffy.Checked
 				? Properties.Resources.spiffy
-				: radioZoomOut.Checked
+				: this.radioZoomOut.Checked
 					? Properties.Resources.zoom_out
 					: Properties.Resources.zoom_in;
 		}
 
-		private void radioDisplays_Click(object sender, EventArgs e)
+		private void radioDisplays_Click(object sender = null, EventArgs e = null)
 		{
-			checkBoxSmartRand.Enabled = radioMulti.Checked;
+			this.checkBoxSmartRand.Enabled = this.radioMulti.Checked;
 		}
 
 		#endregion
@@ -565,7 +546,7 @@
 			string filePath = (e.Data.GetData(DataFormats.FileDrop) as string[])?.FirstOrDefault();
 			if (filePath != null)
 			{
-				StartWork(filePath);
+				this.StartWork(filePath);
 			}
 		}
 
@@ -574,24 +555,24 @@
 		public void StartWork(string fileName)
 		{
 			// currently working?
-			if (backgroundWorker.IsBusy)
+			if (this.backgroundWorker.IsBusy)
 			{
 				Helpers.ShowBusy();
 				return;
 			}
 
-			timer.Stop();
+			this.timer.Stop();
 
-			notifyIcon.Text = "Wallpaperr [busy]";
-			notifyIcon.Icon = Properties.Resources.smallBusy;
+			this.notifyIcon.Text = "Wallpaperr [busy]";
+			this.notifyIcon.Icon = Properties.Resources.smallBusy;
 
 			this.Text = "Wallpaperr - Automatic Wallpaper Changer [busy]";
 
-			progressBar.Value = 0;
-			progressBar.Show();
+			this.progressBar.Value = 0;
+			this.progressBar.Show();
 
 			// start operation
-			backgroundWorker.RunWorkerAsync(fileName);
+			this.backgroundWorker.RunWorkerAsync(fileName);
 		}
 
 		#region ListView Callbacks
@@ -605,7 +586,7 @@
 				return;
 			}
 
-			contextMenuItem.Items[0].Image = Properties.Resources.random_16x16;
+			this.contextMenuItem.Items[0].Image = Properties.Resources.random_16x16;
 
 			if (this.listView.SelectedItems.Count == 1)
 			{
@@ -613,7 +594,7 @@
 				var fileInfo = new FileInfo(item.ToolTipText);
 				if (fileInfo.Exists)
 				{
-					if (!thumbDict_.TryGetValue(item, out var img))
+					if (!this.thumbDict_.TryGetValue(item, out var img))
 					{
 						using var temp = System.Drawing.Image.FromFile(fileInfo.FullName);
 						const float MaxDims = 150;
@@ -621,18 +602,18 @@
 						float thumbW = temp.Width * scale;
 						float thumbH = temp.Height * scale;
 						img = new System.Drawing.Bitmap(temp, (int)thumbW, (int)thumbH);
-						thumbDict_.Add(item, img);
+						this.thumbDict_.Add(item, img);
 					}
 
-					contextMenuItem.Items[0].ImageScaling = ToolStripItemImageScaling.None;
-					contextMenuItem.Items[0].Image = img;
+					this.contextMenuItem.Items[0].ImageScaling = ToolStripItemImageScaling.None;
+					this.contextMenuItem.Items[0].Image = img;
 				}
 			}
 		}
 
 		private void listView_ItemActivate(object sender, EventArgs e)
 		{
-			ActivateFocusedItem();
+			this.ActivateFocusedItem();
 		}
 
 		private void listView_DragEnter(object sender, DragEventArgs e)
@@ -724,7 +705,7 @@
 
 		private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
-			progressBar.Value = Math.Min(e.ProgressPercentage, 100);
+			this.progressBar.Value = Math.Min(e.ProgressPercentage, 100);
 		}
 
 		private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -734,13 +715,13 @@
 				MessageBox.Show(e.Error.Message, "BackgroundWorker Error");
 			}
 
-			progressBar.Hide();
+			this.progressBar.Hide();
 
-			timer.Start();
-			timer.Enabled = WallpaperrLogic.AppSettings.Active;
+			this.timer.Start();
+			this.timer.Enabled = WallpaperrLogic.AppSettings.Active;
 
-			notifyIcon.Text = "Wallpaperr";
-			notifyIcon.Icon = WallpaperrLogic.AppSettings.Active
+			this.notifyIcon.Text = "Wallpaperr";
+			this.notifyIcon.Icon = WallpaperrLogic.AppSettings.Active
 				? Properties.Resources.small
 				: Properties.Resources.smallPaused;
 
@@ -753,12 +734,12 @@
 
 		private void openFileDialogItem_FileOk(object sender, CancelEventArgs e)
 		{
-			this.logic.AddFiles(openFileDialogItem.FileNames);
+			this.logic.AddFiles(this.openFileDialogItem.FileNames);
 		}
 
 		private void openFileDialogXML_FileOk(object sender, CancelEventArgs e)
 		{
-			this.logic.OpenCollection(openFileDialogXml.FileName);
+			this.logic.OpenCollection(this.openFileDialogXml.FileName);
 		}
 
 		private void saveFileDialogXML_FileOk(object sender, CancelEventArgs e)
@@ -782,7 +763,7 @@
 
 		public void ShowEmptyCollection()
 		{
-			timer.Stop();
+			this.timer.Stop();
 
 			var msg =
 @"You do not have any images in your collection.
@@ -791,11 +772,11 @@ Would you like to add some files now?";
 			DialogResult result = MessageBox.Show(msg, "Hold it!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 			if (result == DialogResult.Yes)
 			{
-				openFileDialogItem.ShowDialog();
+				this.openFileDialogItem.ShowDialog();
 			}
 
-			timer.Start();
-			timer.Enabled = WallpaperrLogic.AppSettings.Active;
+			this.timer.Start();
+			this.timer.Enabled = WallpaperrLogic.AppSettings.Active;
 		}
 
 		private void ActivateFocusedItem()
@@ -811,7 +792,7 @@ Would you like to add some files now?";
 			var fileInfo = new FileInfo(item.ToolTipText);
 			if (fileInfo.Exists)
 			{
-				StartWork(fileInfo.FullName);
+				this.StartWork(fileInfo.FullName);
 				return;
 			}
 
@@ -838,7 +819,7 @@ in the selected folder.";
 				else
 				{
 					index = Helpers.RNG.Next(files.Count);
-					StartWork(files[index].FullName);
+					this.StartWork(files[index].FullName);
 				}
 				return;
 			}

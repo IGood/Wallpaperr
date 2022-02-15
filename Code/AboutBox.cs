@@ -1,6 +1,5 @@
 ﻿namespace Wallpaperr
 {
-	using System;
 	using System.Reflection;
 	using System.Windows.Forms;
 
@@ -11,12 +10,12 @@
 		public AboutBox()
 		{
 			this.InitializeComponent();
-			this.Text = "About " + AssemblyTitle;
-			this.labelProductName.Text = AssemblyProduct;
-			this.labelVersion.Text = "Version " + AssemblyVersion;
-			this.labelCopyright.Text = AssemblyCopyright;
-			this.labelCompanyName.Text = AssemblyCompany;
-			this.textBoxDescription.Text = AssemblyDescription;
+			this.Text = "About " + this.AssemblyTitle;
+			this.labelProductName.Text = this.AssemblyProduct;
+			this.labelVersion.Text = "Version " + this.AssemblyVersion;
+			this.labelCopyright.Text = this.AssemblyCopyright;
+			this.labelCompanyName.Text = this.AssemblyCompany;
+			this.textBoxDescription.Text = this.AssemblyDescription;
 		}
 
 		#region Assembly Attribute Accessors
@@ -25,60 +24,25 @@
 		{
 			get
 			{
-				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-				if (attributes.Length > 0)
+				string title = this.executingAsm.GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+				if (string.IsNullOrEmpty(title))
 				{
-					var titleAttribute = (AssemblyTitleAttribute)attributes[0];
-					if (string.IsNullOrEmpty(titleAttribute.Title) == false)
-					{
-						return titleAttribute.Title;
-					}
+					title = System.IO.Path.GetFileNameWithoutExtension(this.executingAsm.Location);
 				}
 
-				return System.IO.Path.GetFileNameWithoutExtension(this.executingAsm.CodeBase);
+				return title;
 			}
 		}
 
-		public string AssemblyVersion
-		{
-			get { return this.executingAsm.GetName().Version.ToString(); }
-		}
+		public string AssemblyVersion => this.executingAsm.GetName().Version.ToString();
 
-		public string AssemblyDescription
-		{
-			get
-			{
-				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-				return (attributes.Length == 0) ? string.Empty : ((AssemblyDescriptionAttribute)attributes[0]).Description;
-			}
-		}
+		public string AssemblyDescription => this.executingAsm.GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description ?? string.Empty;
 
-		public string AssemblyProduct
-		{
-			get
-			{
-				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-				return (attributes.Length == 0) ? string.Empty : ((AssemblyProductAttribute)attributes[0]).Product;
-			}
-		}
+		public string AssemblyProduct => this.executingAsm.GetCustomAttribute<AssemblyProductAttribute>()?.Product ?? string.Empty;
 
-		public string AssemblyCopyright
-		{
-			get
-			{
-				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-				return (attributes.Length == 0) ? string.Empty : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
-			}
-		}
+		public string AssemblyCopyright => this.executingAsm.GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright ?? string.Empty;
 
-		public string AssemblyCompany
-		{
-			get
-			{
-				object[] attributes = this.executingAsm.GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-				return (attributes.Length == 0) ? string.Empty : ((AssemblyCompanyAttribute)attributes[0]).Company;
-			}
-		}
+		public string AssemblyCompany => this.executingAsm.GetCustomAttribute<AssemblyCompanyAttribute>()?.Company ?? string.Empty;
 
 		#endregion
 	}

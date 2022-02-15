@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29324.140
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr", "Wallpaperr.csproj", "{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wallpaperr", "Wallpaperr.csproj", "{D0BBB71E-405F-4B14-B9B7-51053CEB78D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallpaperr2", "Wallpaperr2\Wallpaperr2.csproj", "{4ADBBC51-1F49-455B-9484-D28F38740316}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Goop", "..\Goop\Goop\Goop.csproj", "{85C17AD3-356F-412F-8AF2-1320F0A990FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{44D1EA1A-FE9A-472B-87A6-B91D28E42BEC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

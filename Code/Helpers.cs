@@ -21,7 +21,7 @@
 			"*.gif",
 		};
 
-		public static readonly Random RNG = new Random();
+		public static readonly Random RNG = new();
 
 		#endregion
 

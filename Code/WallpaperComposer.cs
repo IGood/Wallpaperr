@@ -59,9 +59,11 @@
 				using Bitmap srcImg = ValidateBitmap(fileName[0]);
 
 				// create composer data to be passed along
-				var compData = new ComposerData(settings);
-				compData.Dimensions = Screen.PrimaryScreen.Bounds.Size;
-				compData.SourceBitmap = srcImg;
+				var compData = new ComposerData(settings)
+				{
+					Dimensions = Screen.PrimaryScreen.Bounds.Size,
+					SourceBitmap = srcImg
+				};
 				compData.DestinationBitmap = new Bitmap(compData.Dimensions.Width, compData.Dimensions.Height);
 
 				// compose this image based on our style
@@ -117,10 +119,12 @@
 								destImg[index] = new Bitmap(dimensions.Width, dimensions.Height);
 
 								// create composer data to be passed along
-								var compData = new ComposerData(settings);
-								compData.Dimensions = dimensions;
-								compData.SourceBitmap = srcImg;
-								compData.DestinationBitmap = destImg[index];
+								var compData = new ComposerData(settings)
+								{
+									Dimensions = dimensions,
+									SourceBitmap = srcImg,
+									DestinationBitmap = destImg[index]
+								};
 
 								// compose this image based on our style
 								switch ((BackgroundStyle)settings.Style)

@@ -1,25 +1,25 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWpf>true</UseWpf>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Ian Good</Authors>
-    <Copyright>Copyright © 2020</Copyright>
-    <Description>Wallpaperr automatic wallpaper changer is freeware.
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWpf>true</UseWpf>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<Authors>Ian Good</Authors>
+		<Copyright>Copyright © 2020</Copyright>
+		<Description>Wallpaperr automatic wallpaper changer is freeware.
 If you paid for this product get a refund!
 Send comments to `Ian.M.Good@gmail.com`.</Description>
-    <Version>3.4.0</Version>
-    <ApplicationIcon>Resources\monitor.ico</ApplicationIcon>
-  </PropertyGroup>
+		<Version>3.5.0</Version>
+		<ApplicationIcon>Resources\monitor.ico</ApplicationIcon>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Wallpaperr2\**" />
-    <EmbeddedResource Remove="Wallpaperr2\**" />
-    <None Remove="Wallpaperr2\**" />
-    <Page Remove="Wallpaperr2\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Wallpaperr2\**" />
+		<EmbeddedResource Remove="Wallpaperr2\**" />
+		<None Remove="Wallpaperr2\**" />
+		<Page Remove="Wallpaperr2\**" />
+	</ItemGroup>
 
 </Project>
