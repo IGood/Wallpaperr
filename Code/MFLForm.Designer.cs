@@ -28,17 +28,17 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.contextMenuItem = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.newWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			listBox1 = new System.Windows.Forms.ListBox();
+			contextMenuItem = new System.Windows.Forms.ContextMenuStrip(components);
+			newWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			toolTip = new System.Windows.Forms.ToolTip(components);
 			toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.contextMenuItem.SuspendLayout();
-			this.SuspendLayout();
+			contextMenuItem.SuspendLayout();
+			SuspendLayout();
 			// 
 			// toolStripSeparator1
 			// 
@@ -47,72 +47,70 @@
 			// 
 			// listBox1
 			// 
-			this.listBox1.ContextMenuStrip = this.contextMenuItem;
-			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBox1.HorizontalScrollbar = true;
-			this.listBox1.Location = new System.Drawing.Point(0, 0);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(574, 256);
-			this.listBox1.Sorted = true;
-			this.listBox1.TabIndex = 0;
-			this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
-			this.listBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBox1_KeyPress);
-			this.listBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseMove);
+			listBox1.ContextMenuStrip = contextMenuItem;
+			listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			listBox1.HorizontalScrollbar = true;
+			listBox1.ItemHeight = 15;
+			listBox1.Location = new System.Drawing.Point(0, 0);
+			listBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			listBox1.Name = "listBox1";
+			listBox1.Size = new System.Drawing.Size(670, 295);
+			listBox1.Sorted = true;
+			listBox1.TabIndex = 0;
+			listBox1.DoubleClick += listBox1_DoubleClick;
+			listBox1.KeyPress += listBox1_KeyPress;
+			listBox1.MouseMove += listBox1_MouseMove;
 			// 
 			// contextMenuItem
 			// 
-			this.contextMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newWallpaperToolStripMenuItem,
-            toolStripSeparator1,
-            this.openToolStripMenuItem,
-            this.oToolStripMenuItem});
-			this.contextMenuItem.Name = "contextMenuItem";
-			this.contextMenuItem.Size = new System.Drawing.Size(202, 76);
-			this.contextMenuItem.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuItem_Opening);
+			contextMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { newWallpaperToolStripMenuItem, toolStripSeparator1, openToolStripMenuItem, oToolStripMenuItem });
+			contextMenuItem.Name = "contextMenuItem";
+			contextMenuItem.Size = new System.Drawing.Size(202, 76);
+			contextMenuItem.Opening += contextMenuItem_Opening;
 			// 
 			// newWallpaperToolStripMenuItem
 			// 
-			this.newWallpaperToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-			this.newWallpaperToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.random_16x16;
-			this.newWallpaperToolStripMenuItem.Name = "newWallpaperToolStripMenuItem";
-			this.newWallpaperToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.newWallpaperToolStripMenuItem.Text = "&New Wallpaper";
-			this.newWallpaperToolStripMenuItem.Click += new System.EventHandler(this.newWallpaper_Click);
+			newWallpaperToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			newWallpaperToolStripMenuItem.Image = Properties.Resources.random_16x16;
+			newWallpaperToolStripMenuItem.Name = "newWallpaperToolStripMenuItem";
+			newWallpaperToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			newWallpaperToolStripMenuItem.Text = "&New Wallpaper";
+			newWallpaperToolStripMenuItem.Click += newWallpaper_Click;
 			// 
 			// openToolStripMenuItem
 			// 
-			this.openToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.open_selected_item_16x16;
-			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.openToolStripMenuItem.Text = "&Open";
-			this.openToolStripMenuItem.Click += new System.EventHandler(this.openItem_Click);
+			openToolStripMenuItem.Image = Properties.Resources.open_selected_item_16x16;
+			openToolStripMenuItem.Name = "openToolStripMenuItem";
+			openToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			openToolStripMenuItem.Text = "&Open";
+			openToolStripMenuItem.Click += openItem_Click;
 			// 
 			// oToolStripMenuItem
 			// 
-			this.oToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.GoToParentFolderHS;
-			this.oToolStripMenuItem.Name = "oToolStripMenuItem";
-			this.oToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.oToolStripMenuItem.Text = "Open &Containing Folder";
-			this.oToolStripMenuItem.Click += new System.EventHandler(this.openContainingFolder_Click);
+			oToolStripMenuItem.Image = Properties.Resources.GoToParentFolderHS;
+			oToolStripMenuItem.Name = "oToolStripMenuItem";
+			oToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			oToolStripMenuItem.Text = "Open &Containing Folder";
+			oToolStripMenuItem.Click += openContainingFolder_Click;
 			// 
 			// MFLForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(574, 256);
-			this.Controls.Add(this.listBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-			this.KeyPreview = true;
-			this.Name = "MFLForm";
-			this.ShowInTaskbar = false;
-			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Master File List";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MFLForm_FormClosed);
-			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MFLForm_KeyPress);
-			this.contextMenuItem.ResumeLayout(false);
-			this.ResumeLayout(false);
-
+			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			ClientSize = new System.Drawing.Size(670, 295);
+			Controls.Add(listBox1);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			KeyPreview = true;
+			Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			Name = "MFLForm";
+			ShowInTaskbar = false;
+			SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			Text = "Master File List";
+			FormClosed += MFLForm_FormClosed;
+			KeyPress += MFLForm_KeyPress;
+			contextMenuItem.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 
 		#endregion

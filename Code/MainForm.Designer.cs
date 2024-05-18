@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			components = new System.ComponentModel.Container();
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
@@ -38,80 +38,81 @@
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 			System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.openFileDialogItem = new System.Windows.Forms.OpenFileDialog();
-			this.openFileDialogXml = new System.Windows.Forms.OpenFileDialog();
-			this.saveFileDialogXml = new System.Windows.Forms.SaveFileDialog();
-			this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-			this.colorDialog = new System.Windows.Forms.ColorDialog();
-			this.menu = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.newRandomWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.collectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openCollectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.saveCollectionAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.refreshCollectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.viewMasterFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.showOnRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.doubleClickTrayIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.doubleClicktoolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutWallpaperrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.timer = new System.Windows.Forms.Timer(this.components);
-			this.contextMenuTray = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.newRandomWallpaperToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.contextMenuItem = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.newWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openContainingFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.imageList = new System.Windows.Forms.ImageList(this.components);
-			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.numUDColor = new System.Windows.Forms.NumericUpDown();
-			this.pictureBoxColor = new System.Windows.Forms.PictureBox();
-			this.numUDSpace = new System.Windows.Forms.NumericUpDown();
-			this.numUDThick = new System.Windows.Forms.NumericUpDown();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.pictureBoxStyle = new System.Windows.Forms.PictureBox();
-			this.radioZoomIn = new System.Windows.Forms.RadioButton();
-			this.radioZoomOut = new System.Windows.Forms.RadioButton();
-			this.radioSpiffy = new System.Windows.Forms.RadioButton();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.checkBoxSmartRand = new System.Windows.Forms.CheckBox();
-			this.radioMulti = new System.Windows.Forms.RadioButton();
-			this.radioSingle = new System.Windows.Forms.RadioButton();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.pictureBoxClock = new System.Windows.Forms.PictureBox();
-			this.label6 = new System.Windows.Forms.Label();
-			this.comboBoxTimeUnit = new System.Windows.Forms.ComboBox();
-			this.numUDInterval = new System.Windows.Forms.NumericUpDown();
-			this.checkBoxActive = new System.Windows.Forms.CheckBox();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.checkBoxSubdir = new System.Windows.Forms.CheckBox();
-			this.buttonRemove = new System.Windows.Forms.Button();
-			this.buttonAddFolders = new System.Windows.Forms.Button();
-			this.buttonAddFiles = new System.Windows.Forms.Button();
-			this.listView = new System.Windows.Forms.ListView();
-			this.buttonOK = new System.Windows.Forms.Button();
-			this.buttonCancel = new System.Windows.Forms.Button();
-			this.buttonApply = new System.Windows.Forms.Button();
-			this.progressBar = new System.Windows.Forms.ProgressBar();
-			this.useLegacyTilingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			Properties.Settings settings1 = new Properties.Settings();
+			openFileDialogItem = new System.Windows.Forms.OpenFileDialog();
+			openFileDialogXml = new System.Windows.Forms.OpenFileDialog();
+			saveFileDialogXml = new System.Windows.Forms.SaveFileDialog();
+			backgroundWorker = new System.ComponentModel.BackgroundWorker();
+			folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+			colorDialog = new System.Windows.Forms.ColorDialog();
+			menu = new System.Windows.Forms.MenuStrip();
+			fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			addFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			addFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			newRandomWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			collectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			openCollectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			saveCollectionAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			refreshCollectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			viewMasterFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			showOnRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			doubleClickTrayIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			doubleClicktoolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+			useLegacyTilingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			aboutWallpaperrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			timer = new System.Windows.Forms.Timer(components);
+			contextMenuTray = new System.Windows.Forms.ContextMenuStrip(components);
+			newRandomWallpaperToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			contextMenuItem = new System.Windows.Forms.ContextMenuStrip(components);
+			newWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			openContainingFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			imageList = new System.Windows.Forms.ImageList(components);
+			notifyIcon = new System.Windows.Forms.NotifyIcon(components);
+			groupBox1 = new System.Windows.Forms.GroupBox();
+			label7 = new System.Windows.Forms.Label();
+			numUDColor = new System.Windows.Forms.NumericUpDown();
+			pictureBoxColor = new System.Windows.Forms.PictureBox();
+			numUDSpace = new System.Windows.Forms.NumericUpDown();
+			numUDThick = new System.Windows.Forms.NumericUpDown();
+			label5 = new System.Windows.Forms.Label();
+			label4 = new System.Windows.Forms.Label();
+			label3 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
+			label1 = new System.Windows.Forms.Label();
+			pictureBoxStyle = new System.Windows.Forms.PictureBox();
+			radioZoomIn = new System.Windows.Forms.RadioButton();
+			radioZoomOut = new System.Windows.Forms.RadioButton();
+			radioSpiffy = new System.Windows.Forms.RadioButton();
+			groupBox2 = new System.Windows.Forms.GroupBox();
+			checkBoxSmartRand = new System.Windows.Forms.CheckBox();
+			radioMulti = new System.Windows.Forms.RadioButton();
+			radioSingle = new System.Windows.Forms.RadioButton();
+			groupBox3 = new System.Windows.Forms.GroupBox();
+			pictureBoxClock = new System.Windows.Forms.PictureBox();
+			label6 = new System.Windows.Forms.Label();
+			comboBoxTimeUnit = new System.Windows.Forms.ComboBox();
+			numUDInterval = new System.Windows.Forms.NumericUpDown();
+			checkBoxActive = new System.Windows.Forms.CheckBox();
+			groupBox4 = new System.Windows.Forms.GroupBox();
+			checkBoxSubdir = new System.Windows.Forms.CheckBox();
+			buttonRemove = new System.Windows.Forms.Button();
+			buttonAddFolders = new System.Windows.Forms.Button();
+			buttonAddFiles = new System.Windows.Forms.Button();
+			listView = new System.Windows.Forms.ListView();
+			buttonOK = new System.Windows.Forms.Button();
+			buttonCancel = new System.Windows.Forms.Button();
+			buttonApply = new System.Windows.Forms.Button();
+			progressBar = new System.Windows.Forms.ProgressBar();
 			toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -120,21 +121,21 @@
 			toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.menu.SuspendLayout();
-			this.contextMenuTray.SuspendLayout();
-			this.contextMenuItem.SuspendLayout();
-			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numUDColor)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDSpace)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDThick)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle)).BeginInit();
-			this.groupBox2.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDInterval)).BeginInit();
-			this.groupBox4.SuspendLayout();
-			this.SuspendLayout();
+			menu.SuspendLayout();
+			contextMenuTray.SuspendLayout();
+			contextMenuItem.SuspendLayout();
+			groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)numUDColor).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxColor).BeginInit();
+			((System.ComponentModel.ISupportInitialize)numUDSpace).BeginInit();
+			((System.ComponentModel.ISupportInitialize)numUDThick).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxStyle).BeginInit();
+			groupBox2.SuspendLayout();
+			groupBox3.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBoxClock).BeginInit();
+			((System.ComponentModel.ISupportInitialize)numUDInterval).BeginInit();
+			groupBox4.SuspendLayout();
+			SuspendLayout();
 			// 
 			// toolStripSeparator1
 			// 
@@ -174,846 +175,854 @@
 			// toolStripSeparator3
 			// 
 			toolStripSeparator3.Name = "toolStripSeparator3";
-			toolStripSeparator3.Size = new System.Drawing.Size(192, 6);
+			toolStripSeparator3.Size = new System.Drawing.Size(190, 6);
 			// 
 			// openFileDialogItem
 			// 
-			this.openFileDialogItem.AddExtension = false;
-			this.openFileDialogItem.Filter = "Image files (*.bmp;*.png;*.jpg;*.jpeg;*.gif)|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Colle" +
-    "ction files (*.xml)|*.xml|All files| *.*";
-			this.openFileDialogItem.Multiselect = true;
-			this.openFileDialogItem.Title = "Select File(s)";
-			this.openFileDialogItem.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogItem_FileOk);
+			openFileDialogItem.AddExtension = false;
+			openFileDialogItem.Filter = "Image files (*.bmp;*.png;*.jpg;*.jpeg;*.gif)|*.bmp;*.png;*.jpg;*.jpeg;*.gif|Collection files (*.xml)|*.xml|All files| *.*";
+			openFileDialogItem.Multiselect = true;
+			openFileDialogItem.Title = "Select File(s)";
+			openFileDialogItem.FileOk += openFileDialogItem_FileOk;
 			// 
 			// openFileDialogXml
 			// 
-			this.openFileDialogXml.AddExtension = false;
-			this.openFileDialogXml.Filter = "XML files (*.xml)|*.xml";
-			this.openFileDialogXml.Title = "Open Collection";
-			this.openFileDialogXml.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogXML_FileOk);
+			openFileDialogXml.AddExtension = false;
+			openFileDialogXml.Filter = "XML files (*.xml)|*.xml";
+			openFileDialogXml.Title = "Open Collection";
+			openFileDialogXml.FileOk += openFileDialogXML_FileOk;
 			// 
 			// saveFileDialogXml
 			// 
-			this.saveFileDialogXml.Filter = "XML files (*.xml)|*.xml";
-			this.saveFileDialogXml.Title = "Save Collection";
-			this.saveFileDialogXml.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogXML_FileOk);
+			saveFileDialogXml.Filter = "XML files (*.xml)|*.xml";
+			saveFileDialogXml.Title = "Save Collection";
+			saveFileDialogXml.FileOk += saveFileDialogXML_FileOk;
 			// 
 			// backgroundWorker
 			// 
-			this.backgroundWorker.WorkerReportsProgress = true;
-			this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-			this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-			this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+			backgroundWorker.WorkerReportsProgress = true;
+			backgroundWorker.DoWork += backgroundWorker_DoWork;
+			backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
+			backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
 			// 
 			// folderBrowserDialog
 			// 
-			this.folderBrowserDialog.Description = "Select Directory";
-			this.folderBrowserDialog.ShowNewFolderButton = false;
+			folderBrowserDialog.Description = "Select Directory";
+			folderBrowserDialog.ShowNewFolderButton = false;
 			// 
 			// colorDialog
 			// 
-			this.colorDialog.AnyColor = true;
-			this.colorDialog.FullOpen = true;
-			this.colorDialog.ShowHelp = true;
+			colorDialog.AnyColor = true;
+			colorDialog.FullOpen = true;
+			colorDialog.ShowHelp = true;
 			// 
 			// menu
 			// 
-			this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.collectionToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-			this.menu.Location = new System.Drawing.Point(0, 0);
-			this.menu.Name = "menu";
-			this.menu.Size = new System.Drawing.Size(547, 24);
-			this.menu.TabIndex = 0;
+			menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, collectionToolStripMenuItem, optionsToolStripMenuItem, helpToolStripMenuItem });
+			menu.Location = new System.Drawing.Point(0, 0);
+			menu.Name = "menu";
+			menu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+			menu.Size = new System.Drawing.Size(638, 24);
+			menu.TabIndex = 0;
 			// 
 			// fileToolStripMenuItem
 			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addFilesToolStripMenuItem,
-            this.addFolderToolStripMenuItem,
-            toolStripSeparator1,
-            this.newRandomWallpaperToolStripMenuItem,
-            toolStripSeparator2,
-            this.exitToolStripMenuItem});
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "&File";
+			fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { addFilesToolStripMenuItem, addFolderToolStripMenuItem, toolStripSeparator1, newRandomWallpaperToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+			fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			fileToolStripMenuItem.Text = "&File";
 			// 
 			// addFilesToolStripMenuItem
 			// 
-			this.addFilesToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.file_explorer_16x16;
-			this.addFilesToolStripMenuItem.Name = "addFilesToolStripMenuItem";
-			this.addFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.addFilesToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-			this.addFilesToolStripMenuItem.Text = "Add &Files...";
-			this.addFilesToolStripMenuItem.Click += new System.EventHandler(this.addFiles_Click);
+			addFilesToolStripMenuItem.Image = Properties.Resources.file_explorer_16x16;
+			addFilesToolStripMenuItem.Name = "addFilesToolStripMenuItem";
+			addFilesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F;
+			addFilesToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+			addFilesToolStripMenuItem.Text = "Add &Files...";
+			addFilesToolStripMenuItem.Click += addFiles_Click;
 			// 
 			// addFolderToolStripMenuItem
 			// 
-			this.addFolderToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.folder_explorer_16x16;
-			this.addFolderToolStripMenuItem.Name = "addFolderToolStripMenuItem";
-			this.addFolderToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.F)));
-			this.addFolderToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-			this.addFolderToolStripMenuItem.Text = "Add Folde&r...";
-			this.addFolderToolStripMenuItem.Click += new System.EventHandler(this.addFolder_Click);
+			addFolderToolStripMenuItem.Image = Properties.Resources.folder_explorer_16x16;
+			addFolderToolStripMenuItem.Name = "addFolderToolStripMenuItem";
+			addFolderToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F;
+			addFolderToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+			addFolderToolStripMenuItem.Text = "Add Folde&r...";
+			addFolderToolStripMenuItem.Click += addFolder_Click;
 			// 
 			// newRandomWallpaperToolStripMenuItem
 			// 
-			this.newRandomWallpaperToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.random_16x16;
-			this.newRandomWallpaperToolStripMenuItem.Name = "newRandomWallpaperToolStripMenuItem";
-			this.newRandomWallpaperToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-			this.newRandomWallpaperToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-			this.newRandomWallpaperToolStripMenuItem.Text = "New Random &Wallpaper";
-			this.newRandomWallpaperToolStripMenuItem.Click += new System.EventHandler(this.newRandomWallpaper_Click);
+			newRandomWallpaperToolStripMenuItem.Image = Properties.Resources.random_16x16;
+			newRandomWallpaperToolStripMenuItem.Name = "newRandomWallpaperToolStripMenuItem";
+			newRandomWallpaperToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+			newRandomWallpaperToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+			newRandomWallpaperToolStripMenuItem.Text = "New Random &Wallpaper";
+			newRandomWallpaperToolStripMenuItem.Click += newRandomWallpaper_Click;
 			// 
 			// exitToolStripMenuItem
 			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-			this.exitToolStripMenuItem.Text = "E&xit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exit_Click);
+			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			exitToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+			exitToolStripMenuItem.Text = "E&xit";
+			exitToolStripMenuItem.Click += exit_Click;
 			// 
 			// collectionToolStripMenuItem
 			// 
-			this.collectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openCollectionToolStripMenuItem,
-            this.saveCollectionAsToolStripMenuItem,
-            toolStripSeparator4,
-            this.refreshCollectionToolStripMenuItem,
-            this.viewMasterFileListToolStripMenuItem});
-			this.collectionToolStripMenuItem.Name = "collectionToolStripMenuItem";
-			this.collectionToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-			this.collectionToolStripMenuItem.Text = "&Collection";
+			collectionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openCollectionToolStripMenuItem, saveCollectionAsToolStripMenuItem, toolStripSeparator4, refreshCollectionToolStripMenuItem, viewMasterFileListToolStripMenuItem });
+			collectionToolStripMenuItem.Name = "collectionToolStripMenuItem";
+			collectionToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+			collectionToolStripMenuItem.Text = "&Collection";
 			// 
 			// openCollectionToolStripMenuItem
 			// 
-			this.openCollectionToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.open_16x16;
-			this.openCollectionToolStripMenuItem.Name = "openCollectionToolStripMenuItem";
-			this.openCollectionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openCollectionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-			this.openCollectionToolStripMenuItem.Text = "&Open Collection...";
-			this.openCollectionToolStripMenuItem.Click += new System.EventHandler(this.openCollection_Click);
+			openCollectionToolStripMenuItem.Image = Properties.Resources.open_16x16;
+			openCollectionToolStripMenuItem.Name = "openCollectionToolStripMenuItem";
+			openCollectionToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O;
+			openCollectionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+			openCollectionToolStripMenuItem.Text = "&Open Collection...";
+			openCollectionToolStripMenuItem.Click += openCollection_Click;
 			// 
 			// saveCollectionAsToolStripMenuItem
 			// 
-			this.saveCollectionAsToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.save_16x16;
-			this.saveCollectionAsToolStripMenuItem.Name = "saveCollectionAsToolStripMenuItem";
-			this.saveCollectionAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveCollectionAsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-			this.saveCollectionAsToolStripMenuItem.Text = "&Save Collection As...";
-			this.saveCollectionAsToolStripMenuItem.Click += new System.EventHandler(this.saveCollectionAs_Click);
+			saveCollectionAsToolStripMenuItem.Image = Properties.Resources.save_16x16;
+			saveCollectionAsToolStripMenuItem.Name = "saveCollectionAsToolStripMenuItem";
+			saveCollectionAsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S;
+			saveCollectionAsToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+			saveCollectionAsToolStripMenuItem.Text = "&Save Collection As...";
+			saveCollectionAsToolStripMenuItem.Click += saveCollectionAs_Click;
 			// 
 			// refreshCollectionToolStripMenuItem
 			// 
-			this.refreshCollectionToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.refresh_16x16;
-			this.refreshCollectionToolStripMenuItem.Name = "refreshCollectionToolStripMenuItem";
-			this.refreshCollectionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-			this.refreshCollectionToolStripMenuItem.Text = "&Refresh Collection";
-			this.refreshCollectionToolStripMenuItem.Click += new System.EventHandler(this.refreshCollection_Click);
+			refreshCollectionToolStripMenuItem.Image = Properties.Resources.refresh_16x16;
+			refreshCollectionToolStripMenuItem.Name = "refreshCollectionToolStripMenuItem";
+			refreshCollectionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+			refreshCollectionToolStripMenuItem.Text = "&Refresh Collection";
+			refreshCollectionToolStripMenuItem.Click += refreshCollection_Click;
 			// 
 			// viewMasterFileListToolStripMenuItem
 			// 
-			this.viewMasterFileListToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.OrganizerHS;
-			this.viewMasterFileListToolStripMenuItem.Name = "viewMasterFileListToolStripMenuItem";
-			this.viewMasterFileListToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-			this.viewMasterFileListToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-			this.viewMasterFileListToolStripMenuItem.Text = "View &Master File List";
-			this.viewMasterFileListToolStripMenuItem.Click += new System.EventHandler(this.viewMasterFileList_Click);
+			viewMasterFileListToolStripMenuItem.Image = Properties.Resources.OrganizerHS;
+			viewMasterFileListToolStripMenuItem.Name = "viewMasterFileListToolStripMenuItem";
+			viewMasterFileListToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M;
+			viewMasterFileListToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+			viewMasterFileListToolStripMenuItem.Text = "View &Master File List";
+			viewMasterFileListToolStripMenuItem.Click += viewMasterFileList_Click;
 			// 
 			// optionsToolStripMenuItem
 			// 
-			this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showOnRunToolStripMenuItem,
-            toolStripSeparator3,
-            this.doubleClickTrayIconToolStripMenuItem,
-            this.useLegacyTilingToolStripMenuItem});
-			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-			this.optionsToolStripMenuItem.Text = "&Options";
+			optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { showOnRunToolStripMenuItem, toolStripSeparator3, doubleClickTrayIconToolStripMenuItem, useLegacyTilingToolStripMenuItem });
+			optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+			optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+			optionsToolStripMenuItem.Text = "&Options";
 			// 
 			// showOnRunToolStripMenuItem
 			// 
-			this.showOnRunToolStripMenuItem.Checked = global::Wallpaperr.Properties.Settings.Default.ShowOnRun;
-			this.showOnRunToolStripMenuItem.CheckOnClick = true;
-			this.showOnRunToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.showOnRunToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.box_check_16x16;
-			this.showOnRunToolStripMenuItem.Name = "showOnRunToolStripMenuItem";
-			this.showOnRunToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-			this.showOnRunToolStripMenuItem.Text = "&Show On Run";
-			this.showOnRunToolStripMenuItem.Click += new System.EventHandler(this.showOnRun_Click);
+			showOnRunToolStripMenuItem.Checked = true;
+			showOnRunToolStripMenuItem.CheckOnClick = true;
+			showOnRunToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+			showOnRunToolStripMenuItem.Image = Properties.Resources.box_check_16x16;
+			showOnRunToolStripMenuItem.Name = "showOnRunToolStripMenuItem";
+			showOnRunToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			showOnRunToolStripMenuItem.Text = "&Show On Run";
+			showOnRunToolStripMenuItem.Click += showOnRun_Click;
 			// 
 			// doubleClickTrayIconToolStripMenuItem
 			// 
-			this.doubleClickTrayIconToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.doubleClicktoolStripComboBox});
-			this.doubleClickTrayIconToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.monitor_16x16;
-			this.doubleClickTrayIconToolStripMenuItem.Name = "doubleClickTrayIconToolStripMenuItem";
-			this.doubleClickTrayIconToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-			this.doubleClickTrayIconToolStripMenuItem.Text = "Double-Click Tray Icon";
+			doubleClickTrayIconToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { doubleClicktoolStripComboBox });
+			doubleClickTrayIconToolStripMenuItem.Image = Properties.Resources.monitor_16x16;
+			doubleClickTrayIconToolStripMenuItem.Name = "doubleClickTrayIconToolStripMenuItem";
+			doubleClickTrayIconToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			doubleClickTrayIconToolStripMenuItem.Text = "Double-Click Tray Icon";
 			// 
 			// doubleClicktoolStripComboBox
 			// 
-			this.doubleClicktoolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.doubleClicktoolStripComboBox.Items.AddRange(new object[] {
-            "Open Settings",
-            "New Random Wallpaper",
-            "Pause"});
-			this.doubleClicktoolStripComboBox.Name = "doubleClicktoolStripComboBox";
-			this.doubleClicktoolStripComboBox.Size = new System.Drawing.Size(140, 23);
-			this.doubleClicktoolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.doubleClick_SelectedIndexChanged);
-			// 
-			// helpToolStripMenuItem
-			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem1,
-            this.aboutWallpaperrToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpToolStripMenuItem.Text = "&Help";
-			// 
-			// helpToolStripMenuItem1
-			// 
-			this.helpToolStripMenuItem1.Image = global::Wallpaperr.Properties.Resources.random_16x16;
-			this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-			this.helpToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
-			this.helpToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
-			this.helpToolStripMenuItem1.Text = "&Help";
-			this.helpToolStripMenuItem1.Click += new System.EventHandler(this.help_Click);
-			// 
-			// aboutWallpaperrToolStripMenuItem
-			// 
-			this.aboutWallpaperrToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.info_16x16;
-			this.aboutWallpaperrToolStripMenuItem.Name = "aboutWallpaperrToolStripMenuItem";
-			this.aboutWallpaperrToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.aboutWallpaperrToolStripMenuItem.Text = "&About Wallpaperr";
-			this.aboutWallpaperrToolStripMenuItem.Click += new System.EventHandler(this.aboutWallpaperr_Click);
-			// 
-			// timer
-			// 
-			this.timer.Interval = 1000;
-			this.timer.Tick += new System.EventHandler(this.newRandomWallpaper_Click);
-			// 
-			// contextMenuTray
-			// 
-			this.contextMenuTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newRandomWallpaperToolStripMenuItem1,
-            this.pauseToolStripMenuItem,
-            toolStripSeparator5,
-            this.settingsToolStripMenuItem,
-            toolStripSeparator6,
-            this.aboutToolStripMenuItem,
-            this.exitToolStripMenuItem1});
-			this.contextMenuTray.Name = "contextMenuTray_";
-			this.contextMenuTray.Size = new System.Drawing.Size(203, 126);
-			// 
-			// newRandomWallpaperToolStripMenuItem1
-			// 
-			this.newRandomWallpaperToolStripMenuItem1.Image = global::Wallpaperr.Properties.Resources.random_16x16;
-			this.newRandomWallpaperToolStripMenuItem1.Name = "newRandomWallpaperToolStripMenuItem1";
-			this.newRandomWallpaperToolStripMenuItem1.Size = new System.Drawing.Size(202, 22);
-			this.newRandomWallpaperToolStripMenuItem1.Text = "New Random &Wallpaper";
-			this.newRandomWallpaperToolStripMenuItem1.Click += new System.EventHandler(this.newRandomWallpaper_Click);
-			// 
-			// pauseToolStripMenuItem
-			// 
-			this.pauseToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.pause_16x16;
-			this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-			this.pauseToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-			this.pauseToolStripMenuItem.Text = "&Pause";
-			this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pause_Click);
-			// 
-			// settingsToolStripMenuItem
-			// 
-			this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-			this.settingsToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.resx_16x16;
-			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-			this.settingsToolStripMenuItem.Text = "&Settings";
-			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settings_Click);
-			// 
-			// aboutToolStripMenuItem
-			// 
-			this.aboutToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.info_16x16;
-			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-			this.aboutToolStripMenuItem.Text = "&About Wallpaperr";
-			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutWallpaperr_Click);
-			// 
-			// exitToolStripMenuItem1
-			// 
-			this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-			this.exitToolStripMenuItem1.Size = new System.Drawing.Size(202, 22);
-			this.exitToolStripMenuItem1.Text = "E&xit";
-			this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exit_Click);
-			// 
-			// contextMenuItem
-			// 
-			this.contextMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newWallpaperToolStripMenuItem,
-            toolStripSeparator8,
-            this.openToolStripMenuItem,
-            this.openContainingFolderToolStripMenuItem,
-            toolStripSeparator7,
-            this.removeToolStripMenuItem});
-			this.contextMenuItem.Name = "contextMenuItem_";
-			this.contextMenuItem.Size = new System.Drawing.Size(202, 104);
-			this.contextMenuItem.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuItem_Opening);
-			// 
-			// newWallpaperToolStripMenuItem
-			// 
-			this.newWallpaperToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-			this.newWallpaperToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.random_16x16;
-			this.newWallpaperToolStripMenuItem.Name = "newWallpaperToolStripMenuItem";
-			this.newWallpaperToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.newWallpaperToolStripMenuItem.Text = "&New Wallpaper";
-			this.newWallpaperToolStripMenuItem.Click += new System.EventHandler(this.newWallpaper_Click);
-			// 
-			// openToolStripMenuItem
-			// 
-			this.openToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.open_selected_item_16x16;
-			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.openToolStripMenuItem.Text = "&Open";
-			this.openToolStripMenuItem.Click += new System.EventHandler(this.openItem_Click);
-			// 
-			// openContainingFolderToolStripMenuItem
-			// 
-			this.openContainingFolderToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.GoToParentFolderHS;
-			this.openContainingFolderToolStripMenuItem.Name = "openContainingFolderToolStripMenuItem";
-			this.openContainingFolderToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.openContainingFolderToolStripMenuItem.Text = "Open &Containing Folder";
-			this.openContainingFolderToolStripMenuItem.Click += new System.EventHandler(this.openContainingFolder_Click);
-			// 
-			// removeToolStripMenuItem
-			// 
-			this.removeToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.remove_16x16;
-			this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-			this.removeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-			this.removeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
-			this.removeToolStripMenuItem.Text = "&Remove";
-			this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeItem_Click);
-			// 
-			// imageList
-			// 
-			this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-			this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList.Images.SetKeyName(0, "folder_pictures.ico");
-			this.imageList.Images.SetKeyName(1, "picture_BMP.ico");
-			this.imageList.Images.SetKeyName(2, "picture_PNG.ico");
-			this.imageList.Images.SetKeyName(3, "picture_JPEG.ico");
-			this.imageList.Images.SetKeyName(4, "picture_GIF.ico");
-			// 
-			// notifyIcon
-			// 
-			this.notifyIcon.ContextMenuStrip = this.contextMenuTray;
-			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-			this.notifyIcon.Text = "Wallpaperr";
-			this.notifyIcon.Visible = true;
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Controls.Add(this.numUDColor);
-			this.groupBox1.Controls.Add(this.pictureBoxColor);
-			this.groupBox1.Controls.Add(this.numUDSpace);
-			this.groupBox1.Controls.Add(this.numUDThick);
-			this.groupBox1.Controls.Add(this.label5);
-			this.groupBox1.Controls.Add(this.label4);
-			this.groupBox1.Controls.Add(this.label3);
-			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.pictureBoxStyle);
-			this.groupBox1.Controls.Add(this.radioZoomIn);
-			this.groupBox1.Controls.Add(this.radioZoomOut);
-			this.groupBox1.Controls.Add(this.radioSpiffy);
-			this.groupBox1.Location = new System.Drawing.Point(12, 27);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(200, 186);
-			this.groupBox1.TabIndex = 1;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Background Style";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(180, 162);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(15, 13);
-			this.label7.TabIndex = 13;
-			this.label7.Text = "%";
-			// 
-			// numUDColor
-			// 
-			this.numUDColor.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "BackgroundBlend", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDColor.Location = new System.Drawing.Point(129, 157);
-			this.numUDColor.Name = "numUDColor";
-			this.numUDColor.Size = new System.Drawing.Size(45, 20);
-			this.numUDColor.TabIndex = 12;
-			this.numUDColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDColor.Value = global::Wallpaperr.Properties.Settings.Default.BackgroundBlend;
-			this.numUDColor.ValueChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// pictureBoxColor
-			// 
-			this.pictureBoxColor.BackColor = global::Wallpaperr.Properties.Settings.Default.BackgroundColor;
-			this.pictureBoxColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.pictureBoxColor.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBoxColor.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::Wallpaperr.Properties.Settings.Default, "BackgroundColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.pictureBoxColor.Location = new System.Drawing.Point(103, 157);
-			this.pictureBoxColor.Name = "pictureBoxColor";
-			this.pictureBoxColor.Size = new System.Drawing.Size(20, 20);
-			this.pictureBoxColor.TabIndex = 11;
-			this.pictureBoxColor.TabStop = false;
-			this.pictureBoxColor.BackColorChanged += new System.EventHandler(this.control_Changed);
-			this.pictureBoxColor.Click += new System.EventHandler(this.color_Click);
-			// 
-			// numUDSpace
-			// 
-			this.numUDSpace.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Border", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDSpace.Location = new System.Drawing.Point(82, 131);
-			this.numUDSpace.Maximum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-			this.numUDSpace.Name = "numUDSpace";
-			this.numUDSpace.Size = new System.Drawing.Size(45, 20);
-			this.numUDSpace.TabIndex = 7;
-			this.numUDSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDSpace.Value = global::Wallpaperr.Properties.Settings.Default.Border;
-			this.numUDSpace.ValueChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// numUDThick
-			// 
-			this.numUDThick.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Thickness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDThick.Location = new System.Drawing.Point(79, 105);
-			this.numUDThick.Maximum = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-			this.numUDThick.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-			this.numUDThick.Name = "numUDThick";
-			this.numUDThick.Size = new System.Drawing.Size(45, 20);
-			this.numUDThick.TabIndex = 4;
-			this.numUDThick.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDThick.Value = global::Wallpaperr.Properties.Settings.Default.Thickness;
-			this.numUDThick.ValueChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(6, 162);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(91, 13);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "Background color";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(133, 136);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(15, 13);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "%";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(6, 136);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(70, 13);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "Border space";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(130, 110);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(59, 13);
-			this.label2.TabIndex = 5;
-			this.label2.Text = "pixels thick";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(6, 110);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(67, 13);
-			this.label1.TabIndex = 3;
-			this.label1.Text = "Black border";
-			// 
-			// pictureBoxStyle
-			// 
-			this.pictureBoxStyle.Image = global::Wallpaperr.Properties.Resources.spiffy;
-			this.pictureBoxStyle.Location = new System.Drawing.Point(84, 19);
-			this.pictureBoxStyle.Name = "pictureBoxStyle";
-			this.pictureBoxStyle.Size = new System.Drawing.Size(100, 80);
-			this.pictureBoxStyle.TabIndex = 3;
-			this.pictureBoxStyle.TabStop = false;
-			this.pictureBoxStyle.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragDrop);
-			this.pictureBoxStyle.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBoxStyle_DragEnter);
-			// 
-			// radioZoomIn
-			// 
-			this.radioZoomIn.AutoSize = true;
-			this.radioZoomIn.Location = new System.Drawing.Point(6, 65);
-			this.radioZoomIn.Name = "radioZoomIn";
-			this.radioZoomIn.Size = new System.Drawing.Size(64, 17);
-			this.radioZoomIn.TabIndex = 2;
-			this.radioZoomIn.Text = "Zoom In";
-			this.radioZoomIn.UseVisualStyleBackColor = true;
-			this.radioZoomIn.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioZoomIn.Click += new System.EventHandler(this.radioStyle_Click);
-			// 
-			// radioZoomOut
-			// 
-			this.radioZoomOut.AutoSize = true;
-			this.radioZoomOut.Location = new System.Drawing.Point(6, 42);
-			this.radioZoomOut.Name = "radioZoomOut";
-			this.radioZoomOut.Size = new System.Drawing.Size(72, 17);
-			this.radioZoomOut.TabIndex = 1;
-			this.radioZoomOut.Text = "Zoom Out";
-			this.radioZoomOut.UseVisualStyleBackColor = true;
-			this.radioZoomOut.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioZoomOut.Click += new System.EventHandler(this.radioStyle_Click);
-			// 
-			// radioSpiffy
-			// 
-			this.radioSpiffy.AutoSize = true;
-			this.radioSpiffy.Checked = true;
-			this.radioSpiffy.Location = new System.Drawing.Point(6, 19);
-			this.radioSpiffy.Name = "radioSpiffy";
-			this.radioSpiffy.Size = new System.Drawing.Size(51, 17);
-			this.radioSpiffy.TabIndex = 0;
-			this.radioSpiffy.TabStop = true;
-			this.radioSpiffy.Text = "Spiffy";
-			this.radioSpiffy.UseVisualStyleBackColor = true;
-			this.radioSpiffy.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioSpiffy.Click += new System.EventHandler(this.radioStyle_Click);
-			// 
-			// groupBox2
-			// 
-			this.groupBox2.Controls.Add(this.checkBoxSmartRand);
-			this.groupBox2.Controls.Add(this.radioMulti);
-			this.groupBox2.Controls.Add(this.radioSingle);
-			this.groupBox2.Location = new System.Drawing.Point(12, 219);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(200, 163);
-			this.groupBox2.TabIndex = 2;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Displays";
-			// 
-			// checkBoxSmartRand
-			// 
-			this.checkBoxSmartRand.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.checkBoxSmartRand.Checked = global::Wallpaperr.Properties.Settings.Default.SmartRandom;
-			this.checkBoxSmartRand.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxSmartRand.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SmartRandom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxSmartRand.Location = new System.Drawing.Point(6, 108);
-			this.checkBoxSmartRand.Name = "checkBoxSmartRand";
-			this.checkBoxSmartRand.Size = new System.Drawing.Size(188, 49);
-			this.checkBoxSmartRand.TabIndex = 2;
-			this.checkBoxSmartRand.Text = "Smart Random (attempts to use files from same directory for multiple displays)";
-			this.checkBoxSmartRand.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			this.checkBoxSmartRand.UseVisualStyleBackColor = true;
-			this.checkBoxSmartRand.CheckedChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// radioMulti
-			// 
-			this.radioMulti.AutoSize = true;
-			this.radioMulti.Image = global::Wallpaperr.Properties.Resources.computers_48x48;
-			this.radioMulti.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioMulti.Location = new System.Drawing.Point(112, 19);
-			this.radioMulti.Name = "radioMulti";
-			this.radioMulti.Size = new System.Drawing.Size(62, 69);
-			this.radioMulti.TabIndex = 1;
-			this.radioMulti.Text = "\r\n\r\n\r\n\r\nMultiple";
-			this.radioMulti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.radioMulti.UseVisualStyleBackColor = true;
-			this.radioMulti.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioMulti.Click += new System.EventHandler(this.radioDisplays_Click);
-			// 
-			// radioSingle
-			// 
-			this.radioSingle.AutoSize = true;
-			this.radioSingle.Checked = global::Wallpaperr.Properties.Settings.Default.SingleMonitor;
-			this.radioSingle.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "SingleMonitor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.radioSingle.Image = global::Wallpaperr.Properties.Resources.computer_48x48;
-			this.radioSingle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.radioSingle.Location = new System.Drawing.Point(26, 19);
-			this.radioSingle.Name = "radioSingle";
-			this.radioSingle.Size = new System.Drawing.Size(62, 69);
-			this.radioSingle.TabIndex = 0;
-			this.radioSingle.TabStop = true;
-			this.radioSingle.Text = "\r\n\r\n\r\n\r\nSingle";
-			this.radioSingle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.radioSingle.UseVisualStyleBackColor = true;
-			this.radioSingle.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.radioSingle.Click += new System.EventHandler(this.radioDisplays_Click);
-			// 
-			// groupBox3
-			// 
-			this.groupBox3.Controls.Add(this.pictureBoxClock);
-			this.groupBox3.Controls.Add(this.label6);
-			this.groupBox3.Controls.Add(this.comboBoxTimeUnit);
-			this.groupBox3.Controls.Add(this.numUDInterval);
-			this.groupBox3.Controls.Add(this.checkBoxActive);
-			this.groupBox3.Location = new System.Drawing.Point(218, 27);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(317, 75);
-			this.groupBox3.TabIndex = 3;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Automatic Changes";
-			// 
-			// pictureBoxClock
-			// 
-			this.pictureBoxClock.Image = global::Wallpaperr.Properties.Resources.clock_48x48;
-			this.pictureBoxClock.Location = new System.Drawing.Point(258, 17);
-			this.pictureBoxClock.Name = "pictureBoxClock";
-			this.pictureBoxClock.Size = new System.Drawing.Size(48, 48);
-			this.pictureBoxClock.TabIndex = 13;
-			this.pictureBoxClock.TabStop = false;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(6, 47);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(73, 13);
-			this.label6.TabIndex = 1;
-			this.label6.Text = "Change every";
-			// 
-			// comboBoxTimeUnit
-			// 
-			this.comboBoxTimeUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-			this.comboBoxTimeUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.comboBoxTimeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxTimeUnit.FormattingEnabled = true;
-			this.comboBoxTimeUnit.Location = new System.Drawing.Point(137, 42);
-			this.comboBoxTimeUnit.Name = "comboBoxTimeUnit";
-			this.comboBoxTimeUnit.Size = new System.Drawing.Size(86, 21);
-			this.comboBoxTimeUnit.TabIndex = 3;
-			this.comboBoxTimeUnit.SelectedIndexChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// numUDInterval
-			// 
-			this.numUDInterval.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::Wallpaperr.Properties.Settings.Default, "Interval", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.numUDInterval.Location = new System.Drawing.Point(85, 42);
-			this.numUDInterval.Name = "numUDInterval";
-			this.numUDInterval.Size = new System.Drawing.Size(46, 20);
-			this.numUDInterval.TabIndex = 2;
-			this.numUDInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numUDInterval.Value = global::Wallpaperr.Properties.Settings.Default.Interval;
-			this.numUDInterval.ValueChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// checkBoxActive
-			// 
-			this.checkBoxActive.AutoSize = true;
-			this.checkBoxActive.Checked = global::Wallpaperr.Properties.Settings.Default.Active;
-			this.checkBoxActive.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxActive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "Active", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxActive.Location = new System.Drawing.Point(6, 19);
-			this.checkBoxActive.Name = "checkBoxActive";
-			this.checkBoxActive.Size = new System.Drawing.Size(128, 17);
-			this.checkBoxActive.TabIndex = 0;
-			this.checkBoxActive.Text = "Active timed changes";
-			this.checkBoxActive.UseVisualStyleBackColor = true;
-			this.checkBoxActive.CheckedChanged += new System.EventHandler(this.control_Changed);
-			this.checkBoxActive.Click += new System.EventHandler(this.pause_Click);
-			// 
-			// groupBox4
-			// 
-			this.groupBox4.Controls.Add(this.checkBoxSubdir);
-			this.groupBox4.Controls.Add(this.buttonRemove);
-			this.groupBox4.Controls.Add(this.buttonAddFolders);
-			this.groupBox4.Controls.Add(this.buttonAddFiles);
-			this.groupBox4.Controls.Add(this.listView);
-			this.groupBox4.Location = new System.Drawing.Point(218, 108);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(317, 274);
-			this.groupBox4.TabIndex = 4;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "Image Collection";
-			// 
-			// checkBoxSubdir
-			// 
-			this.checkBoxSubdir.AutoSize = true;
-			this.checkBoxSubdir.Checked = global::Wallpaperr.Properties.Settings.Default.IncludeSubdirectory;
-			this.checkBoxSubdir.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxSubdir.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Wallpaperr.Properties.Settings.Default, "IncludeSubdirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-			this.checkBoxSubdir.Location = new System.Drawing.Point(6, 251);
-			this.checkBoxSubdir.Name = "checkBoxSubdir";
-			this.checkBoxSubdir.Size = new System.Drawing.Size(278, 17);
-			this.checkBoxSubdir.TabIndex = 4;
-			this.checkBoxSubdir.Text = "Include Subdirectories (affects all folders in collection)";
-			this.checkBoxSubdir.UseVisualStyleBackColor = true;
-			this.checkBoxSubdir.CheckedChanged += new System.EventHandler(this.control_Changed);
-			// 
-			// buttonRemove
-			// 
-			this.buttonRemove.Image = global::Wallpaperr.Properties.Resources.remove_16x16;
-			this.buttonRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonRemove.Location = new System.Drawing.Point(192, 214);
-			this.buttonRemove.Name = "buttonRemove";
-			this.buttonRemove.Size = new System.Drawing.Size(75, 31);
-			this.buttonRemove.TabIndex = 3;
-			this.buttonRemove.Text = "Remove";
-			this.buttonRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonRemove.UseVisualStyleBackColor = true;
-			this.buttonRemove.Click += new System.EventHandler(this.removeItem_Click);
-			// 
-			// buttonAddFolders
-			// 
-			this.buttonAddFolders.Image = global::Wallpaperr.Properties.Resources.folder_explorer_16x16;
-			this.buttonAddFolders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonAddFolders.Location = new System.Drawing.Point(95, 214);
-			this.buttonAddFolders.Name = "buttonAddFolders";
-			this.buttonAddFolders.Size = new System.Drawing.Size(91, 31);
-			this.buttonAddFolders.TabIndex = 2;
-			this.buttonAddFolders.Text = "Add folder...";
-			this.buttonAddFolders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonAddFolders.UseVisualStyleBackColor = true;
-			this.buttonAddFolders.Click += new System.EventHandler(this.addFolder_Click);
-			// 
-			// buttonAddFiles
-			// 
-			this.buttonAddFiles.Image = global::Wallpaperr.Properties.Resources.file_explorer_16x16;
-			this.buttonAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.buttonAddFiles.Location = new System.Drawing.Point(6, 214);
-			this.buttonAddFiles.Name = "buttonAddFiles";
-			this.buttonAddFiles.Size = new System.Drawing.Size(83, 31);
-			this.buttonAddFiles.TabIndex = 1;
-			this.buttonAddFiles.Text = "Add files...";
-			this.buttonAddFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			this.buttonAddFiles.UseVisualStyleBackColor = true;
-			this.buttonAddFiles.Click += new System.EventHandler(this.addFiles_Click);
-			// 
-			// listView
-			// 
-			this.listView.AllowDrop = true;
-			this.listView.ContextMenuStrip = this.contextMenuItem;
-			this.listView.Location = new System.Drawing.Point(6, 19);
-			this.listView.Name = "listView";
-			this.listView.ShowItemToolTips = true;
-			this.listView.Size = new System.Drawing.Size(305, 189);
-			this.listView.SmallImageList = this.imageList;
-			this.listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-			this.listView.TabIndex = 0;
-			this.listView.UseCompatibleStateImageBehavior = false;
-			this.listView.View = System.Windows.Forms.View.List;
-			this.listView.ItemActivate += new System.EventHandler(this.listView_ItemActivate);
-			this.listView.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView_DragDrop);
-			this.listView.DragEnter += new System.Windows.Forms.DragEventHandler(this.listView_DragEnter);
-			this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
-			// 
-			// buttonOK
-			// 
-			this.buttonOK.Location = new System.Drawing.Point(298, 388);
-			this.buttonOK.Name = "buttonOK";
-			this.buttonOK.Size = new System.Drawing.Size(75, 23);
-			this.buttonOK.TabIndex = 5;
-			this.buttonOK.Text = "OK";
-			this.buttonOK.UseVisualStyleBackColor = true;
-			this.buttonOK.Click += new System.EventHandler(this.ok_Click);
-			// 
-			// buttonCancel
-			// 
-			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.buttonCancel.Location = new System.Drawing.Point(379, 388);
-			this.buttonCancel.Name = "buttonCancel";
-			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 6;
-			this.buttonCancel.Text = "Cancel";
-			this.buttonCancel.UseVisualStyleBackColor = true;
-			this.buttonCancel.Click += new System.EventHandler(this.cancel_Click);
-			// 
-			// buttonApply
-			// 
-			this.buttonApply.Enabled = false;
-			this.buttonApply.Location = new System.Drawing.Point(460, 388);
-			this.buttonApply.Name = "buttonApply";
-			this.buttonApply.Size = new System.Drawing.Size(75, 23);
-			this.buttonApply.TabIndex = 7;
-			this.buttonApply.Text = "Apply";
-			this.buttonApply.UseVisualStyleBackColor = true;
-			this.buttonApply.Click += new System.EventHandler(this.apply_Click);
-			// 
-			// progressBar
-			// 
-			this.progressBar.Location = new System.Drawing.Point(12, 388);
-			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(280, 23);
-			this.progressBar.Step = 1;
-			this.progressBar.TabIndex = 8;
-			this.progressBar.Visible = false;
+			doubleClicktoolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			doubleClicktoolStripComboBox.Items.AddRange(new object[] { "Open Settings", "New Random Wallpaper", "Pause" });
+			doubleClicktoolStripComboBox.Name = "doubleClicktoolStripComboBox";
+			doubleClicktoolStripComboBox.Size = new System.Drawing.Size(140, 23);
+			doubleClicktoolStripComboBox.SelectedIndexChanged += doubleClick_SelectedIndexChanged;
 			// 
 			// useLegacyTilingToolStripMenuItem
 			// 
-			this.useLegacyTilingToolStripMenuItem.CheckOnClick = true;
-			this.useLegacyTilingToolStripMenuItem.Image = global::Wallpaperr.Properties.Resources.box_16x16;
-			this.useLegacyTilingToolStripMenuItem.Name = "useLegacyTilingToolStripMenuItem";
-			this.useLegacyTilingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-			this.useLegacyTilingToolStripMenuItem.Text = "&Use Legacy Tiling";
-			this.useLegacyTilingToolStripMenuItem.Click += new System.EventHandler(this.useLegacyTiling_Click);
+			useLegacyTilingToolStripMenuItem.CheckOnClick = true;
+			useLegacyTilingToolStripMenuItem.Image = Properties.Resources.box_16x16;
+			useLegacyTilingToolStripMenuItem.Name = "useLegacyTilingToolStripMenuItem";
+			useLegacyTilingToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			useLegacyTilingToolStripMenuItem.Text = "&Use Legacy Tiling";
+			useLegacyTilingToolStripMenuItem.Click += useLegacyTiling_Click;
+			// 
+			// helpToolStripMenuItem
+			// 
+			helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { helpToolStripMenuItem1, aboutWallpaperrToolStripMenuItem });
+			helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			helpToolStripMenuItem.Text = "&Help";
+			// 
+			// helpToolStripMenuItem1
+			// 
+			helpToolStripMenuItem1.Image = Properties.Resources.random_16x16;
+			helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+			helpToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			helpToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
+			helpToolStripMenuItem1.Text = "&Help";
+			helpToolStripMenuItem1.Click += help_Click;
+			// 
+			// aboutWallpaperrToolStripMenuItem
+			// 
+			aboutWallpaperrToolStripMenuItem.Image = Properties.Resources.info_16x16;
+			aboutWallpaperrToolStripMenuItem.Name = "aboutWallpaperrToolStripMenuItem";
+			aboutWallpaperrToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			aboutWallpaperrToolStripMenuItem.Text = "&About Wallpaperr";
+			aboutWallpaperrToolStripMenuItem.Click += aboutWallpaperr_Click;
+			// 
+			// timer
+			// 
+			timer.Interval = 1000;
+			timer.Tick += newRandomWallpaper_Click;
+			// 
+			// contextMenuTray
+			// 
+			contextMenuTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { newRandomWallpaperToolStripMenuItem1, pauseToolStripMenuItem, toolStripSeparator5, settingsToolStripMenuItem, toolStripSeparator6, aboutToolStripMenuItem, exitToolStripMenuItem1 });
+			contextMenuTray.Name = "contextMenuTray_";
+			contextMenuTray.Size = new System.Drawing.Size(203, 126);
+			// 
+			// newRandomWallpaperToolStripMenuItem1
+			// 
+			newRandomWallpaperToolStripMenuItem1.Image = Properties.Resources.random_16x16;
+			newRandomWallpaperToolStripMenuItem1.Name = "newRandomWallpaperToolStripMenuItem1";
+			newRandomWallpaperToolStripMenuItem1.Size = new System.Drawing.Size(202, 22);
+			newRandomWallpaperToolStripMenuItem1.Text = "New Random &Wallpaper";
+			newRandomWallpaperToolStripMenuItem1.Click += newRandomWallpaper_Click;
+			// 
+			// pauseToolStripMenuItem
+			// 
+			pauseToolStripMenuItem.Image = Properties.Resources.pause_16x16;
+			pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
+			pauseToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+			pauseToolStripMenuItem.Text = "&Pause";
+			pauseToolStripMenuItem.Click += pause_Click;
+			// 
+			// settingsToolStripMenuItem
+			// 
+			settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			settingsToolStripMenuItem.Image = Properties.Resources.resx_16x16;
+			settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			settingsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+			settingsToolStripMenuItem.Text = "&Settings";
+			settingsToolStripMenuItem.Click += settings_Click;
+			// 
+			// aboutToolStripMenuItem
+			// 
+			aboutToolStripMenuItem.Image = Properties.Resources.info_16x16;
+			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			aboutToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+			aboutToolStripMenuItem.Text = "&About Wallpaperr";
+			aboutToolStripMenuItem.Click += aboutWallpaperr_Click;
+			// 
+			// exitToolStripMenuItem1
+			// 
+			exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+			exitToolStripMenuItem1.Size = new System.Drawing.Size(202, 22);
+			exitToolStripMenuItem1.Text = "E&xit";
+			exitToolStripMenuItem1.Click += exit_Click;
+			// 
+			// contextMenuItem
+			// 
+			contextMenuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { newWallpaperToolStripMenuItem, toolStripSeparator8, openToolStripMenuItem, openContainingFolderToolStripMenuItem, toolStripSeparator7, removeToolStripMenuItem });
+			contextMenuItem.Name = "contextMenuItem_";
+			contextMenuItem.Size = new System.Drawing.Size(202, 104);
+			contextMenuItem.Opening += contextMenuItem_Opening;
+			// 
+			// newWallpaperToolStripMenuItem
+			// 
+			newWallpaperToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+			newWallpaperToolStripMenuItem.Image = Properties.Resources.random_16x16;
+			newWallpaperToolStripMenuItem.Name = "newWallpaperToolStripMenuItem";
+			newWallpaperToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			newWallpaperToolStripMenuItem.Text = "&New Wallpaper";
+			newWallpaperToolStripMenuItem.Click += newWallpaper_Click;
+			// 
+			// openToolStripMenuItem
+			// 
+			openToolStripMenuItem.Image = Properties.Resources.open_selected_item_16x16;
+			openToolStripMenuItem.Name = "openToolStripMenuItem";
+			openToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			openToolStripMenuItem.Text = "&Open";
+			openToolStripMenuItem.Click += openItem_Click;
+			// 
+			// openContainingFolderToolStripMenuItem
+			// 
+			openContainingFolderToolStripMenuItem.Image = Properties.Resources.GoToParentFolderHS;
+			openContainingFolderToolStripMenuItem.Name = "openContainingFolderToolStripMenuItem";
+			openContainingFolderToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			openContainingFolderToolStripMenuItem.Text = "Open &Containing Folder";
+			openContainingFolderToolStripMenuItem.Click += openContainingFolder_Click;
+			// 
+			// removeToolStripMenuItem
+			// 
+			removeToolStripMenuItem.Image = Properties.Resources.remove_16x16;
+			removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+			removeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+			removeToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+			removeToolStripMenuItem.Text = "&Remove";
+			removeToolStripMenuItem.Click += removeItem_Click;
+			// 
+			// imageList
+			// 
+			imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+			imageList.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageList.ImageStream");
+			imageList.TransparentColor = System.Drawing.Color.Transparent;
+			imageList.Images.SetKeyName(0, "folder_pictures.ico");
+			imageList.Images.SetKeyName(1, "picture_BMP.ico");
+			imageList.Images.SetKeyName(2, "picture_PNG.ico");
+			imageList.Images.SetKeyName(3, "picture_JPEG.ico");
+			imageList.Images.SetKeyName(4, "picture_GIF.ico");
+			// 
+			// notifyIcon
+			// 
+			notifyIcon.ContextMenuStrip = contextMenuTray;
+			notifyIcon.Icon = (System.Drawing.Icon)resources.GetObject("notifyIcon.Icon");
+			notifyIcon.Text = "Wallpaperr";
+			notifyIcon.Visible = true;
+			// 
+			// groupBox1
+			// 
+			groupBox1.Controls.Add(label7);
+			groupBox1.Controls.Add(numUDColor);
+			groupBox1.Controls.Add(pictureBoxColor);
+			groupBox1.Controls.Add(numUDSpace);
+			groupBox1.Controls.Add(numUDThick);
+			groupBox1.Controls.Add(label5);
+			groupBox1.Controls.Add(label4);
+			groupBox1.Controls.Add(label3);
+			groupBox1.Controls.Add(label2);
+			groupBox1.Controls.Add(label1);
+			groupBox1.Controls.Add(pictureBoxStyle);
+			groupBox1.Controls.Add(radioZoomIn);
+			groupBox1.Controls.Add(radioZoomOut);
+			groupBox1.Controls.Add(radioSpiffy);
+			groupBox1.Location = new System.Drawing.Point(14, 31);
+			groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox1.Name = "groupBox1";
+			groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox1.Size = new System.Drawing.Size(233, 215);
+			groupBox1.TabIndex = 1;
+			groupBox1.TabStop = false;
+			groupBox1.Text = "Background Style";
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Location = new System.Drawing.Point(210, 187);
+			label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label7.Name = "label7";
+			label7.Size = new System.Drawing.Size(17, 15);
+			label7.TabIndex = 13;
+			label7.Text = "%";
+			// 
+			// numUDColor
+			// 
+			settings1.Active = true;
+			settings1.BackgroundBlend = new decimal(new int[] { 18, 0, 0, 0 });
+			settings1.BackgroundColor = System.Drawing.Color.FromArgb(255, 206, 157);
+			settings1.Border = new decimal(new int[] { 20, 0, 0, 0 });
+			settings1.DoubleClickIndex = 0;
+			settings1.FileList = null;
+			settings1.FolderList = null;
+			settings1.IncludeSubdirectory = true;
+			settings1.Interval = new decimal(new int[] { 2, 0, 0, 0 });
+			settings1.MaxScale = new decimal(new int[] { 100, 0, 0, 0 });
+			settings1.SettingsKey = "";
+			settings1.ShowOnRun = true;
+			settings1.SingleMonitor = true;
+			settings1.SmartRandom = true;
+			settings1.Style = 0;
+			settings1.Thickness = new decimal(new int[] { 12, 0, 0, 0 });
+			settings1.TimerUnit = 1;
+			settings1.UseLegacyTiling = false;
+			settings1.UseMaxScale = false;
+			numUDColor.DataBindings.Add(new System.Windows.Forms.Binding("Value", settings1, "BackgroundBlend", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			numUDColor.Location = new System.Drawing.Point(150, 181);
+			numUDColor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			numUDColor.Name = "numUDColor";
+			numUDColor.Size = new System.Drawing.Size(52, 23);
+			numUDColor.TabIndex = 12;
+			numUDColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			numUDColor.Value = new decimal(new int[] { 18, 0, 0, 0 });
+			numUDColor.ValueChanged += control_Changed;
+			// 
+			// pictureBoxColor
+			// 
+			pictureBoxColor.BackColor = System.Drawing.Color.FromArgb(255, 206, 157);
+			pictureBoxColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			pictureBoxColor.Cursor = System.Windows.Forms.Cursors.Hand;
+			pictureBoxColor.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", settings1, "BackgroundColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			pictureBoxColor.Location = new System.Drawing.Point(120, 181);
+			pictureBoxColor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			pictureBoxColor.Name = "pictureBoxColor";
+			pictureBoxColor.Size = new System.Drawing.Size(23, 22);
+			pictureBoxColor.TabIndex = 11;
+			pictureBoxColor.TabStop = false;
+			pictureBoxColor.BackColorChanged += control_Changed;
+			pictureBoxColor.Click += color_Click;
+			// 
+			// numUDSpace
+			// 
+			numUDSpace.DataBindings.Add(new System.Windows.Forms.Binding("Value", settings1, "Border", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			numUDSpace.Location = new System.Drawing.Point(96, 151);
+			numUDSpace.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			numUDSpace.Maximum = new decimal(new int[] { 90, 0, 0, 0 });
+			numUDSpace.Name = "numUDSpace";
+			numUDSpace.Size = new System.Drawing.Size(52, 23);
+			numUDSpace.TabIndex = 7;
+			numUDSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			numUDSpace.Value = new decimal(new int[] { 20, 0, 0, 0 });
+			numUDSpace.ValueChanged += control_Changed;
+			// 
+			// numUDThick
+			// 
+			numUDThick.DataBindings.Add(new System.Windows.Forms.Binding("Value", settings1, "Thickness", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			numUDThick.Location = new System.Drawing.Point(92, 121);
+			numUDThick.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			numUDThick.Maximum = new decimal(new int[] { 40, 0, 0, 0 });
+			numUDThick.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
+			numUDThick.Name = "numUDThick";
+			numUDThick.Size = new System.Drawing.Size(52, 23);
+			numUDThick.TabIndex = 4;
+			numUDThick.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			numUDThick.Value = new decimal(new int[] { 12, 0, 0, 0 });
+			numUDThick.ValueChanged += control_Changed;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Location = new System.Drawing.Point(7, 187);
+			label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label5.Name = "label5";
+			label5.Size = new System.Drawing.Size(101, 15);
+			label5.TabIndex = 9;
+			label5.Text = "Background color";
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Location = new System.Drawing.Point(155, 157);
+			label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label4.Name = "label4";
+			label4.Size = new System.Drawing.Size(17, 15);
+			label4.TabIndex = 8;
+			label4.Text = "%";
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Location = new System.Drawing.Point(7, 157);
+			label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label3.Name = "label3";
+			label3.Size = new System.Drawing.Size(75, 15);
+			label3.TabIndex = 6;
+			label3.Text = "Border space";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new System.Drawing.Point(152, 127);
+			label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(66, 15);
+			label2.TabIndex = 5;
+			label2.Text = "pixels thick";
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new System.Drawing.Point(7, 127);
+			label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(73, 15);
+			label1.TabIndex = 3;
+			label1.Text = "Black border";
+			// 
+			// pictureBoxStyle
+			// 
+			pictureBoxStyle.Image = Properties.Resources.spiffy;
+			pictureBoxStyle.Location = new System.Drawing.Point(98, 22);
+			pictureBoxStyle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			pictureBoxStyle.Name = "pictureBoxStyle";
+			pictureBoxStyle.Size = new System.Drawing.Size(117, 92);
+			pictureBoxStyle.TabIndex = 3;
+			pictureBoxStyle.TabStop = false;
+			pictureBoxStyle.DragDrop += pictureBoxStyle_DragDrop;
+			pictureBoxStyle.DragEnter += pictureBoxStyle_DragEnter;
+			// 
+			// radioZoomIn
+			// 
+			radioZoomIn.AutoSize = true;
+			radioZoomIn.Location = new System.Drawing.Point(7, 75);
+			radioZoomIn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			radioZoomIn.Name = "radioZoomIn";
+			radioZoomIn.Size = new System.Drawing.Size(70, 19);
+			radioZoomIn.TabIndex = 2;
+			radioZoomIn.Text = "Zoom In";
+			radioZoomIn.UseVisualStyleBackColor = true;
+			radioZoomIn.CheckedChanged += control_Changed;
+			radioZoomIn.Click += radioStyle_Click;
+			// 
+			// radioZoomOut
+			// 
+			radioZoomOut.AutoSize = true;
+			radioZoomOut.Location = new System.Drawing.Point(7, 48);
+			radioZoomOut.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			radioZoomOut.Name = "radioZoomOut";
+			radioZoomOut.Size = new System.Drawing.Size(80, 19);
+			radioZoomOut.TabIndex = 1;
+			radioZoomOut.Text = "Zoom Out";
+			radioZoomOut.UseVisualStyleBackColor = true;
+			radioZoomOut.CheckedChanged += control_Changed;
+			radioZoomOut.Click += radioStyle_Click;
+			// 
+			// radioSpiffy
+			// 
+			radioSpiffy.AutoSize = true;
+			radioSpiffy.Checked = true;
+			radioSpiffy.Location = new System.Drawing.Point(7, 22);
+			radioSpiffy.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			radioSpiffy.Name = "radioSpiffy";
+			radioSpiffy.Size = new System.Drawing.Size(55, 19);
+			radioSpiffy.TabIndex = 0;
+			radioSpiffy.TabStop = true;
+			radioSpiffy.Text = "Spiffy";
+			radioSpiffy.UseVisualStyleBackColor = true;
+			radioSpiffy.CheckedChanged += control_Changed;
+			radioSpiffy.Click += radioStyle_Click;
+			// 
+			// groupBox2
+			// 
+			groupBox2.Controls.Add(checkBoxSmartRand);
+			groupBox2.Controls.Add(radioMulti);
+			groupBox2.Controls.Add(radioSingle);
+			groupBox2.Location = new System.Drawing.Point(14, 253);
+			groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox2.Name = "groupBox2";
+			groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox2.Size = new System.Drawing.Size(233, 188);
+			groupBox2.TabIndex = 2;
+			groupBox2.TabStop = false;
+			groupBox2.Text = "Displays";
+			// 
+			// checkBoxSmartRand
+			// 
+			checkBoxSmartRand.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+			checkBoxSmartRand.Checked = true;
+			checkBoxSmartRand.CheckState = System.Windows.Forms.CheckState.Checked;
+			checkBoxSmartRand.DataBindings.Add(new System.Windows.Forms.Binding("Checked", settings1, "SmartRandom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			checkBoxSmartRand.Location = new System.Drawing.Point(7, 125);
+			checkBoxSmartRand.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			checkBoxSmartRand.Name = "checkBoxSmartRand";
+			checkBoxSmartRand.Size = new System.Drawing.Size(219, 57);
+			checkBoxSmartRand.TabIndex = 2;
+			checkBoxSmartRand.Text = "Smart Random (attempts to use files from same directory for multiple displays)";
+			checkBoxSmartRand.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			checkBoxSmartRand.UseVisualStyleBackColor = true;
+			checkBoxSmartRand.CheckedChanged += control_Changed;
+			// 
+			// radioMulti
+			// 
+			radioMulti.AutoSize = true;
+			radioMulti.Image = Properties.Resources.computers_48x48;
+			radioMulti.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			radioMulti.Location = new System.Drawing.Point(131, 22);
+			radioMulti.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			radioMulti.Name = "radioMulti";
+			radioMulti.Size = new System.Drawing.Size(69, 79);
+			radioMulti.TabIndex = 1;
+			radioMulti.Text = "\r\n\r\n\r\n\r\nMultiple";
+			radioMulti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			radioMulti.UseVisualStyleBackColor = true;
+			radioMulti.CheckedChanged += control_Changed;
+			radioMulti.Click += radioDisplays_Click;
+			// 
+			// radioSingle
+			// 
+			radioSingle.AutoSize = true;
+			radioSingle.Checked = true;
+			radioSingle.DataBindings.Add(new System.Windows.Forms.Binding("Checked", settings1, "SingleMonitor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			radioSingle.Image = Properties.Resources.computer_48x48;
+			radioSingle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			radioSingle.Location = new System.Drawing.Point(30, 22);
+			radioSingle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			radioSingle.Name = "radioSingle";
+			radioSingle.Size = new System.Drawing.Size(62, 79);
+			radioSingle.TabIndex = 0;
+			radioSingle.TabStop = true;
+			radioSingle.Text = "\r\n\r\n\r\n\r\nSingle";
+			radioSingle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			radioSingle.UseVisualStyleBackColor = true;
+			radioSingle.CheckedChanged += control_Changed;
+			radioSingle.Click += radioDisplays_Click;
+			// 
+			// groupBox3
+			// 
+			groupBox3.Controls.Add(pictureBoxClock);
+			groupBox3.Controls.Add(label6);
+			groupBox3.Controls.Add(comboBoxTimeUnit);
+			groupBox3.Controls.Add(numUDInterval);
+			groupBox3.Controls.Add(checkBoxActive);
+			groupBox3.Location = new System.Drawing.Point(254, 31);
+			groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox3.Name = "groupBox3";
+			groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox3.Size = new System.Drawing.Size(370, 87);
+			groupBox3.TabIndex = 3;
+			groupBox3.TabStop = false;
+			groupBox3.Text = "Automatic Changes";
+			// 
+			// pictureBoxClock
+			// 
+			pictureBoxClock.Image = Properties.Resources.clock_48x48;
+			pictureBoxClock.Location = new System.Drawing.Point(301, 20);
+			pictureBoxClock.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			pictureBoxClock.Name = "pictureBoxClock";
+			pictureBoxClock.Size = new System.Drawing.Size(56, 55);
+			pictureBoxClock.TabIndex = 13;
+			pictureBoxClock.TabStop = false;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Location = new System.Drawing.Point(7, 54);
+			label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			label6.Name = "label6";
+			label6.Size = new System.Drawing.Size(79, 15);
+			label6.TabIndex = 1;
+			label6.Text = "Change every";
+			// 
+			// comboBoxTimeUnit
+			// 
+			comboBoxTimeUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+			comboBoxTimeUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			comboBoxTimeUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			comboBoxTimeUnit.FormattingEnabled = true;
+			comboBoxTimeUnit.Location = new System.Drawing.Point(160, 48);
+			comboBoxTimeUnit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			comboBoxTimeUnit.Name = "comboBoxTimeUnit";
+			comboBoxTimeUnit.Size = new System.Drawing.Size(100, 23);
+			comboBoxTimeUnit.TabIndex = 3;
+			comboBoxTimeUnit.SelectedIndexChanged += control_Changed;
+			// 
+			// numUDInterval
+			// 
+			numUDInterval.DataBindings.Add(new System.Windows.Forms.Binding("Value", settings1, "Interval", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			numUDInterval.Location = new System.Drawing.Point(99, 48);
+			numUDInterval.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			numUDInterval.Name = "numUDInterval";
+			numUDInterval.Size = new System.Drawing.Size(54, 23);
+			numUDInterval.TabIndex = 2;
+			numUDInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			numUDInterval.Value = new decimal(new int[] { 2, 0, 0, 0 });
+			numUDInterval.ValueChanged += control_Changed;
+			// 
+			// checkBoxActive
+			// 
+			checkBoxActive.AutoSize = true;
+			checkBoxActive.Checked = true;
+			checkBoxActive.CheckState = System.Windows.Forms.CheckState.Checked;
+			checkBoxActive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", settings1, "Active", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			checkBoxActive.Location = new System.Drawing.Point(7, 22);
+			checkBoxActive.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			checkBoxActive.Name = "checkBoxActive";
+			checkBoxActive.Size = new System.Drawing.Size(140, 19);
+			checkBoxActive.TabIndex = 0;
+			checkBoxActive.Text = "Active timed changes";
+			checkBoxActive.UseVisualStyleBackColor = true;
+			checkBoxActive.CheckedChanged += control_Changed;
+			checkBoxActive.Click += pause_Click;
+			// 
+			// groupBox4
+			// 
+			groupBox4.Controls.Add(checkBoxSubdir);
+			groupBox4.Controls.Add(buttonRemove);
+			groupBox4.Controls.Add(buttonAddFolders);
+			groupBox4.Controls.Add(buttonAddFiles);
+			groupBox4.Controls.Add(listView);
+			groupBox4.Location = new System.Drawing.Point(254, 125);
+			groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox4.Name = "groupBox4";
+			groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			groupBox4.Size = new System.Drawing.Size(370, 316);
+			groupBox4.TabIndex = 4;
+			groupBox4.TabStop = false;
+			groupBox4.Text = "Image Collection";
+			// 
+			// checkBoxSubdir
+			// 
+			checkBoxSubdir.AutoSize = true;
+			checkBoxSubdir.Checked = true;
+			checkBoxSubdir.CheckState = System.Windows.Forms.CheckState.Checked;
+			checkBoxSubdir.DataBindings.Add(new System.Windows.Forms.Binding("Checked", settings1, "IncludeSubdirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+			checkBoxSubdir.Location = new System.Drawing.Point(7, 290);
+			checkBoxSubdir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			checkBoxSubdir.Name = "checkBoxSubdir";
+			checkBoxSubdir.Size = new System.Drawing.Size(311, 19);
+			checkBoxSubdir.TabIndex = 4;
+			checkBoxSubdir.Text = "Include Subdirectories (affects all folders in collection)";
+			checkBoxSubdir.UseVisualStyleBackColor = true;
+			checkBoxSubdir.CheckedChanged += control_Changed;
+			// 
+			// buttonRemove
+			// 
+			buttonRemove.Image = Properties.Resources.remove_16x16;
+			buttonRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			buttonRemove.Location = new System.Drawing.Point(224, 247);
+			buttonRemove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonRemove.Name = "buttonRemove";
+			buttonRemove.Size = new System.Drawing.Size(88, 36);
+			buttonRemove.TabIndex = 3;
+			buttonRemove.Text = "Remove";
+			buttonRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			buttonRemove.UseVisualStyleBackColor = true;
+			buttonRemove.Click += removeItem_Click;
+			// 
+			// buttonAddFolders
+			// 
+			buttonAddFolders.Image = Properties.Resources.folder_explorer_16x16;
+			buttonAddFolders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			buttonAddFolders.Location = new System.Drawing.Point(111, 247);
+			buttonAddFolders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonAddFolders.Name = "buttonAddFolders";
+			buttonAddFolders.Size = new System.Drawing.Size(106, 36);
+			buttonAddFolders.TabIndex = 2;
+			buttonAddFolders.Text = "Add folder...";
+			buttonAddFolders.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			buttonAddFolders.UseVisualStyleBackColor = true;
+			buttonAddFolders.Click += addFolder_Click;
+			// 
+			// buttonAddFiles
+			// 
+			buttonAddFiles.Image = Properties.Resources.file_explorer_16x16;
+			buttonAddFiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			buttonAddFiles.Location = new System.Drawing.Point(7, 247);
+			buttonAddFiles.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonAddFiles.Name = "buttonAddFiles";
+			buttonAddFiles.Size = new System.Drawing.Size(97, 36);
+			buttonAddFiles.TabIndex = 1;
+			buttonAddFiles.Text = "Add files...";
+			buttonAddFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			buttonAddFiles.UseVisualStyleBackColor = true;
+			buttonAddFiles.Click += addFiles_Click;
+			// 
+			// listView
+			// 
+			listView.AllowDrop = true;
+			listView.ContextMenuStrip = contextMenuItem;
+			listView.Location = new System.Drawing.Point(7, 22);
+			listView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			listView.Name = "listView";
+			listView.ShowItemToolTips = true;
+			listView.Size = new System.Drawing.Size(355, 217);
+			listView.SmallImageList = imageList;
+			listView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+			listView.TabIndex = 0;
+			listView.UseCompatibleStateImageBehavior = false;
+			listView.View = System.Windows.Forms.View.List;
+			listView.ItemActivate += listView_ItemActivate;
+			listView.DragDrop += listView_DragDrop;
+			listView.DragEnter += listView_DragEnter;
+			listView.KeyDown += listView_KeyDown;
+			// 
+			// buttonOK
+			// 
+			buttonOK.Location = new System.Drawing.Point(348, 448);
+			buttonOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonOK.Name = "buttonOK";
+			buttonOK.Size = new System.Drawing.Size(88, 27);
+			buttonOK.TabIndex = 5;
+			buttonOK.Text = "OK";
+			buttonOK.UseVisualStyleBackColor = true;
+			buttonOK.Click += ok_Click;
+			// 
+			// buttonCancel
+			// 
+			buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			buttonCancel.Location = new System.Drawing.Point(442, 448);
+			buttonCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonCancel.Name = "buttonCancel";
+			buttonCancel.Size = new System.Drawing.Size(88, 27);
+			buttonCancel.TabIndex = 6;
+			buttonCancel.Text = "Cancel";
+			buttonCancel.UseVisualStyleBackColor = true;
+			buttonCancel.Click += cancel_Click;
+			// 
+			// buttonApply
+			// 
+			buttonApply.Enabled = false;
+			buttonApply.Location = new System.Drawing.Point(537, 448);
+			buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			buttonApply.Name = "buttonApply";
+			buttonApply.Size = new System.Drawing.Size(88, 27);
+			buttonApply.TabIndex = 7;
+			buttonApply.Text = "Apply";
+			buttonApply.UseVisualStyleBackColor = true;
+			buttonApply.Click += apply_Click;
+			// 
+			// progressBar
+			// 
+			progressBar.Location = new System.Drawing.Point(14, 448);
+			progressBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			progressBar.Name = "progressBar";
+			progressBar.Size = new System.Drawing.Size(327, 27);
+			progressBar.Step = 1;
+			progressBar.TabIndex = 8;
+			progressBar.Visible = false;
 			// 
 			// MainForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.buttonCancel;
-			this.ClientSize = new System.Drawing.Size(547, 423);
-			this.Controls.Add(this.buttonCancel);
-			this.Controls.Add(this.progressBar);
-			this.Controls.Add(this.buttonApply);
-			this.Controls.Add(this.buttonOK);
-			this.Controls.Add(this.groupBox2);
-			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.groupBox4);
-			this.Controls.Add(this.menu);
-			this.Controls.Add(this.groupBox1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menu;
-			this.MaximizeBox = false;
-			this.Name = "MainForm";
-			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "AppTitle";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.Shown += new System.EventHandler(this.MainForm_Shown);
-			this.VisibleChanged += new System.EventHandler(this.MainForm_VisibleChanged);
-			this.menu.ResumeLayout(false);
-			this.menu.PerformLayout();
-			this.contextMenuTray.ResumeLayout(false);
-			this.contextMenuItem.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numUDColor)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxColor)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDSpace)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDThick)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxStyle)).EndInit();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxClock)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numUDInterval)).EndInit();
-			this.groupBox4.ResumeLayout(false);
-			this.groupBox4.PerformLayout();
-			this.ResumeLayout(false);
-			this.PerformLayout();
-
+			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			CancelButton = buttonCancel;
+			ClientSize = new System.Drawing.Size(638, 488);
+			Controls.Add(buttonCancel);
+			Controls.Add(progressBar);
+			Controls.Add(buttonApply);
+			Controls.Add(buttonOK);
+			Controls.Add(groupBox2);
+			Controls.Add(groupBox3);
+			Controls.Add(groupBox4);
+			Controls.Add(menu);
+			Controls.Add(groupBox1);
+			FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+			MainMenuStrip = menu;
+			Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			MaximizeBox = false;
+			Name = "MainForm";
+			StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			Text = "AppTitle";
+			FormClosing += MainForm_FormClosing;
+			Load += MainForm_Load;
+			Shown += MainForm_Shown;
+			VisibleChanged += MainForm_VisibleChanged;
+			menu.ResumeLayout(false);
+			menu.PerformLayout();
+			contextMenuTray.ResumeLayout(false);
+			contextMenuItem.ResumeLayout(false);
+			groupBox1.ResumeLayout(false);
+			groupBox1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)numUDColor).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxColor).EndInit();
+			((System.ComponentModel.ISupportInitialize)numUDSpace).EndInit();
+			((System.ComponentModel.ISupportInitialize)numUDThick).EndInit();
+			((System.ComponentModel.ISupportInitialize)pictureBoxStyle).EndInit();
+			groupBox2.ResumeLayout(false);
+			groupBox2.PerformLayout();
+			groupBox3.ResumeLayout(false);
+			groupBox3.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBoxClock).EndInit();
+			((System.ComponentModel.ISupportInitialize)numUDInterval).EndInit();
+			groupBox4.ResumeLayout(false);
+			groupBox4.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
