@@ -253,10 +253,10 @@
 
 		private void addFolder_Click(object sender, EventArgs e)
 		{
-			using var ffd = new dnGREP.FileFolderDialog();
-			if (ffd.ShowDialog() == DialogResult.OK)
+			using var fbd = new FolderBrowserDialog();
+			if (fbd.ShowDialog() == DialogResult.OK)
 			{
-				this.logic.AddFolders(new[] { ffd.SelectedPath });
+				this.logic.AddFolders(new[] { fbd.SelectedPath });
 			}
 		}
 
