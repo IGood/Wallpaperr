@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWpf>true</UseWpf>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Authors>Ian Good</Authors>
-		<Copyright>Copyright © 2020</Copyright>
+		<Copyright>Copyright © 2024</Copyright>
 		<Description>Wallpaperr automatic wallpaper changer is freeware.
 If you paid for this product get a refund!
 Send comments to `Ian.M.Good@gmail.com`.</Description>
