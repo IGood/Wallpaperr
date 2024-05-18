@@ -142,5 +142,87 @@ namespace Wallpaperr2.Properties {
                 this["BackgroundStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection FolderList {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["FolderList"]));
+            }
+            set {
+                this["FolderList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection FileList {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["FileList"]));
+            }
+            set {
+                this["FileList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IncludeSubdirectory {
+            get {
+                return ((bool)(this["IncludeSubdirectory"]));
+            }
+            set {
+                this["IncludeSubdirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SmartRandom {
+            get {
+                return ((bool)(this["SmartRandom"]));
+            }
+            set {
+                this["SmartRandom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseLegacyTiling {
+            get {
+                return ((bool)(this["UseLegacyTiling"]));
+            }
+            set {
+                this["UseLegacyTiling"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Spiffy")]
+        public global::Wallpaperr2.BackgroundStyle Style {
+            get {
+                return ((global::Wallpaperr2.BackgroundStyle)(this["Style"]));
+            }
+            set {
+                this["Style"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowOnRun {
+            get {
+                return ((bool)(this["ShowOnRun"]));
+            }
+            set {
+                this["ShowOnRun"] = value;
+            }
+        }
     }
 }

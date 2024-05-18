@@ -3,78 +3,118 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:io="clr-namespace:System.IO;assembly=System"
         xmlns:tb="http://www.hardcodet.net/taskbar"        
         xmlns:gc="clr-namespace:Goop.Wpf.Controls;assembly=Goop"
+        xmlns:gw="clr-namespace:Goop.Wpf;assembly=Goop"
         xmlns:local="clr-namespace:Wallpaperr2"
         mc:Ignorable="d"
         x:Name="root"
         Icon="monitor.ico"
         Title="Wallpaperr"
-        ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        Width="600"
+        Height="450"
         Closing="root_OnClosing">
     <Window.CommandBindings>
-        <CommandBinding Command="{x:Static local:MainWindow.AddFiles}"/>
-        <CommandBinding Command="{x:Static local:MainWindow.AddFolder}"/>
-        <CommandBinding Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.AddFiles}" Executed="AddFiles_Executed"/>
+        <CommandBinding Command="{x:Static local:MainWindow.AddFolder}" Executed="AddFolders_Executed"/>
+        <CommandBinding Command="{x:Static local:MainWindow.NewRandomWallpaper}" Executed="NewRandomWallpaper_Executed"/>
         <CommandBinding Command="{x:Static ApplicationCommands.Close}" Executed="Close_Executed"/>
         <CommandBinding Command="{x:Static local:MainWindow.Quit}" Executed="Quit_Executed"/>
         <CommandBinding Command="{x:Static ApplicationCommands.Help}"/>
         <CommandBinding Command="{x:Static local:MainWindow.About}"/>
-        <CommandBinding Command="{x:Static local:MainWindow.TogglePaused}"/>
+        <CommandBinding Command="{x:Static local:MainWindow.TogglePaused}" Executed="TogglePaused_Executed"/>
         <CommandBinding Command="{x:Static ApplicationCommands.Properties}" Executed="Properties_Executed"/>
+        <CommandBinding Command="{x:Static ApplicationCommands.Open}" Executed="Open_Executed"/>
+        <CommandBinding Command="{x:Static ApplicationCommands.Save}" Executed="Save_Executed"/>
     </Window.CommandBindings>
 
     <Window.Resources>
-        <ContextMenu x:Key="TrayIconCtxMenu">
-            <ContextMenu.Resources>
-                <Style TargetType="{x:Type MenuItem}">
-                    <!--  <Setter Property="CommandTarget" Value="{Binding ElementName=root}"/> -->
-                </Style>
-            </ContextMenu.Resources>
-            <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}" CommandTarget="{x:Reference root}"/>
-            <MenuItem Command="{x:Static local:MainWindow.TogglePaused}" CommandTarget="{x:Reference root}"/>
-            <MenuItem Command="{x:Static ApplicationCommands.Properties}" CommandTarget="{x:Reference root}"/>
-            <MenuItem Command="{x:Static local:MainWindow.About}" CommandTarget="{x:Reference root}"/>
-            <MenuItem Command="{x:Static local:MainWindow.Quit}" CommandTarget="{x:Reference root}"/>
-        </ContextMenu>
+        <Image x:Key="IMG_TrayIcon" Source="Images/small.ico" x:Shared="False"/>
+        <Image x:Key="IMG_Random" Source="Images/random_16x16.png" x:Shared="False"/>
+        <Image x:Key="IMG_Settings" Source="Images/resx_16x16.png" x:Shared="False"/>
+        <Image x:Key="IMG_Pause" Source="Images/pause_16x16.png" x:Shared="False"/>
+        <Image x:Key="IMG_Play" Source="Images/play_16x16.png" x:Shared="False"/>
+        <Image x:Key="IMG_Info" Source="Images/info_16x16.png" x:Shared="False"/>
     </Window.Resources>
 
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Overlay="{local:AppSettingBinding Path=IsActive, Converter={gw:BoolConverter Else=Images/pause_16x16.png}}"
+                         ProgressState="{Binding ElementName=root, Path=ProgressBarState}"
+                         ProgressValue="{Binding ElementName=root, Path=ProgressBarValue}"/>
+    </Window.TaskbarItemInfo>
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Command="{x:Static local:MainWindow.AddFiles}"/>
-                <MenuItem Command="{x:Static local:MainWindow.AddFolder}"/>
-                <Separator/>
-                <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
-                <MenuItem Command="{x:Static ApplicationCommands.Close}" InputGestureText="Alt+F4"/>
-                <MenuItem Command="{x:Static local:MainWindow.Quit}"/>
-            </MenuItem>
-            <MenuItem Header="_Collection">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Command="{x:Static local:MainWindow.AddFiles}"/>
+                    <MenuItem Command="{x:Static local:MainWindow.AddFolder}"/>
+                    <Separator/>
+                    <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"
+                              Icon="{StaticResource IMG_Random}"/>
+                    <MenuItem Command="{x:Static ApplicationCommands.Close}"
+                              InputGestureText="Alt+F4"/>
+                    <MenuItem Command="{x:Static local:MainWindow.Quit}"/>
+                </MenuItem>
+                <MenuItem Header="_Collection">
+                    <MenuItem Command="{x:Static ApplicationCommands.Open}"/>
+                    <MenuItem Command="{x:Static ApplicationCommands.Save}"/>
+                    <Separator/>
+                </MenuItem>
+                <MenuItem Header="_Options">
+                    <MenuItem Header="_Show On Run" IsCheckable="True" StaysOpenOnClick="True" IsChecked="{local:AppSettingBinding Path=ShowOnRun}"/>
+                    <MenuItem Header="_Double-Click Tray Icon" Icon="{StaticResource IMG_TrayIcon}">
+                        <ComboBox SelectedValuePath="DataContext" SelectedValue="{Binding ElementName=root, Path=TrayIconCommand}">
+                            <ComboBoxItem DataContext="{x:Static ApplicationCommands.Properties}">
+                                <StackPanel Orientation="Horizontal">
+                                    <StaticResource ResourceKey="IMG_Settings"/>
+                                    <TextBlock Margin="3,0,0,0" Text="Open Settings"/>
+                                </StackPanel>
+                            </ComboBoxItem>
+                            <ComboBoxItem DataContext="{x:Static local:MainWindow.NewRandomWallpaper}">
+                                <StackPanel Orientation="Horizontal">
+                                    <StaticResource ResourceKey="IMG_Random"/>
+                                    <TextBlock Margin="3,0,0,0" Text="New Random Wallpaper"/>
+                                </StackPanel>
+                            </ComboBoxItem>
+                            <ComboBoxItem DataContext="{x:Static local:MainWindow.TogglePaused}">
+                                <StackPanel Orientation="Horizontal">
+                                    <StaticResource ResourceKey="IMG_Pause"/>
+                                    <TextBlock Margin="3,0,0,0" Text="Toggle Paused"/>
+                                </StackPanel>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </MenuItem>
+                    <MenuItem Header="_Use Legacy Tiling" IsCheckable="True" StaysOpenOnClick="True" IsChecked="{local:AppSettingBinding Path=UseLegacyTiling}"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Command="{x:Static ApplicationCommands.Help}"
+                              Icon="{StaticResource IMG_Random}"/>
+                    <MenuItem Command="{x:Static local:MainWindow.About}"
+                              Icon="{StaticResource IMG_Info}"/>
+                </MenuItem>
+            </Menu>
 
-            </MenuItem>
-            <MenuItem Header="_Options">
+            <DockPanel DockPanel.Dock="Bottom" Margin="3">
+                <DockPanel.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="DockPanel.Dock" Value="Right"/>
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="Width" Value="75"/>
+                    </Style>
+                </DockPanel.Resources>
+                <Button Content="_Apply" Click="Apply_Click"/>
+                <Button Content="_Cancel" IsCancel="True" Command="{x:Static ApplicationCommands.Close}"/>
+                <Button Content="_OK" IsDefault="True" Click="Ok_Click"/>
+                <ProgressBar Margin="3" Minimum="0" Maximum="1"
+                             Visibility="{Binding ElementName=root, Path=ProgressBarVisibility}"
+                             Value="{Binding ElementName=root, Path=ProgressBarValue}"/>
+            </DockPanel>
 
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Command="{x:Static ApplicationCommands.Help}"/>
-                <MenuItem Command="{x:Static local:MainWindow.About}"/>
-            </MenuItem>
-        </Menu>
-
-        <Grid Grid.Row="1" Margin="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0">
-                <GroupBox Header="Background Style">
+            <DockPanel DockPanel.Dock="Left" Margin="3,0,0,0">
+                <GroupBox DockPanel.Dock="Top" Header="Background Style" Padding="0,3,0,0">
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -86,58 +126,46 @@
                                 <RadioButton IsChecked="{Binding ElementName=root, Path=BackgroundStyle[ZoomOut]}" Content="Zoom Out"/>
                                 <RadioButton IsChecked="{Binding ElementName=root, Path=BackgroundStyle[ZoomIn]}" Content="Zoom In"/>
                             </StackPanel>
-                            <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" Content="{Binding ElementName=root, Path=BackgroundStyle.Value}">
-                                <ContentPresenter.ContentTemplateSelector>
-                                    <gc:DataTemplateSelectorDictionary>
-                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.ZoomOut}">
-                                            <Image Source="Images/zoom_out.png"/>
-                                        </DataTemplate>
-                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.ZoomIn}">
-                                            <Image Source="Images/zoom_in.png"/>
-                                        </DataTemplate>
-                                        <DataTemplate x:Key="{x:Static local:BackgroundStyle.Spiffy}">
-                                            <Image Source="Images/spiffy.png"/>
-                                        </DataTemplate>
-                                    </gc:DataTemplateSelectorDictionary>
-                                </ContentPresenter.ContentTemplateSelector>
-                            </ContentPresenter>
+                            <Image Grid.Column="1" HorizontalAlignment="Right" Stretch="None"
+                                   Source="{Binding ElementName=root, Path=BackgroundStyle.Value, Converter={gw:EnumToMetadata}}"
+                                   AllowDrop="True" DragEnter="pictureBoxStyle_DragEnter" Drop="pictureBoxStyle_DragDrop"/>
                         </Grid>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Black border "/>
-                            <TextBox Width="70"/>
+                            <TextBox Width="70" Text="{local:AppSettingBinding Path=BorderThickness}"/>
                             <TextBlock Text="px"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Boarder space "/>
-                            <TextBox Width="70"/>
+                            <TextBlock Text="Border space "/>
+                            <TextBox Width="70" Text="{local:AppSettingBinding Path=ForegroundMargin}"/>
                             <TextBlock Text="%"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Background color "/>
-                            <Button Width="15" Height="15"/>
-                            <TextBox Width="70"/>
+                            <Button Width="15" Height="15" Background="{local:AppSettingBinding Path=BackgroundColor}"/>
+                            <TextBox Width="70" Text="{local:AppSettingBinding Path=BackgroundBlend}"/>
                             <TextBlock Text="%"/>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
-                <GroupBox Header="Displays">
+                <GroupBox Header="Displays" Padding="0,3,0,0">
                     <StackPanel>
                         <UniformGrid Columns="2">
                             <RadioButton HorizontalAlignment="Center" VerticalContentAlignment="Center"
-                                         IsChecked="{local:AppSettingBinding Path=SingleMonitor}">
+                                             IsChecked="{local:AppSettingBinding Path=SingleMonitor}">
                                 <StackPanel>
-                                    <Image Source="Images/computer_48x48.png"/>
+                                    <Image Stretch="None" Source="Images/computer_48x48.png"/>
                                     <TextBlock Text="Single"/>
                                 </StackPanel>
                             </RadioButton>
                             <RadioButton HorizontalAlignment="Center" VerticalContentAlignment="Center">
                                 <StackPanel>
-                                    <Image Source="Images/computers_48x48.png"/>
+                                    <Image Stretch="None" Source="Images/computers_48x48.png"/>
                                     <TextBlock Text="Multiple"/>
                                 </StackPanel>
                             </RadioButton>
                         </UniformGrid>
-                        <CheckBox>
+                        <CheckBox IsChecked="{local:AppSettingBinding Path=SmartRandom}">
                             <TextBlock>
                                 Smart Random<LineBreak/>
                                 (for multiple displays, use<LineBreak/>
@@ -146,22 +174,22 @@
                         </CheckBox>
                     </StackPanel>
                 </GroupBox>
-            </StackPanel>
+            </DockPanel>
 
-            <DockPanel Grid.Column="1">
+            <DockPanel Margin="0,0,3,0">
                 <GroupBox DockPanel.Dock="Top">
                     <GroupBox.Header>
                         <CheckBox IsChecked="{local:AppSettingBinding Path=IsActive}" Content="Automatic Changes"/>
                     </GroupBox.Header>
                     <StackPanel Orientation="Horizontal" IsEnabled="{local:AppSettingBinding Path=IsActive}">
                         <TextBlock Text="Change every "/>
-                        <TextBox Width="70"/>
+                        <TextBox Width="70" TextAlignment="Right" Text="{local:AppSettingBinding Path=Interval}"/>
                         <gc:EnumComboBox Width="80" SelectedValue="{local:AppSettingBinding Path=IntervalUnit}"/>
                     </StackPanel>
                 </GroupBox>
                 <GroupBox Header="Image Collection">
                     <DockPanel>
-                        <CheckBox DockPanel.Dock="Bottom" Content="Include Subdirectories"/>
+                        <CheckBox DockPanel.Dock="Bottom" Content="Include Subdirectories" IsChecked="{local:AppSettingBinding Path=IncludeSubdirectory}"/>
                         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
                             <StackPanel.Resources>
                                 <Style TargetType="{x:Type Button}">
@@ -174,53 +202,71 @@
                             <Button Command="{x:Static local:MainWindow.AddFolder}"
                                     Content="&#xE197; Add Folder..."/>
                             <Button Command="{x:Static ApplicationCommands.Delete}"
-                                    CommandTarget="{Binding ElementName=listView}"
+                                    CommandTarget="{x:Reference ListBox}"
                                     Content="&#xE106; Remove"/>
                         </StackPanel>
-                        <ListView Name="listView" Width="300">
-                            <ListView.CommandBindings>
+                        <ListBox Name="ListBox" ItemsSource="{Binding ElementName=root, Path=Library}"
+                                 SelectionMode="Extended"
+                                 AllowDrop="True" DragEnter="listView_DragEnter" Drop="listView_DragDrop"
+                                 KeyDown="listView_KeyDown">
+                            <ListBox.CommandBindings>
                                 <CommandBinding Command="{x:Static ApplicationCommands.Delete}" CanExecute="DeleteItem_CanExecute" Executed="DeleteItem_Executed"/>
-                            </ListView.CommandBindings>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListViewItem}">
+                            </ListBox.CommandBindings>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
                                     <Setter Property="ContextMenu">
                                         <Setter.Value>
                                             <ContextMenu>
-                                                <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"/>
+                                                <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}" CommandParameter="{Binding}"/>
                                                 <Separator/>
-                                                <MenuItem Command="{x:Static ApplicationCommands.Open}"/>
-                                                <MenuItem Command="{x:Static local:MainWindow.ShowInExplorer}"/>
+                                                <MenuItem Command="{x:Static ApplicationCommands.Open}" CommandParameter="{Binding}"/>
+                                                <MenuItem Command="{x:Static local:MainWindow.ShowInExplorer}" CommandParameter="{Binding}"/>
                                                 <Separator/>
-                                                <MenuItem Command="{x:Static ApplicationCommands.Delete}"/>
+                                                <MenuItem Command="{x:Static ApplicationCommands.Delete}" CommandParameter="{Binding}"/>
                                             </ContextMenu>
                                         </Setter.Value>
                                     </Setter>
                                 </Style>
-                            </ListView.ItemContainerStyle>
-                        </ListView>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="io:FileSystemInfo">
+                                    <StackPanel Orientation="Horizontal" ToolTip="{Binding Path=FullName, Mode=OneTime}">
+                                        <Image Stretch="Uniform" Width="18"
+                                               Source="{Binding Path=Extension, Converter={local:ExtensionToImageConverter}, Mode=OneTime}"/>
+                                        <TextBlock Text="{Binding Path=FullName, Converter={local:FileNameWithoutExtension}, Mode=OneTime}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </DockPanel>
                 </GroupBox>
             </DockPanel>
-        </Grid>
-
-        <DockPanel Grid.Row="2" Margin="3">
-            <DockPanel.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="DockPanel.Dock" Value="Right"/>
-                    <Setter Property="Margin" Value="3"/>
-                    <Setter Property="Width" Value="75"/>
-                </Style>
-            </DockPanel.Resources>
-            <Button Content="_Apply" Click="Apply_Click"/>
-            <Button Content="_Cancel" IsCancel="True" Command="{x:Static ApplicationCommands.Close}"/>
-            <Button Content="_OK" IsDefault="True" Click="Ok_Click"/>
-            <ProgressBar Margin="3"/>
         </DockPanel>
 
-        <tb:TaskbarIcon IconSource="monitor.ico"
-                        DoubleClickCommand="{Binding ElementName=root, Path=TrayIconCommand}"
-                        ContextMenu="{StaticResource TrayIconCtxMenu}">
+        <tb:TaskbarIcon IconSource="{Binding ElementName=root, Path=TrayIconSource}"
+                        DoubleClickCommand="{Binding ElementName=root, Path=TrayIconCommand}">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <ContextMenu.Resources>
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Setter Property="CommandTarget" Value="{x:Reference root}"/>
+                        </Style>
+                    </ContextMenu.Resources>
+                    <MenuItem Command="{x:Static local:MainWindow.NewRandomWallpaper}"
+                              StaysOpenOnClick="True"
+                              Icon="{StaticResource IMG_Random}"/>
+                    <MenuItem Command="{x:Static local:MainWindow.TogglePaused}"
+                              StaysOpenOnClick="True"
+                              Icon="{local:AppSettingBinding Path=IsActive, Converter={gw:BoolConverter IfTrue={StaticResource IMG_Pause}, Else={StaticResource IMG_Play}}}"
+                              Header="{local:AppSettingBinding Path=IsActive, Converter={gw:BoolConverter IfTrue=Pause, Else=Unpause}}"/>
+                    <MenuItem Command="{x:Static ApplicationCommands.Properties}"
+                              Icon="{StaticResource IMG_Settings}"/>
+                    <MenuItem Command="{x:Static local:MainWindow.About}"
+                              Icon="{StaticResource IMG_Info}"/>
+                    <MenuItem Command="{x:Static local:MainWindow.Quit}"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
         </tb:TaskbarIcon>
-
     </Grid>
 </Window>

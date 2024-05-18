@@ -25,6 +25,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +36,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>monitor.ico</ApplicationIcon>
@@ -50,12 +54,12 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -68,6 +72,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ExtensionToImageConverter.cs" />
+    <Compile Include="FileSystemInfoComparer.cs" />
+    <Compile Include="FileNameWithoutExtension.cs" />
+    <Compile Include="GaussianBlurEffect.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="WallpaperComposer.cs" />
+    <Compile Include="WallpaperrLogic.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -133,6 +144,42 @@
       <Project>{85c17ad3-356f-412f-8af2-1320f0a990fa}</Project>
       <Name>Goop</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\picture_BMP.ico" />
+    <Resource Include="Images\picture_GIF.ico" />
+    <Resource Include="Images\picture_JPG.ico" />
+    <Resource Include="Images\picture_PNG.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folder_pictures.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clock_48x48.png" />
+    <Resource Include="Images\file_explorer.ico" />
+    <Resource Include="Images\file_explorer_16x16.png" />
+    <Resource Include="Images\folder_explorer.ico" />
+    <Resource Include="Images\folder_explorer_16x16.png" />
+    <Resource Include="Images\GoToParentFolderHS.png" />
+    <Resource Include="Images\info_16x16.png" />
+    <Resource Include="Images\logo01.png" />
+    <Resource Include="Images\monitor.ico" />
+    <Resource Include="Images\monitor_16x16.png" />
+    <Resource Include="Images\open_16x16.png" />
+    <Resource Include="Images\open_selected_item_16x16.png" />
+    <Resource Include="Images\OrganizerHS.png" />
+    <Resource Include="Images\pause_16x16.png" />
+    <Resource Include="Images\picture_JPEG.ico" />
+    <Resource Include="Images\play_16x16.png" />
+    <Resource Include="Images\random_16x16.png" />
+    <Resource Include="Images\refresh_16x16.png" />
+    <Resource Include="Images\remove_16x16.png" />
+    <Resource Include="Images\resx_16x16.png" />
+    <Resource Include="Images\save_16x16.png" />
+    <Resource Include="Images\settings_16x16.png" />
+    <Resource Include="Images\small.ico" />
+    <Resource Include="Images\smallBusy.ico" />
+    <Resource Include="Images\smallPaused.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

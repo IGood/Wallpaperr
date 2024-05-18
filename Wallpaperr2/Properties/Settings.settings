@@ -32,5 +32,26 @@
     <Setting Name="BackgroundStyle" Type="Wallpaperr2.BackgroundStyle" Scope="User">
       <Value Profile="(Default)">Spiffy</Value>
     </Setting>
+    <Setting Name="FolderList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FileList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IncludeSubdirectory" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SmartRandom" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UseLegacyTiling" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Style" Type="Wallpaperr2.BackgroundStyle" Scope="User">
+      <Value Profile="(Default)">Spiffy</Value>
+    </Setting>
+    <Setting Name="ShowOnRun" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
