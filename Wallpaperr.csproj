@@ -37,4 +37,8 @@ Send comments to `Ian.M.Good@gmail.com`.</Description>
 	  </None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Properties\PublishProfiles\" />
+	</ItemGroup>
+
 </Project>

@@ -16,8 +16,9 @@ namespace Wallpaperr
 		{
 			string file = args?.FirstOrDefault();
 
+			HighDpiMode highDpiMode = HighDpiMode.PerMonitorV2;
 #if DEBUG
-			Application.SetHighDpiMode(HighDpiMode.SystemAware);
+			Application.SetHighDpiMode(highDpiMode);
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm(file));
@@ -39,7 +40,7 @@ namespace Wallpaperr
 				return;
 			}
 
-			Application.SetHighDpiMode(HighDpiMode.SystemAware);
+			Application.SetHighDpiMode(highDpiMode );
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 

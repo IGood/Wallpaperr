@@ -977,8 +977,8 @@
 			// 
 			// MainForm
 			// 
-			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			CancelButton = buttonCancel;
 			ClientSize = new System.Drawing.Size(638, 488);
 			Controls.Add(buttonCancel);

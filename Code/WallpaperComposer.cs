@@ -10,7 +10,7 @@
 	using System.Windows.Forms;
 	using System.Windows.Media.Imaging;
 
-	static class WallpaperComposer
+	static partial class WallpaperComposer
 	{
 		private static readonly bool WindowsVersionSupportsJpg = Environment.OSVersion.Version >= new Version(6, 0);
 
@@ -447,11 +447,11 @@ We'll try again later.";
 			return false;
 		}
 
-		private static class NativeMethods
+		private static partial class NativeMethods
 		{
-			[DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+			[LibraryImport("user32.dll", EntryPoint = "SystemParametersInfoW", StringMarshalling = StringMarshalling.Utf16, SetLastError = true)]
 			[return: MarshalAs(UnmanagedType.Bool)]
-			public static extern bool SystemParametersInfo(uint uiAction, uint uiParam, string pvParam, uint fWinIni);
+			public static partial bool SystemParametersInfo(uint uiAction, uint uiParam, string pvParam, uint fWinIni);
 		}
 
 		private class ComposerData
